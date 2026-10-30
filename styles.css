@@ -631,3 +631,17 @@ body{
  .dashboard-welcome-logo{width:104px;height:52px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
 }
 @media(max-width:390px){.dashboard-welcome-logo{width:92px;height:48px}}
+
+
+/* Admin overview and on-demand history */
+.admin-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:22px 0}
+.admin-stat{display:flex;flex-direction:column;gap:7px;min-height:118px;padding:18px 19px;border:1px solid rgba(183,127,110,.17);border-radius:17px;background:linear-gradient(145deg,#fffdfa,#f5eae4);box-shadow:0 8px 22px rgba(80,58,52,.045)}
+.admin-stat>span{color:#80665d;font-size:11px;font-weight:700}
+.admin-stat>strong{color:#503A34;font:700 34px 'Playfair Display',serif;line-height:1.1}
+.admin-stat>small{color:#927d74;font-size:10px}
+.admin-tools-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 14px;padding:17px 19px;border:1px solid rgba(183,127,110,.16);border-radius:16px;background:rgba(255,252,250,.78)}
+.admin-tools-row h3{margin:4px 0;color:#503A34;font:600 22px 'Playfair Display',serif}
+.admin-tools-row p:last-child{margin:0;color:#88756E;font-size:11px}
+.history-content{padding-top:6px}
+.history-content.hidden{display:none!important}
+@media(max-width:760px){.admin-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.admin-stat{min-height:105px;padding:14px}.admin-stat>strong{font-size:29px}.admin-tools-row{align-items:flex-start;flex-direction:column}.admin-tools-row button{width:100%}}
