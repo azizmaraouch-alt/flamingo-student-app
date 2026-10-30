@@ -523,3 +523,16 @@ body{
 #authView input:focus{border-color:#B77F6E;box-shadow:0 0 0 4px rgba(183,127,110,.12),0 10px 22px rgba(80,58,52,.05)}
 #authView .primary-btn{background:linear-gradient(110deg,#B77F6E,#966454);box-shadow:0 9px 22px rgba(150,100,84,.22)}
 #authView .primary-btn:hover{box-shadow:0 13px 28px rgba(150,100,84,.28)}
+
+
+/* FLAMINGO BRAND CONSISTENCY — student dashboard, offers, events and rewards */
+:root{--terracotta:#B77F6E;--terracotta-dark:#966454;--gold:#D8B9A5;--wine:#503A34;--cream:#FBF7F4;--ink:#40332F;--muted:#88756E;--line:#E9DCD5;--white:#FFFCFA;--shadow:0 18px 48px rgba(80,58,52,.09)}
+.student-card{background:linear-gradient(125deg,#C18B79 0%,#A97463 58%,#80564B 100%)!important;box-shadow:0 22px 45px rgba(128,86,75,.22),inset 0 1px 0 rgba(255,255,255,.22)!important}
+.student-nav .nav-item.active{background:linear-gradient(135deg,#966454,#B77F6E)!important;box-shadow:0 8px 18px rgba(150,100,84,.2)!important}
+.primary-btn{background:linear-gradient(115deg,#B77F6E,#966454 65%,#80564B);box-shadow:0 12px 24px rgba(150,100,84,.2)}
+.primary-btn:hover{box-shadow:0 15px 28px rgba(150,100,84,.27)}
+.history-table th{background:#F5EAE4;color:#80594D}
+.history-table td strong{color:#503A34}
+.wheel-graphic{background:conic-gradient(from -30deg,#B77F6E 0deg 60deg,#503A34 60deg 120deg,#D8B9A5 120deg 180deg,#F4E8E1 180deg 240deg,#C99582 240deg 300deg,#E9D5C9 300deg 360deg)!important;box-shadow:0 0 0 3px #D8B9A5,0 18px 38px rgba(80,58,52,.2),inset 0 0 0 2px rgba(255,255,255,.55)!important}
+.wheel-pointer{border-top-color:#B77F6E;filter:drop-shadow(0 3px 3px rgba(80,58,52,.22))}
+.wheel-tile.wheel-ready{border-color:#D8B9A5;box-shadow:0 0 0 4px rgba(216,185,165,.2),0 14px 34px rgba(80,58,52,.1)}
