@@ -17,6 +17,8 @@ const authMessage = document.getElementById("authMessage");
 const profileForm = document.getElementById("profileForm");
 let isSignUp = false;
 let currentUser = null;
+let qrScanner = null;
+let scannerRunning = false;
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -98,6 +100,82 @@ async function checkFlamingoAdmin() {
   if (!error && data === true) adminPanel.classList.remove("hidden");
   if (!error && data === true) document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
 }
+
+async function startStudentScanner() {
+  const resultBox = document.getElementById("scanResult");
+  const startButton = document.getElementById("startScannerBtn");
+  const stopButton = document.getElementById("stopScannerBtn");
+  if (!window.Html5Qrcode) {
+    setMessage(resultBox, "Scanner library could not load. Refresh the page and try again.", true);
+    return;
+  }
+  if (scannerRunning) return;
+
+  qrScanner = new Html5Qrcode("qrReader");
+  startButton.disabled = true;
+  setMessage(resultBox, "Requesting camera access…");
+  try {
+    await qrScanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 230, height: 230 } },
+      async (decodedText) => {
+        await stopStudentScanner();
+        await verifyScannedCard(decodedText);
+      },
+      () => {}
+    );
+    scannerRunning = true;
+    stopButton.classList.remove("hidden");
+    setMessage(resultBox, "Camera active. Point it at a student's QR code.");
+  } catch (error) {
+    setMessage(resultBox, error.message || "Could not access the camera. Check browser permissions.", true);
+  } finally {
+    startButton.disabled = false;
+  }
+}
+
+async function stopStudentScanner() {
+  const stopButton = document.getElementById("stopScannerBtn");
+  if (qrScanner && scannerRunning) {
+    try { await qrScanner.stop(); } catch (error) { console.warn("Scanner stop:", error); }
+    try { qrScanner.clear(); } catch (_) {}
+  }
+  scannerRunning = false;
+  qrScanner = null;
+  stopButton.classList.add("hidden");
+}
+
+async function verifyScannedCard(qrToken) {
+  const resultBox = document.getElementById("scanResult");
+  setMessage(resultBox, "Checking student membership…");
+  try {
+    const { data, error } = await supabaseClient.functions.invoke("verify-student-card", {
+      body: { qr_token: qrToken }
+    });
+    if (error) throw error;
+    if (!data) throw new Error("No verification response received.");
+
+    resultBox.replaceChildren();
+    const heading = document.createElement("strong");
+    heading.textContent = data.valid ? "VALID STUDENT CARD" : (data.status || "NOT VERIFIED").toUpperCase();
+    const name = document.createElement("span");
+    name.textContent = data.full_name || "Unknown student";
+    const member = document.createElement("span");
+    member.textContent = data.member_id ? "Member ID: " + data.member_id : "";
+    const university = document.createElement("span");
+    university.textContent = [data.university, data.study_level].filter(Boolean).join(" · ");
+    const message = document.createElement("span");
+    message.textContent = data.message || "Verification complete";
+    resultBox.append(heading, name, member, university, message);
+    resultBox.className = "scan-result " + (data.valid ? "scan-valid" : "scan-invalid");
+  } catch (error) {
+    resultBox.className = "scan-result scan-invalid";
+    setMessage(resultBox, error.message || "Could not verify this QR code.", true);
+  }
+}
+
+document.getElementById("startScannerBtn")?.addEventListener("click", startStudentScanner);
+document.getElementById("stopScannerBtn")?.addEventListener("click", stopStudentScanner);
 
 async function loadStudentData() {
   if (!currentUser) return;
