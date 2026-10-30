@@ -73,6 +73,30 @@ async function showApp(user) {
   appView.classList.remove("hidden");
   document.getElementById("userName").textContent = user.user_metadata?.full_name || user.email?.split("@")[0] || "Student";
   await loadStudentData();
+  await checkFlamingoAdmin();
+}
+
+async function checkFlamingoAdmin() {
+  const adminPanel = document.getElementById("adminPanel");
+  if (!currentUser || !adminPanel) return;
+  adminPanel.classList.add("hidden");
+
+  if ((currentUser.email || "").toLowerCase() === "azizmarouch14@gmail.com") {
+    const { data, error } = await supabaseClient.rpc("claim_flamingo_admin");
+    if (error) {
+      console.error("Flamingo admin setup:", error.message);
+      return;
+    }
+    if (data === true) {
+      adminPanel.classList.remove("hidden");
+      document.getElementById("adminEmail").textContent = currentUser.email;
+    }
+    return;
+  }
+
+  const { data, error } = await supabaseClient.rpc("is_flamingo_staff");
+  if (!error && data === true) adminPanel.classList.remove("hidden");
+  if (!error && data === true) document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
 }
 
 async function loadStudentData() {
