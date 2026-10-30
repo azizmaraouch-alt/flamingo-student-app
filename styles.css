@@ -236,3 +236,10 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
 .wheel-tile.wheel-ready{border-color:#d5ad70;box-shadow:0 0 0 4px rgba(213,173,112,.15),0 14px 34px rgba(53,21,31,.1)}
 @media(max-width:760px){.wheel-stage{width:190px;height:190px}.wheel-graphic{width:174px;height:174px}.prize-five{top:18px}.prize-fifteen{bottom:17px}.prize-ten{right:9px}.prize-zero{left:9px}}
 @media(prefers-reduced-motion:reduce){.wheel-graphic{transition-duration:.8s}}
+
+
+/* Flamingo rewards celebration */
+.reward-confetti{position:fixed;inset:0;z-index:9999;overflow:hidden;pointer-events:none}
+.reward-confetti i{position:absolute;top:-24px;width:9px;height:15px;border-radius:2px;opacity:0;animation:flamingoConfetti var(--fall-duration) var(--fall-delay) cubic-bezier(.15,.65,.35,1) forwards}
+@keyframes flamingoConfetti{0%{opacity:0;transform:translate3d(0,-10px,0) rotate(0deg)}10%{opacity:1}100%{opacity:0;transform:translate3d(var(--drift),110vh,0) rotate(var(--spin))}}
+@media(prefers-reduced-motion:reduce){.reward-confetti i{animation-duration:.7s!important}}
