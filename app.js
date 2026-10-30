@@ -123,7 +123,7 @@ async function checkFlamingoAdmin() {
       document.getElementById("navScan")?.classList.remove("hidden");
       document.getElementById("scannerSection")?.classList.remove("hidden");
       document.getElementById("adminEmail").textContent = currentUser.email;
-      await loadScanHistory();
+      await loadAdminStats();
     }
     return;
   }
@@ -134,10 +134,45 @@ async function checkFlamingoAdmin() {
     document.getElementById("navScan")?.classList.remove("hidden");
     document.getElementById("scannerSection")?.classList.remove("hidden");
     document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
-    await loadScanHistory();
+    await loadAdminStats();
   }
 }
 
+
+async function loadAdminStats() {
+  const status = document.getElementById("statsMessage");
+  try {
+    setMessage(status, "Loading dashboard statistics…");
+    const { data, error } = await supabaseClient.rpc("get_flamingo_admin_stats");
+    if (error) throw error;
+    const values = {
+      statTotalUsers: data.total_users,
+      statNewToday: data.new_users_today,
+      statNewWeek: data.new_users_7d,
+      statProfiles: data.total_profiles,
+      statActiveCards: data.active_cards,
+      statTotalScans: data.total_scans
+    };
+    Object.entries(values).forEach(([id, value]) => {
+      const node = document.getElementById(id);
+      if (node) node.textContent = Number(value ?? 0).toLocaleString("en-US");
+    });
+    setMessage(status, "Statistics updated.");
+  } catch (error) {
+    setMessage(status, error.message || "Could not load admin statistics.", true);
+  }
+}
+
+const toggleHistoryBtn = document.getElementById("toggleHistoryBtn");
+toggleHistoryBtn?.addEventListener("click", async () => {
+  const content = document.getElementById("historyContent");
+  if (!content) return;
+  const opening = content.classList.contains("hidden");
+  content.classList.toggle("hidden", !opening);
+  toggleHistoryBtn.textContent = opening ? "Hide history ↑" : "View history ↓";
+  toggleHistoryBtn.setAttribute("aria-expanded", String(opening));
+  if (opening) await loadScanHistory();
+});
 
 async function loadScanHistory() {
   const body = document.getElementById("scanHistoryBody");
