@@ -56,9 +56,11 @@
         <div><p class="eyebrow">YOUR STUDENT SPACE</p><h1>Welcome, <span id="userName">Student</span>.</h1><p class="intro">Your Flamingo experience starts here.</p></div>
         <button id="signOutBtn" class="outline-btn" type="button">Sign out</button>
       </div>
-      <section id="adminPanel" class="admin-panel hidden"><div class="admin-heading"><div><p class="eyebrow">FLAMINGO MANAGEMENT</p><h2>Admin access active</h2><p>Signed in as <strong id="adminEmail"></strong>.</p></div><span class="admin-tag">ADMIN</span></div><div class="scanner-tools"><div><h3>Student card verification</h3><p>Scan a student QR code to check membership status.</p></div><div id="qrReader" class="qr-reader"></div><div class="scanner-actions"><button id="startScannerBtn" class="primary-btn" type="button">Start QR scanner</button><button id="stopScannerBtn" class="outline-btn hidden" type="button">Stop camera</button></div><div id="scanResult" class="scan-result" role="status">No student card scanned yet.</div></div></section>
-      <div class="dashboard-grid">
-        <article class="student-card">
+      <nav class="student-nav" aria-label="Student app navigation"><a href="#homeSection">HOME</a><a href="#studentCardSection">STUDENT CARD</a><a href="#offersSection">OFFERS</a><a href="#eventsSection">EVENTS</a><button id="navScan" class="nav-scan hidden" type="button">SCAN CARD</button></nav>
+      <section id="adminPanel" class="admin-panel hidden"><div class="admin-heading"><div><p class="eyebrow">FLAMINGO MANAGEMENT</p><h2>Admin access active</h2><p>Signed in as <strong id="adminEmail"></strong>.</p></div><span class="admin-tag">ADMIN</span></div></section>
+      <section id="scannerSection" class="scanner-section"><div class="scanner-title"><div><p class="eyebrow">STAFF TOOL</p><h2>Student card scanner</h2><p>Scan a student QR code to check membership status.</p></div></div><div id="qrReader" class="qr-reader"></div><div class="scanner-actions"><button id="startScannerBtn" class="primary-btn" type="button">Start camera & scan</button><button id="stopScannerBtn" class="outline-btn hidden" type="button">Stop camera</button></div><div id="scanResult" class="scan-result" role="status">Ready when you are. Press “Start camera & scan”.</div></section>
+      <div id="homeSection" class="dashboard-grid">
+        <article id="studentCardSection" class="student-card">
           <div class="card-top"><span>FLAMINGO</span><span class="card-dot">✦</span></div>
           <div class="card-title">STUDENT CARD</div>
           <p class="card-subtitle">YOUR STUDENT MEMBERSHIP</p>
@@ -84,9 +86,9 @@
         <article class="points-tile">
           <p class="eyebrow">YOUR REWARDS</p><h3>Loyalty points</h3><strong id="pointsTotal">0</strong><span>POINTS COLLECTED</span>
         </article>
-        <article class="feature-tile"><span class="tile-icon">✦</span><p class="eyebrow">DISCOVER</p><h3>Student offers</h3><p>Special deals and experiences for our student community.</p><span class="coming">COMING SOON</span></article>
+        <article id="offersSection" class="feature-tile"><span class="tile-icon">✦</span><p class="eyebrow">DISCOVER</p><h3>Student offers</h3><p>Special deals and experiences for our student community.</p><span class="coming">COMING SOON</span></article>
         <article class="feature-tile"><span class="tile-icon">◎</span><p class="eyebrow">COLLECT</p><h3>Rewards & points</h3><p>Enjoy your visits and get closer to your next reward.</p><span class="coming">COMING SOON</span></article>
-        <article class="feature-tile"><span class="tile-icon">♧</span><p class="eyebrow">TAKE PART</p><h3>Events & games</h3><p>Join student activities, challenges and special events.</p><span class="coming">COMING SOON</span></article>
+        <article id="eventsSection" class="feature-tile"><span class="tile-icon">♧</span><p class="eyebrow">TAKE PART</p><h3>Events & games</h3><p>Join student activities, challenges and special events.</p><span class="coming">COMING SOON</span></article>
       </div>
       <p class="notice">Your student card is personal. Keep your QR code private and show it only to the Flamingo team.</p>
     </section>
