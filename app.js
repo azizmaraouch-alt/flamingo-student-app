@@ -96,6 +96,7 @@ async function checkFlamingoAdmin() {
       document.getElementById("navScan")?.classList.remove("hidden");
       document.getElementById("scannerSection")?.classList.remove("hidden");
       document.getElementById("adminEmail").textContent = currentUser.email;
+      await loadScanHistory();
     }
     return;
   }
@@ -106,8 +107,68 @@ async function checkFlamingoAdmin() {
     document.getElementById("navScan")?.classList.remove("hidden");
     document.getElementById("scannerSection")?.classList.remove("hidden");
     document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
+    await loadScanHistory();
   }
 }
+
+
+async function loadScanHistory() {
+  const body = document.getElementById("scanHistoryBody");
+  const status = document.getElementById("historyMessage");
+  const refresh = document.getElementById("refreshHistoryBtn");
+  if (!body || !currentUser) return;
+  if (refresh) refresh.disabled = true;
+  setMessage(status, "Loading scan history…");
+  try {
+    const { data, error } = await supabaseClient.functions.invoke("verify-student-card", {
+      body: { action: "history" }
+    });
+    if (error) throw error;
+    if (!data || !Array.isArray(data.history)) throw new Error(data?.error || "Could not load history.");
+    body.replaceChildren();
+    if (!data.history.length) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 4;
+      cell.textContent = "No card scans recorded yet.";
+      row.appendChild(cell);
+      body.appendChild(row);
+    } else {
+      data.history.forEach((entry) => {
+        const row = document.createElement("tr");
+        const student = document.createElement("td");
+        const studentName = document.createElement("strong");
+        studentName.textContent = entry.full_name || "Student";
+        const cardId = document.createElement("small");
+        cardId.textContent = entry.member_id || "—";
+        student.append(studentName, cardId);
+
+        const time = document.createElement("td");
+        time.textContent = new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Africa/Tunis", dateStyle: "medium", timeStyle: "short"
+        }).format(new Date(entry.scanned_at));
+
+        const visits = document.createElement("td");
+        visits.textContent = String(entry.visit_count ?? 0);
+
+        const state = document.createElement("td");
+        const pill = document.createElement("span");
+        pill.className = "history-status " + (entry.scan_status === "active" ? "is-active" : "is-inactive");
+        pill.textContent = (entry.scan_status || "unknown").toUpperCase();
+        state.appendChild(pill);
+        row.append(student, time, visits, state);
+        body.appendChild(row);
+      });
+    }
+    setMessage(status, data.history.length + " recent scan(s) loaded.");
+  } catch (error) {
+    setMessage(status, error.message || "Could not load scan history.", true);
+  } finally {
+    if (refresh) refresh.disabled = false;
+  }
+}
+
+document.getElementById("refreshHistoryBtn")?.addEventListener("click", loadScanHistory);
 
 async function startStudentScanner() {
   const resultBox = document.getElementById("scanResult");
@@ -174,7 +235,10 @@ async function verifyScannedCard(qrToken) {
     university.textContent = [data.university, data.study_level].filter(Boolean).join(" · ");
     const message = document.createElement("span");
     message.textContent = data.message || "Verification complete";
-    resultBox.append(heading, name, member, university, message);
+    const visits = document.createElement("span");
+    visits.textContent = "Total visits: " + (data.visit_count ?? 0);
+    resultBox.append(heading, name, member, university, visits, message);
+    if (data.valid) await loadScanHistory();
     resultBox.className = "scan-result " + (data.valid ? "scan-valid" : "scan-invalid");
   } catch (error) {
     resultBox.className = "scan-result scan-invalid";
