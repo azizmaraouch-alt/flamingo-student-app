@@ -1,0 +1,12 @@
+{
+  "name": "Flamingo Student App",
+  "short_name": "Flamingo Student",
+  "description": "The student community app for Flamingo Resto Café, Mahdia.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf5ed",
+  "theme_color": "#a86d60",
+  "icons": [
+    { "src": "./logo1.png", "sizes": "any", "type": "image/png", "purpose": "any" }
+  ]
+}
