@@ -27,6 +27,28 @@ function setMessage(element, message, isError = false) {
   element.style.color = isError ? "#a33b35" : "#8c5246";
 }
 
+function renderCouponGrid(progress) {
+  const grid = document.getElementById("couponGrid");
+  if (!grid) return;
+  const slots = grid.querySelectorAll(".coupon-slot");
+  slots.forEach((slot, index) => {
+    const collected = index < progress;
+    slot.classList.toggle("is-collected", collected);
+    slot.replaceChildren();
+    if (collected) {
+      const logo = document.createElement("img");
+      logo.src = "./logo1.png";
+      logo.alt = "Flamingo";
+      logo.className = "coupon-logo";
+      slot.appendChild(logo);
+      slot.setAttribute("aria-label", "Coupon " + (index + 1) + " collected");
+    } else {
+      slot.textContent = String(index + 1);
+      slot.setAttribute("aria-label", "Coupon " + (index + 1) + " not collected");
+    }
+  });
+}
+
 function setMode(signUp) {
   isSignUp = signUp;
   fullName.classList.toggle("hidden", !signUp);
@@ -268,7 +290,7 @@ async function loadRewards() {
   const progress = Number(data.visits?.coupon_progress || 0);
   document.getElementById("couponProgress").textContent = progress + "/10";
   document.getElementById("freeCoffees").textContent = String(data.visits?.free_coffees_available || 0);
-  document.querySelectorAll(".coupon-slot").forEach((slot, index) => slot.classList.toggle("is-collected", index < progress));
+  renderCouponGrid(progress);
   const canSpin = data.can_spin === true;
   document.getElementById("spinWheelBtn").disabled = !canSpin;
   setMessage(document.getElementById("wheelMessage"), canSpin ? "Your valid visit unlocked one spin!" : "A valid visit is required to unlock your next spin.");
