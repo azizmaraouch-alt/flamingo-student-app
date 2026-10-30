@@ -206,3 +206,11 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
 .wheel-graphic{width:174px;height:174px;margin:18px auto;border:7px solid #fff;border-radius:50%;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:0 0 0 2px var(--gold),0 8px 22px rgba(53,21,31,.12);transform:rotate(-8deg)}.wheel-graphic span{display:grid;place-items:center;background:#a86d60;color:white;font:700 20px 'Playfair Display',serif}.wheel-graphic span:nth-child(2){background:#35151f}.wheel-graphic span:nth-child(3){background:#d5ad70;color:#35151f}.wheel-graphic span:nth-child(4){background:#eee1d4;color:#63372f}.wheel-tile .primary-btn{max-width:260px;margin:10px auto}.wheel-tile .message{text-align:center}
 .shop-items{display:grid;gap:9px;margin-top:17px}.shop-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff}.shop-item strong,.shop-item small{display:block}.shop-item strong{color:var(--wine);font-size:12px}.shop-item small{margin-top:4px;color:var(--muted);font-size:10px}.redeem-btn{flex-shrink:0;padding:9px 12px;border:0;border-radius:20px;background:var(--wine);color:white;font-size:10px;font-weight:700}.redeem-btn:disabled{opacity:.4;cursor:not-allowed}.shop-empty{color:var(--muted);font-size:11px}
 @media(max-width:900px){.loyalty-tile,.wheel-tile,.shop-tile{grid-column:span 6}}@media(max-width:760px){.loyalty-tile,.wheel-tile,.shop-tile{padding:20px}.coupon-grid{gap:6px}.coupon-slot{border-radius:9px;font-size:13px}.wheel-graphic{width:155px;height:155px}.shop-item{align-items:flex-start;flex-direction:column}.redeem-btn{width:100%}}
+
+/* Collected loyalty coupons show the Flamingo brand instead of the slot number */
+.coupon-slot{overflow:hidden;min-width:0}
+.coupon-slot.is-collected{padding:7px;background:#fff;border:2px solid var(--gold);box-shadow:inset 0 0 0 3px var(--wine)}
+.coupon-logo{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.scan-coupon-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:280px;margin:8px 0}
+.scan-coupon-grid .coupon-slot{min-height:42px;aspect-ratio:1;border-radius:8px;font-size:11px}
+.scan-coupon-grid .coupon-slot.is-collected{padding:4px}
