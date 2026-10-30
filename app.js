@@ -75,6 +75,7 @@ async function showApp(user) {
   appView.classList.remove("hidden");
   document.getElementById("userName").textContent = user.user_metadata?.full_name || user.email?.split("@")[0] || "Student";
   await loadStudentData();
+  await loadRewards();
   await checkFlamingoAdmin();
 }
 
@@ -236,7 +237,7 @@ async function verifyScannedCard(qrToken) {
     const message = document.createElement("span");
     message.textContent = data.message || "Verification complete";
     const visits = document.createElement("span");
-    visits.textContent = "Total visits: " + (data.visit_count ?? 0);
+    visits.textContent = "Total visits: " + (data.visit_count ?? 0) + " · Coupons: " + (data.coupon_progress ?? 0) + "/10 · Free coffees: " + (data.free_coffees_available ?? 0);
     resultBox.append(heading, name, member, university, visits, message);
     if (data.valid) await loadScanHistory();
     resultBox.className = "scan-result " + (data.valid ? "scan-valid" : "scan-invalid");
@@ -258,6 +259,43 @@ document.getElementById("navScan")?.addEventListener("click", () => {
 });
 document.getElementById("startScannerBtn")?.addEventListener("click", startStudentScanner);
 document.getElementById("stopScannerBtn")?.addEventListener("click", stopStudentScanner);
+
+
+async function loadRewards() {
+  const { data, error } = await supabaseClient.functions.invoke("student-rewards", { body: { action: "dashboard" } });
+  if (error || !data) { setMessage(document.getElementById("wheelMessage"), error?.message || "Could not load rewards.", true); return; }
+  document.getElementById("pointsTotal").textContent = String(data.balance || 0);
+  const progress = Number(data.visits?.coupon_progress || 0);
+  document.getElementById("couponProgress").textContent = progress + "/10";
+  document.getElementById("freeCoffees").textContent = String(data.visits?.free_coffees_available || 0);
+  document.querySelectorAll(".coupon-slot").forEach((slot, index) => slot.classList.toggle("is-collected", index < progress));
+  const used = new Set((data.spins || []).map(x => x.scan_id));
+  const { data: scans } = await supabaseClient.from("student_card_scan_history").select("id").eq("user_id", currentUser.id).eq("scan_status", "active").order("scanned_at", { ascending: false }).limit(200);
+  const canSpin = (scans || []).some(x => !used.has(x.id));
+  document.getElementById("spinWheelBtn").disabled = !canSpin;
+  setMessage(document.getElementById("wheelMessage"), canSpin ? "Your valid visit unlocked one spin!" : "A valid visit is required to unlock your next spin.");
+  const shop = document.getElementById("rewardShopItems"); shop.replaceChildren();
+  if (!data.items?.length) { const p=document.createElement("p"); p.className="shop-empty"; p.textContent="Rewards will appear here soon. Flamingo staff will add the gifts."; shop.appendChild(p); }
+  else data.items.forEach(item => {
+    const card=document.createElement("div"); card.className="shop-item";
+    const info=document.createElement("div"), title=document.createElement("strong"), desc=document.createElement("small");
+    title.textContent=item.name; desc.textContent=item.description || "Flamingo reward"; info.append(title,desc);
+    const btn=document.createElement("button"); btn.type="button"; btn.className="redeem-btn"; btn.textContent=item.points_cost+" pts · Redeem"; btn.disabled=Number(data.balance||0)<Number(item.points_cost);
+    btn.addEventListener("click",()=>redeemShopItem(item.id)); card.append(info,btn); shop.appendChild(card);
+  });
+}
+async function redeemShopItem(itemId) {
+  const msg=document.getElementById("shopMessage"); setMessage(msg,"Redeeming your reward…");
+  try { const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"redeem",item_id:itemId}}); if(error) throw error; if(!data?.ok) throw new Error(data?.message||"Could not redeem.");
+    setMessage(msg,"Reward reserved! Show your app to Flamingo staff to collect it."); await loadRewards();
+  } catch(e) { setMessage(msg,e.message||"Could not redeem.",true); }
+}
+document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
+  const btn=document.getElementById("spinWheelBtn"), msg=document.getElementById("wheelMessage"); btn.disabled=true; setMessage(msg,"The wheel is spinning…");
+  try { const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"spin"}}); if(error) throw error; if(!data?.ok) throw new Error(data?.error||"Could not spin.");
+    setMessage(msg,data.points_awarded ? "🎉 You won "+data.points_awarded+" points! Added to your wallet." : "No points this time. Good luck on your next visit!"); await loadRewards();
+  } catch(e) { setMessage(msg,e.message||"Could not spin.",true); btn.disabled=false; }
+});
 
 async function loadStudentData() {
   if (!currentUser) return;
