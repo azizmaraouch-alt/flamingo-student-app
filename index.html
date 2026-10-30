@@ -71,9 +71,9 @@
           <div class="profile-heading"><div><p class="eyebrow">YOUR DETAILS</p><h3>Student profile</h3></div><span class="status-pill" id="profileStatus">PROFILE</span></div>
           <form id="profileForm" class="profile-form">
             <label for="profileName">Full name</label><input id="profileName" type="text" autocomplete="name" required>
-            <label for="profilePhone">Phone number</label><input id="profilePhone" type="tel" autocomplete="tel" placeholder="+216 …">
-            <label for="profileUniversity">University / Institute</label><input id="profileUniversity" type="text" placeholder="Your university">
-            <label for="profileLevel">Study level</label><input id="profileLevel" type="text" placeholder="e.g. Licence 3">
+            <label for="profilePhone">Phone number *</label><input id="profilePhone" type="tel" autocomplete="tel" placeholder="+216 …" required>
+            <label for="profileUniversity">Faculty / University *</label><input id="profileUniversity" type="text" placeholder="Your faculty or university" required>
+            <label for="profileLevel">Study level *</label><input id="profileLevel" type="text" placeholder="e.g. Licence 3, Master 1" required>
             <button class="primary-btn" id="saveProfileBtn" type="submit">Save profile <span>→</span></button>
             <p id="profileMessage" class="message" role="status"></p>
           </form>
