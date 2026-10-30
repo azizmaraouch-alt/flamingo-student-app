@@ -82,6 +82,7 @@ async function checkFlamingoAdmin() {
   const adminPanel = document.getElementById("adminPanel");
   if (!currentUser || !adminPanel) return;
   adminPanel.classList.add("hidden");
+  document.getElementById("navScan")?.classList.add("hidden");
 
   if ((currentUser.email || "").toLowerCase() === "azizmarouch14@gmail.com") {
     const { data, error } = await supabaseClient.rpc("claim_flamingo_admin");
@@ -91,14 +92,18 @@ async function checkFlamingoAdmin() {
     }
     if (data === true) {
       adminPanel.classList.remove("hidden");
+      document.getElementById("navScan")?.classList.remove("hidden");
       document.getElementById("adminEmail").textContent = currentUser.email;
     }
     return;
   }
 
   const { data, error } = await supabaseClient.rpc("is_flamingo_staff");
-  if (!error && data === true) adminPanel.classList.remove("hidden");
-  if (!error && data === true) document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
+  if (!error && data === true) {
+    adminPanel.classList.remove("hidden");
+    document.getElementById("navScan")?.classList.remove("hidden");
+    document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
+  }
 }
 
 async function startStudentScanner() {
@@ -174,6 +179,9 @@ async function verifyScannedCard(qrToken) {
   }
 }
 
+document.getElementById("navScan")?.addEventListener("click", () => {
+  document.getElementById("scannerSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
 document.getElementById("startScannerBtn")?.addEventListener("click", startStudentScanner);
 document.getElementById("stopScannerBtn")?.addEventListener("click", stopStudentScanner);
 
