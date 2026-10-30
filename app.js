@@ -78,7 +78,7 @@ async function showApp(user) {
 async function loadStudentData() {
   if (!currentUser) return;
   const [profileResult, cardResult, pointsResult] = await Promise.all([
-    supabaseClient.from("student_profiles").select("full_name, phone, university, study_level, student_status").eq("user_id", currentUser.id).maybeSingle(),
+    supabaseClient.from("student_profiles").select("full_name, phone, university, study_level").eq("user_id", currentUser.id).maybeSingle(),
     supabaseClient.from("student_cards").select("member_id, qr_token, status").eq("user_id", currentUser.id).maybeSingle(),
     supabaseClient.from("loyalty_points").select("points").eq("user_id", currentUser.id)
   ]);
@@ -95,7 +95,7 @@ async function loadStudentData() {
   document.getElementById("profileLevel").value = profile.study_level || "";
   document.getElementById("cardName").textContent = (profile.full_name || currentUser.email || "STUDENT MEMBER").toUpperCase();
   document.getElementById("cardUniversity").textContent = (profile.university || "YOUR UNIVERSITY").toUpperCase();
-  document.getElementById("profileStatus").textContent = (profile.student_status || "pending").toUpperCase();
+  document.getElementById("profileStatus").textContent = profile.university && profile.study_level ? "PROFILE READY" : "COMPLETE PROFILE";
   document.getElementById("cardStatus").textContent = (card?.status || "PENDING").toUpperCase();
   document.getElementById("memberNumber").textContent = card?.member_id || "CARD PENDING";
   const totalPoints = (pointsResult.data || []).reduce((sum, row) => sum + Number(row.points || 0), 0);
