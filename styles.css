@@ -594,3 +594,28 @@ body{
 .admin-panel,.scanner-section{padding:18px 15px;border-radius:18px}.history-wrap{overflow-x:auto}
 }
 @media(max-width:390px){.top-tag{display:none}.dashboard-grid{gap:10px}.qr-tile,.points-tile{min-height:205px}.qr-code{min-width:112px;min-height:112px}.qr-code img,.qr-code canvas{max-width:98px}.points-tile>strong{font-size:43px}.student-nav .nav-item{font-size:9px}}
+
+
+/* Flamingo logo presence across welcome and signed-in dashboard */
+.welcome-brand-logo{
+  display:block;width:clamp(150px,18vw,218px);height:70px;object-fit:contain;
+  object-position:left center;margin:0 0 18px;
+  filter:drop-shadow(0 8px 16px rgba(80,58,52,.10));
+}
+.dashboard-welcome-copy{display:flex;align-items:center;gap:22px;min-width:0}
+.dashboard-welcome-logo{
+  display:block;flex:0 0 auto;width:clamp(112px,13vw,160px);height:64px;
+  object-fit:contain;object-position:center;
+  padding:9px 12px;border-radius:14px;background:rgba(255,252,250,.78);
+  border:1px solid rgba(183,127,110,.18);
+  box-shadow:0 10px 25px rgba(80,58,52,.07);
+}
+@media(max-width:760px){
+  .welcome-brand-logo{width:158px;height:54px;margin-bottom:13px}
+  .dashboard-welcome-copy{align-items:flex-start;gap:12px}
+  .dashboard-welcome-logo{width:88px;height:48px;padding:6px;border-radius:10px}
+}
+@media(max-width:390px){
+  .dashboard-welcome-copy{gap:9px}
+  .dashboard-welcome-logo{width:76px;height:44px}
+}
