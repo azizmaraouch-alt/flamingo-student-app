@@ -269,9 +269,7 @@ async function loadRewards() {
   document.getElementById("couponProgress").textContent = progress + "/10";
   document.getElementById("freeCoffees").textContent = String(data.visits?.free_coffees_available || 0);
   document.querySelectorAll(".coupon-slot").forEach((slot, index) => slot.classList.toggle("is-collected", index < progress));
-  const used = new Set((data.spins || []).map(x => x.scan_id));
-  const { data: scans } = await supabaseClient.from("student_card_scan_history").select("id").eq("user_id", currentUser.id).eq("scan_status", "active").order("scanned_at", { ascending: false }).limit(200);
-  const canSpin = (scans || []).some(x => !used.has(x.id));
+  const canSpin = data.can_spin === true;
   document.getElementById("spinWheelBtn").disabled = !canSpin;
   setMessage(document.getElementById("wheelMessage"), canSpin ? "Your valid visit unlocked one spin!" : "A valid visit is required to unlock your next spin.");
   const shop = document.getElementById("rewardShopItems"); shop.replaceChildren();
