@@ -260,7 +260,24 @@ async function verifyScannedCard(qrToken) {
     message.textContent = data.message || "Verification complete";
     const visits = document.createElement("span");
     visits.textContent = "Total visits: " + (data.visit_count ?? 0) + " · Coupons: " + (data.coupon_progress ?? 0) + "/10 · Free coffees: " + (data.free_coffees_available ?? 0);
-    resultBox.append(heading, name, member, university, visits, message);
+    const couponPreview = document.createElement("div");
+    couponPreview.className = "scan-coupon-grid";
+    const couponProgress = Number(data.coupon_progress || 0);
+    for (let i = 0; i < 10; i++) {
+      const slot = document.createElement("span");
+      slot.className = "coupon-slot" + (i < couponProgress ? " is-collected" : "");
+      if (i < couponProgress) {
+        const logo = document.createElement("img");
+        logo.src = "./logo1.png";
+        logo.alt = "Flamingo";
+        logo.className = "coupon-logo";
+        slot.appendChild(logo);
+      } else {
+        slot.textContent = String(i + 1);
+      }
+      couponPreview.appendChild(slot);
+    }
+    resultBox.append(heading, name, member, university, visits, couponPreview, message);
     if (data.valid) await loadScanHistory();
     resultBox.className = "scan-result " + (data.valid ? "scan-valid" : "scan-invalid");
   } catch (error) {
