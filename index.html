@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -55,7 +56,7 @@
         <div><p class="eyebrow">YOUR STUDENT SPACE</p><h1>Welcome, <span id="userName">Student</span>.</h1><p class="intro">Your Flamingo experience starts here.</p></div>
         <button id="signOutBtn" class="outline-btn" type="button">Sign out</button>
       </div>
-      <section id="adminPanel" class="admin-panel hidden"><div><p class="eyebrow">FLAMINGO MANAGEMENT</p><h2>Admin access active</h2><p>Signed in as <strong id="adminEmail"></strong>. Staff verification tools will appear here.</p></div><span class="admin-tag">ADMIN</span></section>
+      <section id="adminPanel" class="admin-panel hidden"><div class="admin-heading"><div><p class="eyebrow">FLAMINGO MANAGEMENT</p><h2>Admin access active</h2><p>Signed in as <strong id="adminEmail"></strong>.</p></div><span class="admin-tag">ADMIN</span></div><div class="scanner-tools"><div><h3>Student card verification</h3><p>Scan a student QR code to check membership status.</p></div><div id="qrReader" class="qr-reader"></div><div class="scanner-actions"><button id="startScannerBtn" class="primary-btn" type="button">Start QR scanner</button><button id="stopScannerBtn" class="outline-btn hidden" type="button">Stop camera</button></div><div id="scanResult" class="scan-result" role="status">No student card scanned yet.</div></div></section>
       <div class="dashboard-grid">
         <article class="student-card">
           <div class="card-top"><span>FLAMINGO</span><span class="card-dot">✦</span></div>
