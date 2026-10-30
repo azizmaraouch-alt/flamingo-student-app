@@ -37,7 +37,7 @@ function renderCouponGrid(progress) {
     slot.replaceChildren();
     if (collected) {
       const logo = document.createElement("img");
-      logo.src = "./logo1.png";
+      logo.src = "./logo.png";
       logo.alt = "Flamingo";
       logo.className = "coupon-logo";
       slot.appendChild(logo);
@@ -268,7 +268,7 @@ async function verifyScannedCard(qrToken) {
       slot.className = "coupon-slot" + (i < couponProgress ? " is-collected" : "");
       if (i < couponProgress) {
         const logo = document.createElement("img");
-        logo.src = "./logo1.png";
+        logo.src = "./logo.png";
         logo.alt = "Flamingo";
         logo.className = "coupon-logo";
         slot.appendChild(logo);
