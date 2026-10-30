@@ -318,7 +318,7 @@ async function loadRewards(options = {}) {
   document.getElementById("freeCoffees").textContent = String(data.visits?.free_coffees_available || 0);
   renderCouponGrid(progress);
   const canSpin = data.can_spin === true;
-  document.getElementById("spinWheelBtn").disabled = !canSpin;
+  document.getElementById("spinWheelBtn").disabled = !canSpin || wheelIsAnimating;
   const wheelSection = document.getElementById("rewardsSection");
   if (canSpin && options.autoOpen && !wheelPromptShown && wheelSection) {
     wheelPromptShown = true;
@@ -353,7 +353,7 @@ function animateRewardWheel(pointsAwarded) {
     if (!wheel) return resolve();
     const prizeAngles = { 5: 0, 10: 90, 15: 180, 0: 270 };
     const current = Number(wheel.dataset.rotation || 0);
-    const target = current + 360 * 6 + ((360 - prizeAngles[Number(pointsAwarded)]) % 360);
+    const target = current + 360 * 6 + ((360 - ((current + prizeAngles[Number(pointsAwarded)]) % 360)) % 360);
     wheel.dataset.rotation = String(target);
     wheel.classList.add("is-spinning");
     const finish = () => {
