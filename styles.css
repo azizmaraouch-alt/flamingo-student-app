@@ -244,6 +244,13 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
 @keyframes flamingoConfetti{0%{opacity:0;transform:translate3d(0,-10px,0) rotate(0deg)}10%{opacity:1}100%{opacity:0;transform:translate3d(var(--drift),110vh,0) rotate(var(--spin))}}
 @media(prefers-reduced-motion:reduce){.reward-confetti i{animation-duration:.7s!important}}
 
-/* six-slice prize wheel */
+/* six-slice prize wheel: separated labels around each slice */
 .wheel-graphic{background:conic-gradient(from -30deg,#a86d60 0deg 60deg,#35151f 60deg 120deg,#d5ad70 120deg 180deg,#f1e5d8 180deg 240deg,#c58c78 240deg 300deg,#ead6bd 300deg 360deg)!important}
-.wheel-prize{width:68px;font:800 12px 'Playfair Display',serif;line-height:1.1;z-index:1}.prize-one{top:13px;left:50%;transform:translateX(-50%);color:#fff}.prize-ten{top:28%;right:4px;transform:rotate(60deg);color:#fff}.prize-empty{right:4px;bottom:24%;transform:rotate(120deg);color:#35151f}.prize-coffee{bottom:13px;left:50%;transform:translateX(-50%);color:#63372f}.prize-breakfast{left:0;bottom:24%;transform:rotate(-120deg);color:#35151f}.prize-dinner{left:2px;top:28%;transform:rotate(-60deg);color:#fff}@media(max-width:760px){.wheel-prize{font-size:10px}.prize-one{top:10px}.prize-coffee{bottom:10px}.prize-ten,.prize-empty{right:0}.prize-breakfast,.prize-dinner{left:0}}
+.wheel-prize{position:absolute;width:54px;text-align:center;font:800 10px 'Playfair Display',serif;line-height:1.15;z-index:1;white-space:normal}
+.prize-one{top:18%;left:50%;transform:translate(-50%,-50%);color:#fff}
+.prize-ten{top:34%;left:77%;transform:translate(-50%,-50%);color:#fff}
+.prize-empty{top:66%;left:77%;transform:translate(-50%,-50%);color:#35151f}
+.prize-coffee{top:82%;left:50%;transform:translate(-50%,-50%);color:#63372f}
+.prize-breakfast{top:66%;left:23%;transform:translate(-50%,-50%);color:#35151f}
+.prize-dinner{top:34%;left:23%;transform:translate(-50%,-50%);color:#fff}
+@media(max-width:760px){.wheel-prize{width:48px;font-size:9px;line-height:1.1}}
