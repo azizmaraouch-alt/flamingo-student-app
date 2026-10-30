@@ -83,6 +83,7 @@ async function checkFlamingoAdmin() {
   if (!currentUser || !adminPanel) return;
   adminPanel.classList.add("hidden");
   document.getElementById("navScan")?.classList.add("hidden");
+  document.getElementById("scannerSection")?.classList.add("hidden");
 
   if ((currentUser.email || "").toLowerCase() === "azizmarouch14@gmail.com") {
     const { data, error } = await supabaseClient.rpc("claim_flamingo_admin");
@@ -93,6 +94,7 @@ async function checkFlamingoAdmin() {
     if (data === true) {
       adminPanel.classList.remove("hidden");
       document.getElementById("navScan")?.classList.remove("hidden");
+      document.getElementById("scannerSection")?.classList.remove("hidden");
       document.getElementById("adminEmail").textContent = currentUser.email;
     }
     return;
@@ -102,6 +104,7 @@ async function checkFlamingoAdmin() {
   if (!error && data === true) {
     adminPanel.classList.remove("hidden");
     document.getElementById("navScan")?.classList.remove("hidden");
+    document.getElementById("scannerSection")?.classList.remove("hidden");
     document.getElementById("adminEmail").textContent = currentUser.email || "Staff account";
   }
 }
