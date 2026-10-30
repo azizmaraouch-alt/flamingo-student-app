@@ -619,3 +619,15 @@ body{
   .dashboard-welcome-copy{gap:9px}
   .dashboard-welcome-logo{width:76px;height:44px}
 }
+
+
+/* Logo-only treatment: no white frame or badge behind the brand */
+.welcome-brand-logo{width:clamp(165px,17vw,195px);height:68px;object-fit:contain;object-position:left center}
+.dashboard-welcome-logo{width:clamp(125px,12vw,145px);height:62px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;object-fit:contain}
+.student-card-brand{min-width:0;min-height:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.student-card-brand img{width:116px;height:48px;object-fit:contain;object-position:left center}
+@media(max-width:760px){
+ .welcome-brand-logo{width:158px;height:58px}
+ .dashboard-welcome-logo{width:104px;height:52px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+}
+@media(max-width:390px){.dashboard-welcome-logo{width:92px;height:48px}}
