@@ -347,6 +347,52 @@ async function redeemShopItem(itemId) {
   } catch(e) { setMessage(msg,e.message||"Could not redeem.",true); }
 }
 let wheelIsAnimating = false;
+let wheelAudioContext = null;
+
+function playRewardSound(isWin) {
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    wheelAudioContext = wheelAudioContext || new AudioContextClass();
+    if (wheelAudioContext.state === "suspended") wheelAudioContext.resume();
+    const notes = isWin ? [523.25, 659.25, 783.99, 1046.5] : [392, 493.88, 587.33];
+    const start = wheelAudioContext.currentTime;
+    notes.forEach((frequency, index) => {
+      const oscillator = wheelAudioContext.createOscillator();
+      const gain = wheelAudioContext.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequency;
+      gain.gain.setValueAtTime(0.0001, start + index * 0.13);
+      gain.gain.exponentialRampToValueAtTime(0.13, start + index * 0.13 + 0.025);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + index * 0.13 + 0.22);
+      oscillator.connect(gain);
+      gain.connect(wheelAudioContext.destination);
+      oscillator.start(start + index * 0.13);
+      oscillator.stop(start + index * 0.13 + 0.24);
+    });
+  } catch (error) {
+    console.info("Reward sound unavailable:", error);
+  }
+}
+
+function celebrateReward() {
+  const layer = document.createElement("div");
+  layer.className = "reward-confetti";
+  layer.setAttribute("aria-hidden", "true");
+  const pieces = ["#d5ad70", "#a86d60", "#35151f", "#f4dfc6", "#ffffff"];
+  for (let i = 0; i < 54; i++) {
+    const piece = document.createElement("i");
+    piece.style.left = (Math.random() * 100) + "%";
+    piece.style.background = pieces[i % pieces.length];
+    piece.style.setProperty("--fall-duration", (2.1 + Math.random() * 1.8) + "s");
+    piece.style.setProperty("--fall-delay", (Math.random() * 0.45) + "s");
+    piece.style.setProperty("--drift", ((Math.random() - 0.5) * 180) + "px");
+    piece.style.setProperty("--spin", (Math.random() * 900 - 450) + "deg");
+    layer.appendChild(piece);
+  }
+  document.body.appendChild(layer);
+  window.setTimeout(() => layer.remove(), 4600);
+}
 function animateRewardWheel(pointsAwarded) {
   return new Promise((resolve) => {
     const wheel = document.getElementById("wheelGraphic");
@@ -379,6 +425,8 @@ document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
     if(!data?.ok) throw new Error(data?.error||"Could not spin.");
     const prize = Number(data.points_awarded);
     await animateRewardWheel(prize);
+    playRewardSound(prize > 0);
+    if (prize > 0) celebrateReward();
     setMessage(msg,prize > 0 ? "🎉 Congratulations! You won " + prize + " points. They have been added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
     wheelPromptShown = false;
     document.getElementById("rewardsSection")?.classList.remove("wheel-ready");
