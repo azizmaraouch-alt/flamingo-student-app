@@ -180,3 +180,21 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
   .student-card{padding:19px}
   .card-title{font-size:25px}
 }
+
+
+/* Admin scan history */
+.history-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:28px 0 14px;padding-top:22px;border-top:1px solid rgba(53,21,31,.1)}
+.history-heading h3{margin:4px 0 5px;color:var(--wine);font-family:"Playfair Display",serif;font-size:22px}
+.history-heading p:not(.eyebrow){margin:0;color:#897b76;font-size:12px}
+.history-wrap{width:100%;overflow-x:auto;border:1px solid rgba(53,21,31,.1);border-radius:14px;background:#fffdfa}
+.history-table{width:100%;min-width:570px;border-collapse:collapse;text-align:left}
+.history-table th{padding:13px 15px;background:#faf5ed;color:#8c5246;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.history-table td{padding:13px 15px;border-top:1px solid rgba(53,21,31,.07);color:#51433f;font-size:12px;vertical-align:middle}
+.history-table td strong,.history-table td small{display:block}
+.history-table td strong{color:#35151f;font-size:12px}
+.history-table td small{margin-top:4px;color:#9a8982;font-size:10px}
+.history-status{display:inline-flex;padding:5px 9px;border-radius:99px;font-size:9px;font-weight:800;letter-spacing:.06em}
+.history-status.is-active{background:#e8f4eb;color:#27633b}
+.history-status.is-inactive{background:#f8e9e5;color:#9b4337}
+#historyMessage{margin:10px 0 0}
+@media(max-width:600px){.history-heading{align-items:flex-start;flex-direction:column}.history-heading .outline-btn{width:100%}}
