@@ -249,7 +249,12 @@ async function verifyScannedCard(qrToken) {
 
     resultBox.replaceChildren();
     const heading = document.createElement("strong");
-    heading.textContent = data.valid ? "VALID STUDENT CARD" : (data.status || "NOT VERIFIED").toUpperCase();
+    heading.textContent = data.valid ? "VALIDE" : (data.status || "NOT VERIFIED").toUpperCase();
+    if (data.valid) {
+      heading.style.color = "#218838";
+      heading.style.fontSize = "20px";
+      heading.style.fontWeight = "800";
+    }
     const name = document.createElement("span");
     name.textContent = data.full_name || "Unknown student";
     const member = document.createElement("span");
