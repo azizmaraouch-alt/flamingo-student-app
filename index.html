@@ -10,6 +10,7 @@
   <link rel="icon" href="./logo1.png">
   <link rel="stylesheet" href="./styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -59,13 +60,33 @@
           <div class="card-top"><span>FLAMINGO</span><span class="card-dot">✦</span></div>
           <div class="card-title">STUDENT CARD</div>
           <p class="card-subtitle">YOUR STUDENT MEMBERSHIP</p>
-          <div class="card-bottom"><span id="cardEmail">MEMBER</span><span>MAHDIA · TUNISIA</span></div>
+          <div class="card-member"><strong id="cardName">STUDENT MEMBER</strong><span id="memberNumber">FL-••••••••••</span></div>
+          <div class="card-bottom"><span id="cardUniversity">YOUR UNIVERSITY</span><span id="cardStatus">PENDING</span></div>
+        </article>
+        <article class="profile-tile">
+          <div class="profile-heading"><div><p class="eyebrow">YOUR DETAILS</p><h3>Student profile</h3></div><span class="status-pill" id="profileStatus">PROFILE</span></div>
+          <form id="profileForm" class="profile-form">
+            <label for="profileName">Full name</label><input id="profileName" type="text" autocomplete="name" required>
+            <label for="profilePhone">Phone number</label><input id="profilePhone" type="tel" autocomplete="tel" placeholder="+216 …">
+            <label for="profileUniversity">University / Institute</label><input id="profileUniversity" type="text" placeholder="Your university">
+            <label for="profileLevel">Study level</label><input id="profileLevel" type="text" placeholder="e.g. Licence 3">
+            <button class="primary-btn" id="saveProfileBtn" type="submit">Save profile <span>→</span></button>
+            <p id="profileMessage" class="message" role="status"></p>
+          </form>
+        </article>
+        <article class="qr-tile">
+          <div><p class="eyebrow">YOUR DIGITAL PASS</p><h3>Scan your card</h3><p>Show this unique QR code to the Flamingo team.</p></div>
+          <div id="studentQr" class="qr-code" aria-label="Your unique student QR code"></div>
+          <p class="qr-caption" id="qrCaption">Your QR card will appear here.</p>
+        </article>
+        <article class="points-tile">
+          <p class="eyebrow">YOUR REWARDS</p><h3>Loyalty points</h3><strong id="pointsTotal">0</strong><span>POINTS COLLECTED</span>
         </article>
         <article class="feature-tile"><span class="tile-icon">✦</span><p class="eyebrow">DISCOVER</p><h3>Student offers</h3><p>Special deals and experiences for our student community.</p><span class="coming">COMING SOON</span></article>
         <article class="feature-tile"><span class="tile-icon">◎</span><p class="eyebrow">COLLECT</p><h3>Rewards & points</h3><p>Enjoy your visits and get closer to your next reward.</p><span class="coming">COMING SOON</span></article>
         <article class="feature-tile"><span class="tile-icon">♧</span><p class="eyebrow">TAKE PART</p><h3>Events & games</h3><p>Join student activities, challenges and special events.</p><span class="coming">COMING SOON</span></article>
       </div>
-      <p class="notice">Your verified student details and unique QR card will be activated after the student profile setup.</p>
+      <p class="notice">Your student card is personal. Keep your QR code private and show it only to the Flamingo team.</p>
     </section>
     <footer>© <span id="year"></span> Flamingo Resto Café · Mahdia</footer>
   </main>
