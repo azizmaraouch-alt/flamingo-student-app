@@ -254,3 +254,29 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
 .prize-breakfast{top:66%;left:23%;transform:translate(-50%,-50%);color:#35151f}
 .prize-dinner{top:34%;left:23%;transform:translate(-50%,-50%);color:#fff}
 @media(max-width:760px){.wheel-prize{width:48px;font-size:9px;line-height:1.1}}
+
+/* Fine-fit wheel labels: compact, centered inside their own triangular sectors */
+.wheel-graphic .wheel-prize{
+  width:42px;
+  max-width:42px;
+  padding:0 1px;
+  font-size:8px;
+  line-height:1.05;
+  letter-spacing:-.15px;
+  text-align:center;
+  overflow-wrap:normal;
+  word-break:normal;
+  white-space:normal;
+}
+.wheel-graphic .prize-one{top:23%;left:50%;transform:translate(-50%,-50%);font-size:9px}
+.wheel-graphic .prize-ten{top:36.5%;left:73%;right:auto;transform:translate(-50%,-50%);font-size:9px}
+.wheel-graphic .prize-empty{top:63.5%;left:73%;right:auto;bottom:auto;transform:translate(-50%,-50%)}
+.wheel-graphic .prize-coffee{top:77%;left:50%;bottom:auto;transform:translate(-50%,-50%);font-size:8px}
+.wheel-graphic .prize-breakfast{top:63.5%;left:27%;right:auto;bottom:auto;transform:translate(-50%,-50%);font-size:7px}
+.wheel-graphic .prize-dinner{top:36.5%;left:27%;right:auto;transform:translate(-50%,-50%);font-size:8px}
+@media(max-width:760px){
+  .wheel-graphic .wheel-prize{width:37px;max-width:37px;font-size:7px}
+  .wheel-graphic .prize-one,.wheel-graphic .prize-ten{font-size:8px}
+  .wheel-graphic .prize-breakfast{font-size:6.5px}
+  .wheel-graphic .prize-coffee{font-size:7px}
+}
