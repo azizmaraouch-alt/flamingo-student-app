@@ -215,7 +215,8 @@ async function loadStudentData() {
   document.getElementById("profileLevel").value = profile.study_level || "";
   document.getElementById("cardName").textContent = (profile.full_name || currentUser.email || "STUDENT MEMBER").toUpperCase();
   document.getElementById("cardUniversity").textContent = (profile.university || "YOUR UNIVERSITY").toUpperCase();
-  document.getElementById("profileStatus").textContent = profile.university && profile.study_level ? "PROFILE READY" : "COMPLETE PROFILE";
+  const profileComplete = Boolean(profile.phone && profile.university?.trim() && profile.study_level?.trim() && (profile.phone.replace(/\\D/g, "").length >= 8) && (profile.phone.replace(/\\D/g, "").length <= 15));
+  document.getElementById("profileStatus").textContent = card?.status === "active" ? "CARD ACTIVE" : (profileComplete ? "ACTIVATING…" : "COMPLETE PROFILE");
   document.getElementById("cardStatus").textContent = (card?.status || "PENDING").toUpperCase();
   document.getElementById("memberNumber").textContent = card?.member_id || "CARD PENDING";
   const totalPoints = (pointsResult.data || []).reduce((sum, row) => sum + Number(row.points || 0), 0);
@@ -240,17 +241,25 @@ profileForm.addEventListener("submit", async (event) => {
   try {
     const updates = {
       full_name: document.getElementById("profileName").value.trim(),
-      phone: document.getElementById("profilePhone").value.trim() || null,
-      university: document.getElementById("profileUniversity").value.trim() || null,
-      study_level: document.getElementById("profileLevel").value.trim() || null,
+      phone: document.getElementById("profilePhone").value.trim(),
+      university: document.getElementById("profileUniversity").value.trim(),
+      study_level: document.getElementById("profileLevel").value.trim(),
       updated_at: new Date().toISOString()
     };
+    const phoneDigits = updates.phone.replace(/\\D/g, "");
+    if (!updates.full_name || !updates.phone || !updates.university || !updates.study_level) {
+      throw new Error("Please complete your name, phone number, faculty and study level.");
+    }
+    if (phoneDigits.length < 8 || phoneDigits.length > 15) {
+      throw new Error("Enter a valid phone number (8 to 15 digits).");
+    }
     const { error } = await supabaseClient.from("student_profiles").update(updates).eq("user_id", currentUser.id);
     if (error) throw error;
-    document.getElementById("userName").textContent = updates.full_name || "Student";
-    document.getElementById("cardName").textContent = (updates.full_name || "STUDENT MEMBER").toUpperCase();
-    document.getElementById("cardUniversity").textContent = (updates.university || "YOUR UNIVERSITY").toUpperCase();
-    setMessage(document.getElementById("profileMessage"), "Profile saved successfully.");
+    document.getElementById("userName").textContent = updates.full_name;
+    await loadStudentData();
+    const { data: refreshedCard, error: cardError } = await supabaseClient.from("student_cards").select("status").eq("user_id", currentUser.id).maybeSingle();
+    if (cardError) throw cardError;
+    setMessage(document.getElementById("profileMessage"), refreshedCard?.status === "active" ? "Profile saved — your student card is now ACTIVE!" : "Profile saved. Your card is still pending activation.");
   } catch (error) {
     setMessage(document.getElementById("profileMessage"), error.message || "Could not save profile.", true);
   } finally {
