@@ -397,8 +397,8 @@ function animateRewardWheel(pointsAwarded) {
   return new Promise((resolve) => {
     const wheel = document.getElementById("wheelGraphic");
     if (!wheel) return resolve();
-    const sectorAngles = [0, 90, 180, 270];
-    const sector = Math.max(0, Math.min(3, Number(wheel.dataset.winningSector || 0)));
+    const sectorAngles = [0, 60, 120, 180, 240, 300];
+    const sector = Math.max(0, Math.min(5, Number(wheel.dataset.winningSector || 0)));
     const current = Number(wheel.dataset.rotation || 0);
     const target = current + 360 * 6 + ((360 - ((current + sectorAngles[sector]) % 360)) % 360);
     wheel.dataset.rotation = String(target);
@@ -425,7 +425,7 @@ document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
     if(error) throw error;
     if(!data?.ok) throw new Error(data?.error||"Could not spin.");
     const prize = Number(data.points_awarded);
-    document.getElementById("wheelGraphic").dataset.winningSector = String(data.wheel_sector ?? (prize > 0 ? 0 : 1));
+    document.getElementById("wheelGraphic").dataset.winningSector = String(data.wheel_sector ?? (prize > 0 ? 0 : 2));
     await animateRewardWheel(prize);
     playRewardSound(prize > 0);
     if (prize > 0) celebrateReward();
