@@ -32,3 +32,43 @@
   .student-nav .nav-scan{display:flex}
   body:has(#appView.hidden) .student-nav{display:none}
 }
+
+
+/* Mobile-first student dashboard refinement */
+.dashboard-head{gap:16px}
+.dashboard-head>div{min-width:0}
+.dashboard-head .eyebrow{margin-bottom:7px}
+.dashboard-head .intro{margin-top:7px}
+.student-card{position:relative;overflow:hidden}
+.student-card:after{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-72px;bottom:-105px;pointer-events:none}
+.profile-tile,.qr-tile,.points-tile,.feature-tile{box-shadow:0 8px 24px rgba(53,21,31,.045)}
+.feature-tile{transition:transform .2s ease,box-shadow .2s ease}
+.feature-tile:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(53,21,31,.08)}
+@media(max-width:760px){
+  .shell{padding:12px 16px 18px}
+  .topbar{height:66px;margin-bottom:8px}
+  .brand img{width:164px;height:56px}
+  .app-view{padding-top:22px;padding-bottom:105px}
+  .dashboard-head{align-items:center;margin-bottom:19px}
+  .dashboard-head h1{font-size:27px;line-height:1.2;letter-spacing:-.8px;margin:7px 0}
+  .dashboard-head .intro{font-size:12px;line-height:1.5;margin-bottom:0}
+  .dashboard-head .outline-btn{padding:9px 13px;font-size:11px;white-space:nowrap}
+  .dashboard-grid{display:flex;flex-direction:column;gap:13px}
+  .student-card{order:0;min-height:218px;padding:21px 22px;border-radius:17px}
+  .card-title{font-size:26px;margin-top:29px}
+  .card-subtitle{margin-bottom:20px}
+  .profile-tile{order:3}
+  .qr-tile{order:1;padding:21px}
+  .points-tile{order:2;min-height:130px}
+  .feature-tile{min-height:160px;padding:20px}
+  .profile-tile,.qr-tile,.points-tile,.feature-tile{border-radius:16px}
+  .notice{font-size:11px;margin:17px 0 0}
+  footer{font-size:10px;margin-bottom:4px}
+  .admin-panel,.scanner-section{border-radius:15px}
+}
+@media(max-width:380px){
+  .shell{padding-left:12px;padding-right:12px}
+  .dashboard-head h1{font-size:24px}
+  .dashboard-head .outline-btn{padding:8px 10px}
+  .student-card{padding:19px}
+}
