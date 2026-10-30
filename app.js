@@ -19,6 +19,8 @@ let isSignUp = false;
 let currentUser = null;
 let qrScanner = null;
 let scannerRunning = false;
+let rewardsRefreshTimer = null;
+let wheelPromptShown = false;
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -99,6 +101,8 @@ async function showApp(user) {
   await loadStudentData();
   await loadRewards();
   await checkFlamingoAdmin();
+  if (rewardsRefreshTimer) clearInterval(rewardsRefreshTimer);
+  rewardsRefreshTimer = setInterval(() => { if (currentUser) loadRewards({ autoOpen: true }); }, 8000);
 }
 
 async function checkFlamingoAdmin() {
@@ -305,7 +309,7 @@ document.getElementById("startScannerBtn")?.addEventListener("click", startStude
 document.getElementById("stopScannerBtn")?.addEventListener("click", stopStudentScanner);
 
 
-async function loadRewards() {
+async function loadRewards(options = {}) {
   const { data, error } = await supabaseClient.functions.invoke("student-rewards", { body: { action: "dashboard" } });
   if (error || !data) { setMessage(document.getElementById("wheelMessage"), error?.message || "Could not load rewards.", true); return; }
   document.getElementById("pointsTotal").textContent = String(data.balance || 0);
@@ -315,6 +319,16 @@ async function loadRewards() {
   renderCouponGrid(progress);
   const canSpin = data.can_spin === true;
   document.getElementById("spinWheelBtn").disabled = !canSpin;
+  const wheelSection = document.getElementById("rewardsSection");
+  if (canSpin && options.autoOpen && !wheelPromptShown && wheelSection) {
+    wheelPromptShown = true;
+    wheelSection.classList.add("wheel-ready");
+    wheelSection.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  if (!canSpin) {
+    wheelPromptShown = false;
+    wheelSection?.classList.remove("wheel-ready");
+  }
   setMessage(document.getElementById("wheelMessage"), canSpin ? "Your valid visit unlocked one spin!" : "A valid visit is required to unlock your next spin.");
   const shop = document.getElementById("rewardShopItems"); shop.replaceChildren();
   if (!data.items?.length) { const p=document.createElement("p"); p.className="shop-empty"; p.textContent="Rewards will appear here soon. Flamingo staff will add the gifts."; shop.appendChild(p); }
@@ -335,7 +349,7 @@ async function redeemShopItem(itemId) {
 document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
   const btn=document.getElementById("spinWheelBtn"), msg=document.getElementById("wheelMessage"); btn.disabled=true; setMessage(msg,"The wheel is spinning…");
   try { const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"spin"}}); if(error) throw error; if(!data?.ok) throw new Error(data?.error||"Could not spin.");
-    setMessage(msg,data.points_awarded ? "🎉 You won "+data.points_awarded+" points! Added to your wallet." : "No points this time. Good luck on your next visit!"); await loadRewards();
+    setMessage(msg,data.points_awarded ? "🎉 You won "+data.points_awarded+" points! Added to your wallet." : "No points this time. Good luck on your next visit!"); wheelPromptShown = false; document.getElementById("rewardsSection")?.classList.remove("wheel-ready"); await loadRewards();
   } catch(e) { setMessage(msg,e.message||"Could not spin.",true); btn.disabled=false; }
 });
 
