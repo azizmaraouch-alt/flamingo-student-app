@@ -485,3 +485,41 @@ footer{border-top-color:rgba(138,82,70,.10)}
 @media(prefers-reduced-motion:reduce){
   #authView .welcome,#authView .auth-card,#authView .welcome:before,#authView .welcome:after{animation:none!important}
 }
+
+
+/* OFFICIAL FLAMINGO BRAND PALETTE — sampled from logo.png */
+:root{
+  --terracotta:#B77F6E;
+  --terracotta-dark:#966454;
+  --gold:#D8B9A5;
+  --wine:#503A34;
+  --cream:#FBF7F4;
+  --ink:#40332F;
+  --muted:#88756E;
+  --line:#E9DCD5;
+  --white:#FFFCFA;
+  --shadow:0 18px 48px rgba(80,58,52,.09);
+}
+body{
+  background:
+    radial-gradient(circle at 8% 5%,rgba(183,127,110,.17),transparent 29%),
+    radial-gradient(circle at 95% 42%,rgba(216,185,165,.18),transparent 27%),
+    var(--cream);
+}
+#authView.auth-layout:before{
+  background:radial-gradient(ellipse at 12% 18%,rgba(216,185,165,.27),transparent 38%),
+             radial-gradient(ellipse at 88% 82%,rgba(183,127,110,.17),transparent 40%);
+}
+#authView .welcome .eyebrow{border-color:rgba(183,127,110,.3);color:var(--terracotta-dark)}
+#authView .welcome .eyebrow:before{background:var(--terracotta);box-shadow:0 0 0 4px rgba(183,127,110,.15)}
+#authView .benefit-row span{background:linear-gradient(145deg,#F4E7E0,#E9D2C7);color:#80594D}
+#authView .auth-card{
+  border-color:rgba(183,127,110,.2);
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(250,243,239,.82));
+  box-shadow:0 30px 80px rgba(80,58,52,.12),0 8px 24px rgba(183,127,110,.09),inset 0 1px 0 #fff;
+}
+#authView .auth-card:before{background:linear-gradient(90deg,transparent,#D8B9A5,#B77F6E,#D8B9A5,transparent)}
+#authView input{border-color:rgba(183,127,110,.23)}
+#authView input:focus{border-color:#B77F6E;box-shadow:0 0 0 4px rgba(183,127,110,.12),0 10px 22px rgba(80,58,52,.05)}
+#authView .primary-btn{background:linear-gradient(110deg,#B77F6E,#966454);box-shadow:0 9px 22px rgba(150,100,84,.22)}
+#authView .primary-btn:hover{box-shadow:0 13px 28px rgba(150,100,84,.28)}
