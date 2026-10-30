@@ -214,3 +214,7 @@ footer{padding:21px 0 8px;border-top:1px solid rgba(138,82,70,.14);text-align:ce
 .scan-coupon-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:280px;margin:8px 0}
 .scan-coupon-grid .coupon-slot{min-height:42px;aspect-ratio:1;border-radius:8px;font-size:11px}
 .scan-coupon-grid .coupon-slot.is-collected{padding:4px}
+
+/* Automatically highlight the reward wheel when a fresh valid visit is detected */
+.wheel-tile.wheel-ready{border:2px solid #218838;box-shadow:0 0 0 5px rgba(33,136,56,.12),0 14px 34px rgba(33,136,56,.16);animation:wheelReadyPulse 1.8s ease-in-out infinite}
+@keyframes wheelReadyPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
