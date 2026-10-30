@@ -346,11 +346,50 @@ async function redeemShopItem(itemId) {
     setMessage(msg,"Reward reserved! Show your app to Flamingo staff to collect it."); await loadRewards();
   } catch(e) { setMessage(msg,e.message||"Could not redeem.",true); }
 }
+let wheelIsAnimating = false;
+function animateRewardWheel(pointsAwarded) {
+  return new Promise((resolve) => {
+    const wheel = document.getElementById("wheelGraphic");
+    if (!wheel) return resolve();
+    const prizeAngles = { 5: 0, 10: 90, 15: 180, 0: 270 };
+    const current = Number(wheel.dataset.rotation || 0);
+    const target = current + 360 * 6 + ((360 - prizeAngles[Number(pointsAwarded)]) % 360);
+    wheel.dataset.rotation = String(target);
+    wheel.classList.add("is-spinning");
+    const finish = () => {
+      wheel.classList.remove("is-spinning");
+      wheel.removeEventListener("transitionend", finish);
+      resolve();
+    };
+    wheel.addEventListener("transitionend", finish, { once: true });
+    wheel.style.transform = "rotate(" + target + "deg)";
+    window.setTimeout(finish, 6500);
+  });
+}
 document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
-  const btn=document.getElementById("spinWheelBtn"), msg=document.getElementById("wheelMessage"); btn.disabled=true; setMessage(msg,"The wheel is spinning…");
-  try { const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"spin"}}); if(error) throw error; if(!data?.ok) throw new Error(data?.error||"Could not spin.");
-    setMessage(msg,data.points_awarded ? "🎉 You won "+data.points_awarded+" points! Added to your wallet." : "No points this time. Good luck on your next visit!"); wheelPromptShown = false; document.getElementById("rewardsSection")?.classList.remove("wheel-ready"); await loadRewards();
-  } catch(e) { setMessage(msg,e.message||"Could not spin.",true); btn.disabled=false; }
+  const btn=document.getElementById("spinWheelBtn"), msg=document.getElementById("wheelMessage");
+  if (wheelIsAnimating || btn.disabled) return;
+  wheelIsAnimating = true;
+  btn.disabled = true;
+  btn.textContent = "GOOD LUCK…";
+  setMessage(msg,"Your Flamingo wheel is spinning…");
+  try {
+    const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"spin"}});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error||"Could not spin.");
+    const prize = Number(data.points_awarded);
+    await animateRewardWheel(prize);
+    setMessage(msg,prize > 0 ? "🎉 Congratulations! You won " + prize + " points. They have been added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
+    wheelPromptShown = false;
+    document.getElementById("rewardsSection")?.classList.remove("wheel-ready");
+    await loadRewards();
+  } catch(e) {
+    setMessage(msg,e.message||"Could not spin. Please try again.",true);
+  } finally {
+    wheelIsAnimating = false;
+    btn.textContent = "SPIN THE WHEEL";
+    await loadRewards();
+  }
 });
 
 async function loadStudentData() {
