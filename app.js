@@ -182,6 +182,13 @@ async function verifyScannedCard(qrToken) {
   }
 }
 
+document.querySelectorAll("#studentNav .nav-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    document.querySelectorAll("#studentNav .nav-item").forEach((navItem) => navItem.classList.remove("active"));
+    item.classList.add("active");
+  });
+});
+
 document.getElementById("navScan")?.addEventListener("click", () => {
   document.getElementById("scannerSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
