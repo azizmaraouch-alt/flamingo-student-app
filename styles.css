@@ -751,3 +751,8 @@ body{
   .experience-card,.experience-loader{transition:none;animation:none}
   .experience-card:hover{transform:none}
 }
+
+.experience-image:not(.is-placeholder):before,
+.experience-image:not(.is-placeholder):after{display:none}
+.experience-image:not(.is-placeholder) .experience-placeholder-mark,
+.experience-image:not(.is-placeholder) .experience-placeholder-label{display:none}
