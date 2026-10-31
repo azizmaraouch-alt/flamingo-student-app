@@ -756,3 +756,68 @@ body{
 .experience-image:not(.is-placeholder):after{display:none}
 .experience-image:not(.is-placeholder) .experience-placeholder-mark,
 .experience-image:not(.is-placeholder) .experience-placeholder-label{display:none}
+
+
+/* GLASSMORPHISM STUDENT MEMBERSHIP CARD — Flamingo Pink Neon */
+.student-card.glass-student-card{
+  position:relative;isolation:isolate;grid-column:span 7;grid-row:auto;
+  display:flex;flex-direction:column;justify-content:space-between;gap:20px;
+  min-height:310px;overflow:hidden;padding:25px 27px;border:1px solid rgba(255,255,255,.62);
+  border-radius:27px;color:#fff;
+  background:
+    radial-gradient(ellipse at 88% 8%,rgba(255,116,190,.42),transparent 42%),
+    radial-gradient(ellipse at 12% 100%,rgba(190,73,137,.36),transparent 45%),
+    linear-gradient(125deg,rgba(67,27,48,.92),rgba(105,45,78,.78) 56%,rgba(48,25,44,.9));
+  box-shadow:0 25px 55px rgba(80,35,63,.23),inset 0 1px 0 rgba(255,255,255,.45);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+}
+.glass-student-card:before,.glass-student-card:after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+.glass-student-card:before{width:270px;height:270px;right:-72px;top:-150px;border:1px solid rgba(255,222,241,.35);box-shadow:0 0 0 22px rgba(255,255,255,.045),0 0 0 48px rgba(255,255,255,.025)}
+.glass-student-card:after{width:240px;height:240px;left:-105px;bottom:-160px;background:radial-gradient(circle,rgba(255,87,173,.24),transparent 68%)}
+.glass-card-glow{position:absolute;z-index:-1;inset:0;background:linear-gradient(115deg,transparent 15%,rgba(255,255,255,.10) 48%,transparent 72%);pointer-events:none}
+.glass-student-card .card-top{align-items:center}
+.glass-student-card .student-card-brand img{width:142px;height:55px;filter:drop-shadow(0 3px 12px rgba(255,100,180,.18))}
+.card-premium{padding:8px 12px;border:1px solid rgba(255,219,238,.48);border-radius:30px;background:rgba(255,255,255,.12);color:#ffe0ef;font-size:9px;font-weight:800;letter-spacing:1.4px;backdrop-filter:blur(12px)}
+.glass-card-main{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;gap:18px}
+.glass-card-details{min-width:0}
+.glass-student-card .card-subtitle{margin:0 0 14px;color:#f6c7df;font-size:9px;letter-spacing:2px}
+.glass-student-card .card-member{gap:9px;margin:0}
+.glass-student-card .card-member strong{max-width:100%;overflow-wrap:anywhere;color:#fff;font-size:clamp(16px,1.8vw,21px);letter-spacing:.2px}
+.glass-student-card .card-member span{color:#f5c7dc;font-size:11px;letter-spacing:1.5px}
+.glass-card-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+.glass-card-meta span{padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:30px;background:rgba(255,255,255,.09);color:#ffe7f2;font-size:9px;font-weight:700;letter-spacing:.7px;backdrop-filter:blur(10px)}
+.glass-card-qr{display:flex;flex-direction:column;align-items:center;gap:7px}
+.glass-student-card .qr-code{width:142px;min-width:142px;min-height:142px;height:142px;margin:0;padding:7px;border:1px solid rgba(255,255,255,.72);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:0 10px 28px rgba(28,12,24,.2),0 0 22px rgba(255,129,192,.24)}
+.glass-student-card .qr-code img,.glass-student-card .qr-code canvas{max-width:126px!important}
+.glass-student-card .glass-scan-label{color:#ffe1ee;font-size:8px;font-weight:800;letter-spacing:1.7px}
+.glass-card-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);color:#f7cfe1;font-size:8px;font-weight:800;letter-spacing:1.5px}
+.glass-card-footer .qr-caption{margin:0;color:rgba(255,255,255,.7);font-size:8px;font-weight:500;letter-spacing:.3px;text-align:right}
+@media(max-width:980px){
+ .student-card.glass-student-card{grid-column:span 7}
+ .glass-card-main{grid-template-columns:minmax(0,1fr) 132px;gap:12px}
+ .glass-student-card .qr-code{width:128px;min-width:128px;height:128px;min-height:128px}
+ .glass-student-card .qr-code img,.glass-student-card .qr-code canvas{max-width:112px!important}
+}
+@media(max-width:760px){
+ .student-card.glass-student-card{grid-column:1/-1;min-height:275px;padding:20px 18px;border-radius:22px;gap:16px}
+ .glass-student-card .student-card-brand img{width:118px;height:45px}
+ .card-premium{padding:7px 9px;font-size:7px;letter-spacing:1px}
+ .glass-card-main{grid-template-columns:minmax(0,1fr) 112px;gap:10px}
+ .glass-student-card .card-subtitle{font-size:8px;letter-spacing:1.4px}
+ .glass-student-card .card-member strong{font-size:15px}
+ .glass-student-card .card-member span{font-size:9px;letter-spacing:.8px}
+ .glass-card-meta{gap:6px;margin-top:14px}
+ .glass-card-meta span{padding:6px 8px;font-size:7px}
+ .glass-student-card .qr-code{width:108px;min-width:108px;height:108px;min-height:108px;padding:5px;border-radius:13px}
+ .glass-student-card .qr-code img,.glass-student-card .qr-code canvas{max-width:96px!important}
+ .glass-card-footer{font-size:7px;letter-spacing:1px}
+ .glass-card-footer .qr-caption{max-width:52%;font-size:7px}
+}
+@media(max-width:390px){
+ .student-card.glass-student-card{padding:17px 14px}
+ .glass-card-main{grid-template-columns:minmax(0,1fr) 96px;gap:7px}
+ .glass-student-card .qr-code{width:94px;min-width:94px;height:94px;min-height:94px}
+ .glass-student-card .qr-code img,.glass-student-card .qr-code canvas{max-width:82px!important}
+ .glass-student-card .card-member strong{font-size:13px}
+ .glass-card-meta span{font-size:6px}
+}
