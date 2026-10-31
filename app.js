@@ -29,6 +29,187 @@ function setMessage(element, message, isError = false) {
   element.style.color = isError ? "#a33b35" : "#8c5246";
 }
 
+function formatExperienceDate(value, includeTime = false) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  const options = {
+    timeZone: "Africa/Tunis",
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  };
+  if (includeTime) {
+    options.hour = "2-digit";
+    options.minute = "2-digit";
+  }
+  return new Intl.DateTimeFormat("en-GB", options).format(date);
+}
+
+function experienceSchedule(item, kind) {
+  const start = formatExperienceDate(item.starts_at, kind === "event");
+  const end = formatExperienceDate(item.ends_at, kind === "event");
+  if (start && end) return start + " — " + end;
+  if (start) return kind === "offer" ? "Available from " + start : start;
+  if (end) return "Until " + end;
+  return "";
+}
+
+function safeExperienceImageUrl(value) {
+  if (typeof value !== "string" || !value.trim()) return null;
+  try {
+    const url = new URL(value.trim(), window.location.href);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function showExperienceEmpty(container, kind, unavailable = false) {
+  const empty = document.createElement("div");
+  empty.className = "experience-empty";
+  const mark = document.createElement("span");
+  mark.className = "experience-empty-mark";
+  mark.textContent = kind === "offer" ? "✦" : "♧";
+  const copy = document.createElement("div");
+  const heading = document.createElement("strong");
+  const detail = document.createElement("p");
+  if (unavailable) {
+    heading.textContent = "Content is temporarily unavailable";
+    detail.textContent = "Please try again later.";
+  } else if (kind === "offer") {
+    heading.textContent = "No student offers published yet";
+    detail.textContent = "New Flamingo student benefits will appear here when they are announced.";
+  } else {
+    heading.textContent = "No upcoming events published yet";
+    detail.textContent = "Flamingo events will appear here as soon as dates and details are confirmed.";
+  }
+  copy.append(heading, detail);
+  empty.append(mark, copy);
+  container.replaceChildren(empty);
+}
+
+function createExperienceCard(item, kind) {
+  const card = document.createElement("article");
+  card.className = "experience-card";
+
+  const image = document.createElement("div");
+  image.className = "experience-image is-placeholder";
+  const placeholderMark = document.createElement("span");
+  placeholderMark.className = "experience-placeholder-mark";
+  placeholderMark.textContent = kind === "offer" ? "✦" : "♧";
+  const placeholderLabel = document.createElement("span");
+  placeholderLabel.className = "experience-placeholder-label";
+  placeholderLabel.textContent = "FLAMINGO · VISUAL COMING SOON";
+  image.append(placeholderMark, placeholderLabel);
+
+  const imageUrl = safeExperienceImageUrl(item.image_url);
+  if (imageUrl) {
+    const photo = document.createElement("img");
+    photo.src = imageUrl;
+    photo.alt = (item.title || (kind === "offer" ? "Student offer" : "Flamingo event")) + " image";
+    photo.loading = "lazy";
+    photo.decoding = "async";
+    photo.addEventListener("load", () => image.classList.remove("is-placeholder"), { once: true });
+    photo.addEventListener("error", () => {
+      photo.remove();
+      image.classList.add("is-placeholder");
+    }, { once: true });
+    image.appendChild(photo);
+  }
+
+  const body = document.createElement("div");
+  body.className = "experience-card-body";
+  const top = document.createElement("div");
+  top.className = "experience-card-top";
+  const type = document.createElement("span");
+  type.className = "experience-type";
+  type.textContent = kind === "offer" ? "STUDENT OFFER" : "FLAMINGO EVENT";
+  top.appendChild(type);
+
+  if (kind === "offer" && item.discount_label) {
+    const highlight = document.createElement("span");
+    highlight.className = "experience-highlight";
+    highlight.textContent = item.discount_label;
+    top.appendChild(highlight);
+  }
+
+  const title = document.createElement("h3");
+  title.textContent = item.title || (kind === "offer" ? "Student offer" : "Flamingo event");
+  body.append(top, title);
+
+  if (item.description && String(item.description).trim()) {
+    const description = document.createElement("p");
+    description.className = "experience-card-description";
+    description.textContent = item.description;
+    body.appendChild(description);
+  }
+
+  const details = document.createElement("div");
+  details.className = "experience-details";
+  const schedule = experienceSchedule(item, kind);
+  if (schedule) {
+    const date = document.createElement("span");
+    date.className = "experience-detail";
+    const icon = document.createElement("span");
+    icon.className = "experience-detail-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "◷";
+    const label = document.createElement("span");
+    label.textContent = schedule;
+    date.append(icon, label);
+    details.appendChild(date);
+  }
+  if (kind === "event" && item.location) {
+    const location = document.createElement("span");
+    location.className = "experience-detail";
+    const icon = document.createElement("span");
+    icon.className = "experience-detail-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "⌖";
+    const label = document.createElement("span");
+    label.textContent = item.location;
+    location.append(icon, label);
+    details.appendChild(location);
+  }
+  if (details.childElementCount) body.appendChild(details);
+
+  card.append(image, body);
+  return card;
+}
+
+async function loadExperienceSection(tableName, containerId, kind) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.replaceChildren();
+
+  try {
+    const { data, error } = await supabaseClient
+      .from(tableName)
+      .select("id, title, description, image_url, discount_label, starts_at, ends_at, location")
+      .eq("is_active", true)
+      .order("starts_at", { ascending: true, nullsFirst: false });
+    if (error) throw error;
+
+    const items = Array.isArray(data) ? data : [];
+    if (!items.length) {
+      showExperienceEmpty(container, kind);
+      return;
+    }
+    items.forEach((item) => container.appendChild(createExperienceCard(item, kind)));
+  } catch (error) {
+    console.warn("Could not load " + kind + " content:", error.message || error);
+    showExperienceEmpty(container, kind, true);
+  }
+}
+
+async function loadOffersAndEvents() {
+  await Promise.all([
+    loadExperienceSection("offers", "offersGrid", "offer"),
+    loadExperienceSection("events", "eventsGrid", "event")
+  ]);
+}
+
 function renderCouponGrid(progress) {
   const grid = document.getElementById("couponGrid");
   if (!grid) return;
@@ -101,6 +282,7 @@ async function showApp(user) {
   await loadStudentData();
   await loadRewards();
   await checkFlamingoAdmin();
+  await loadOffersAndEvents();
   if (rewardsRefreshTimer) clearInterval(rewardsRefreshTimer);
   rewardsRefreshTimer = setInterval(() => { if (currentUser) loadRewards({ autoOpen: true }); }, 8000);
 }
