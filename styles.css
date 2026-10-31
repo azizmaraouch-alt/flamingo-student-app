@@ -645,3 +645,109 @@ body{
 .history-content{padding-top:6px}
 .history-content.hidden{display:none!important}
 @media(max-width:760px){.admin-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.admin-stat{min-height:105px;padding:14px}.admin-stat>strong{font-size:29px}.admin-tools-row{align-items:flex-start;flex-direction:column}.admin-tools-row button{width:100%}}
+
+
+/* Premium lifestyle — Offers & Events */
+.experience-section{
+  grid-column:1/-1;position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(22px,3.2vw,34px);border:1px solid rgba(168,109,96,.17);
+  border-radius:25px;background:linear-gradient(135deg,rgba(255,253,251,.97),rgba(245,234,225,.82));
+  box-shadow:0 13px 34px rgba(53,21,31,.055)
+}
+.experience-section:before{
+  content:"";position:absolute;z-index:-1;right:-95px;top:-155px;width:290px;height:290px;
+  border:1px solid rgba(213,173,112,.22);border-radius:50%;
+  box-shadow:0 0 0 24px rgba(213,173,112,.035),0 0 0 50px rgba(213,173,112,.025);
+  pointer-events:none
+}
+.events-section{background:linear-gradient(135deg,rgba(255,253,251,.97),rgba(239,226,218,.82))}
+.experience-section-heading{
+  position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;
+  gap:20px;margin-bottom:22px
+}
+.experience-section-heading h2{
+  margin:7px 0 6px;color:var(--wine);font:600 clamp(25px,3vw,32px) 'Playfair Display',serif;
+  letter-spacing:-.45px
+}
+.experience-section-heading p:last-child{max-width:520px;margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+.experience-section-index{
+  flex:0 0 auto;padding:9px 12px;border:1px solid rgba(168,109,96,.2);border-radius:30px;
+  color:var(--terracotta-dark);font-size:9px;font-weight:800;letter-spacing:1.4px
+}
+.experience-section-index i{padding:0 4px;color:var(--gold);font-style:normal}
+.experience-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.experience-card{
+  min-width:0;overflow:hidden;border:1px solid rgba(168,109,96,.15);border-radius:19px;
+  background:rgba(255,253,251,.96);box-shadow:0 8px 23px rgba(53,21,31,.045);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease
+}
+.experience-card:hover{transform:translateY(-3px);border-color:rgba(168,109,96,.32);box-shadow:0 15px 30px rgba(53,21,31,.09)}
+.experience-image{
+  position:relative;display:grid;place-items:center;overflow:hidden;aspect-ratio:16/9;
+  min-height:150px;background:linear-gradient(135deg,#ead9ce,#f6eee7 55%,#d8bda9)
+}
+.events-section .experience-image{background:linear-gradient(135deg,#e7d8d0,#f6eee7 55%,#d4b89f)}
+.experience-image:before{
+  content:"";position:absolute;width:155px;height:155px;border:1px solid rgba(213,173,112,.48);
+  border-radius:50%;box-shadow:0 0 0 17px rgba(255,255,255,.12),0 0 0 35px rgba(255,255,255,.08)
+}
+.experience-image:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(53,21,31,.12));
+  pointer-events:none
+}
+.experience-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.experience-placeholder-mark{
+  position:relative;z-index:1;color:rgba(140,82,70,.58);
+  font:500 58px/1 'Playfair Display',serif
+}
+.experience-placeholder-label{
+  position:absolute;z-index:2;bottom:13px;left:15px;color:rgba(53,21,31,.58);
+  font-size:8px;font-weight:800;letter-spacing:2px
+}
+.experience-card-body{padding:18px 18px 19px}
+.experience-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.experience-type{
+  display:inline-flex;align-items:center;min-height:24px;padding:5px 9px;border-radius:30px;
+  background:#f2e6dd;color:var(--terracotta-dark);font-size:8px;font-weight:800;letter-spacing:1px
+}
+.experience-highlight{
+  display:inline-flex;align-items:center;min-height:24px;padding:5px 9px;border:1px solid rgba(213,173,112,.5);
+  border-radius:30px;background:#fbf4e9;color:#7c5b34;font-size:9px;font-weight:800
+}
+.experience-card h3{margin:0 0 7px;color:var(--wine);font:600 21px/1.2 'Playfair Display',serif}
+.experience-card-description{margin:0;color:var(--muted);font-size:11px;line-height:1.75}
+.experience-details{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:15px;padding-top:12px;border-top:1px solid rgba(168,109,96,.12)}
+.experience-detail{display:flex;align-items:flex-start;gap:6px;color:#76635c;font-size:10px;line-height:1.5}
+.experience-detail-icon{flex:0 0 auto;color:var(--terracotta-dark);font-size:12px}
+.experience-empty,.experience-loading{
+  grid-column:1/-1;display:flex;align-items:center;gap:14px;min-height:104px;
+  padding:20px 22px;border:1px dashed rgba(168,109,96,.28);border-radius:16px;background:rgba(255,253,251,.55)
+}
+.experience-empty-mark{
+  display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:14px;
+  background:#f0e2d8;color:var(--terracotta-dark);font:600 22px 'Playfair Display',serif
+}
+.experience-empty strong{display:block;margin-bottom:4px;color:var(--wine);font:600 16px 'Playfair Display',serif}
+.experience-empty p,.experience-loading p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.experience-loading{justify-content:center;min-height:95px}
+.experience-loader{
+  width:17px;height:17px;border:2px solid rgba(168,109,96,.2);border-top-color:var(--terracotta-dark);
+  border-radius:50%;animation:experience-spin .8s linear infinite
+}
+@keyframes experience-spin{to{transform:rotate(360deg)}}
+@media(max-width:980px){.experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+  .experience-section{padding:21px 17px;border-radius:20px}
+  .experience-section-heading{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:17px}
+  .experience-section-heading h2{font-size:25px}
+  .experience-section-index{font-size:8px}
+  .experience-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .experience-card{border-radius:16px}
+  .experience-image{min-height:165px}
+  .experience-card-body{padding:16px}
+  .experience-card h3{font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .experience-card,.experience-loader{transition:none;animation:none}
+  .experience-card:hover{transform:none}
+}
