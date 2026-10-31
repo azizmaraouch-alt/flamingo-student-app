@@ -74,12 +74,21 @@
       </section>
       <section id="scannerSection" class="scanner-section hidden"><div class="scanner-title"><div><p class="eyebrow">STAFF TOOL</p><h2>Student card scanner</h2><p>Scan a student QR code to check membership status.</p></div></div><div id="qrReader" class="qr-reader"></div><div class="scanner-actions"><button id="startScannerBtn" class="primary-btn" type="button">Start camera & scan</button><button id="stopScannerBtn" class="outline-btn hidden" type="button">Stop camera</button></div><div id="scanResult" class="scan-result" role="status">Ready when you are. Press “Start camera & scan”.</div></section>
       <div id="homeSection" class="dashboard-grid">
-        <article id="studentCardSection" class="student-card">
-          <div class="card-top"><span class="student-card-brand"><img src="./logo.png" alt="Flamingo logo"></span><span class="card-dot">✦</span></div>
-          <div class="card-title">STUDENT CARD</div>
-          <p class="card-subtitle">YOUR STUDENT MEMBERSHIP</p>
-          <div class="card-member"><strong id="cardName">STUDENT MEMBER</strong><span id="memberNumber">FL-••••••••••</span></div>
-          <div class="card-bottom"><span id="cardUniversity">YOUR UNIVERSITY</span><span id="cardStatus">PENDING</span></div>
+        <article id="studentCardSection" class="student-card glass-student-card">
+          <div class="glass-card-glow" aria-hidden="true"></div>
+          <div class="card-top"><span class="student-card-brand"><img src="./logo.png" alt="Flamingo logo"></span><span class="card-premium">✦ STUDENT MEMBER</span></div>
+          <div class="glass-card-main">
+            <div class="glass-card-details">
+              <p class="card-subtitle">YOUR FLAMINGO MEMBERSHIP</p>
+              <div class="card-member"><strong id="cardName">STUDENT MEMBER</strong><span id="memberNumber">FL-••••••••••</span></div>
+              <div class="glass-card-meta"><span id="cardUniversity">YOUR UNIVERSITY</span><span id="cardStatus">PENDING</span></div>
+            </div>
+            <div class="glass-card-qr">
+              <div id="studentQr" class="qr-code" aria-label="Your unique student QR code"></div>
+              <span class="glass-scan-label">SCAN TO VERIFY</span>
+            </div>
+          </div>
+          <div class="glass-card-footer"><span>GOOD FOOD · GOOD MOOD</span><span id="qrCaption" class="qr-caption">Your unique student QR will appear here.</span></div>
         </article>
         <article class="profile-tile">
           <div class="profile-heading"><div><p class="eyebrow">YOUR DETAILS</p><h3>Student profile</h3></div><span class="status-pill" id="profileStatus">PROFILE</span></div>
@@ -91,11 +100,6 @@
             <button class="primary-btn" id="saveProfileBtn" type="submit">Save profile <span>→</span></button>
             <p id="profileMessage" class="message" role="status"></p>
           </form>
-        </article>
-        <article class="qr-tile">
-          <div><p class="eyebrow">YOUR DIGITAL PASS</p><h3>Scan your card</h3><p>Show this unique QR code to the Flamingo team.</p></div>
-          <div id="studentQr" class="qr-code" aria-label="Your unique student QR code"></div>
-          <p class="qr-caption" id="qrCaption">Your QR card will appear here.</p>
         </article>
         <article class="points-tile wallet-tile"><p class="eyebrow">YOUR REWARDS WALLET</p><h3>Points balance</h3><strong id="pointsTotal">0</strong><span>POINTS AVAILABLE TO SPEND</span></article>
 <article class="loyalty-tile"><div class="rewards-title"><div><p class="eyebrow">VISIT & COLLECT</p><h3>Your coffee card</h3><p>10 valid visits = 1 free coffee</p></div><span class="coffee-count"><strong id="freeCoffees">0</strong><small>FREE COFFEE</small></span></div><div class="coupon-grid" id="couponGrid"><span class="coupon-slot" aria-label="Coupon 1">1</span><span class="coupon-slot" aria-label="Coupon 2">2</span><span class="coupon-slot" aria-label="Coupon 3">3</span><span class="coupon-slot" aria-label="Coupon 4">4</span><span class="coupon-slot" aria-label="Coupon 5">5</span><span class="coupon-slot" aria-label="Coupon 6">6</span><span class="coupon-slot" aria-label="Coupon 7">7</span><span class="coupon-slot" aria-label="Coupon 8">8</span><span class="coupon-slot" aria-label="Coupon 9">9</span><span class="coupon-slot" aria-label="Coupon 10">10</span></div><p class="coupon-caption"><strong id="couponProgress">0/10</strong> coupons collected · One coupon per valid scan.</p></article>
