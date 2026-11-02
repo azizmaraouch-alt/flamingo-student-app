@@ -283,7 +283,7 @@ async function showApp(user) {
   await loadRewards();
   await checkFlamingoAdmin();
   const adminVisible = !document.getElementById("adminPanel")?.classList.contains("hidden");
-  const phoneDigits = (document.getElementById("profilePhone")?.value || "").replace(/\\D/g, "");
+  const phoneDigits = (document.getElementById("profilePhone")?.value || "").replace(/\D/g, "");
   const profileReady = Boolean(
     document.getElementById("profileName")?.value.trim() &&
     phoneDigits.length >= 8 && phoneDigits.length <= 15 &&
