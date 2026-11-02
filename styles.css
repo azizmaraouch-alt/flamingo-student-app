@@ -1789,3 +1789,127 @@ footer{border-color:rgba(217,133,145,.20)}
 @media(prefers-reduced-motion:reduce){
   #authView *,#authView *:before,#authView *:after{transition:none!important;animation:none!important}
 }
+
+
+/* FLAMINGO ROSE SIGNATURE — unified visual identity refresh */
+:root{
+  --terracotta:#c52d60;
+  --terracotta-dark:#9f1747;
+  --gold:#e6b96c;
+  --wine:#650d31;
+  --cream:#fff0ef;
+  --ink:#57152f;
+  --muted:#986477;
+  --line:#f1c5ce;
+  --white:#fff9f8;
+  --shadow:0 24px 70px rgba(101,13,49,.16);
+}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 85% 8%,rgba(255,190,190,.55),transparent 32%),
+    radial-gradient(ellipse at 8% 75%,rgba(197,45,96,.10),transparent 35%),
+    linear-gradient(135deg,#fff5f2 0%,#fce5e7 48%,#fff8f3 100%);
+}
+.topbar{border-color:rgba(159,23,71,.16)}
+.top-tag{border-color:#efb8c5;background:rgba(255,247,246,.82);color:var(--wine)}
+.eyebrow{color:#a51c50}
+.primary-btn{background:linear-gradient(105deg,#a90e49,#d63c70);box-shadow:0 10px 24px rgba(169,14,73,.22)}
+.primary-btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.outline-btn,.text-btn{color:#a51c50}
+.outline-btn{border-color:#d94a78;background:rgba(255,249,248,.72)}
+input{border-color:#efc6cf;background:rgba(255,250,249,.92);color:#641331}
+input:focus{border-color:#c52d60;box-shadow:0 0 0 4px rgba(197,45,96,.12)}
+.auth-layout{
+  position:relative;isolation:isolate;gap:5%;padding:54px 3%;
+  background:
+    radial-gradient(ellipse at 15% 20%,rgba(255,255,255,.8),transparent 30%),
+    linear-gradient(120deg,rgba(255,225,226,.75),rgba(255,244,239,.56));
+  border-radius:28px;margin-top:28px;overflow:hidden;
+}
+.auth-layout:before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.34;
+  background:radial-gradient(circle at 12% 18%,#c52d60 0 2px,transparent 3px),
+  radial-gradient(circle at 85% 75%,#e6b96c 0 2px,transparent 3px);
+  background-size:38px 38px;
+}
+.welcome-brand-logo{display:block;width:min(190px,45%);height:95px;object-fit:contain;object-position:left center;margin-bottom:25px}
+.welcome:before{border-color:rgba(197,45,96,.22)}
+.welcome h1{color:#650d31}
+.welcome h1 em{color:#c52d60}
+.benefit-row{color:#6f1839}
+.benefit-row span{background:#f9dce2;color:#a51c50}
+.auth-card{
+  border:1px solid rgba(197,45,96,.28);border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,250,249,.94),rgba(255,232,232,.88));
+  box-shadow:0 28px 75px rgba(101,13,49,.18);backdrop-filter:blur(18px);
+}
+.auth-card:before{background:linear-gradient(90deg,#a90e49,#ef9aab,#e6b96c)}
+.auth-heading h2{color:#650d31}
+.dashboard-head{background:linear-gradient(115deg,#fff4f1,#f9dfe3);border:1px solid #f0c3cd;border-radius:24px;padding:22px 26px}
+.dashboard-welcome-logo{object-fit:contain}
+.student-nav{
+  background:linear-gradient(180deg,#8e1644,#5d0b2d);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 18px 48px rgba(91,8,43,.28);
+}
+.student-nav .nav-item{color:#ffe8ed}
+.student-nav .nav-item.active,.student-nav .nav-item:hover{
+  color:#fff;background:rgba(255,255,255,.17);border-color:rgba(255,255,255,.2)
+}
+.student-nav .nav-icon{color:#ffd9df}
+.mobile-hub,.profile-tile,.points-tile,.loyalty-tile,.wheel-tile,.shop-tile,.feature-tile,.experience-section,.admin-panel,.scanner-section{
+  border-color:#f0c7cf;box-shadow:0 16px 42px rgba(101,13,49,.08)
+}
+.mobile-hub{background:linear-gradient(135deg,#fff8f5,#fbe3e6)}
+.mobile-hub .hub-mark{color:#c52d60}
+.mobile-promo{background:linear-gradient(120deg,#8d1242,#c52d60 72%,#e45b7e);color:#fff}
+.mobile-promo .promo-kicker,.mobile-promo .promo-link{color:#ffe4e8}
+.home-shortcut{border-color:#f1c7cf;background:rgba(255,250,249,.9)}
+.home-shortcut .shortcut-icon{color:#b51f56;background:#fbe0e5}
+.experience-section-heading h2,.profile-heading h3,.rewards-title h3,.feature-tile h3{color:#650d31}
+.experience-section-index{color:#a51c50}
+.status-pill,.admin-tag,.card-premium{background:#f8dce3;color:#971644}
+.profile-tile,.points-tile,.loyalty-tile,.wheel-tile,.shop-tile,.feature-tile{
+  background:linear-gradient(145deg,#fffaf8,#fff0ef)
+}
+.points-tile{background:linear-gradient(135deg,#8d1242,#c52d60);color:#fff}
+.points-tile .eyebrow,.points-tile h3,.points-tile span{color:#ffe8ed}
+.glass-student-card{
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,221,226,.35);
+  border-radius:26px;
+  background:
+    radial-gradient(ellipse at 90% 10%,rgba(255,255,255,.15),transparent 36%),
+    linear-gradient(135deg,#8e1644 0%,#650d31 58%,#3e0922 100%);
+  color:#fff4f2;box-shadow:0 24px 55px rgba(83,8,39,.28);
+}
+.glass-student-card:before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;
+  background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.14) 23px,transparent 24px 46px);
+}
+.glass-student-card .card-top,.glass-student-card .glass-card-main,.glass-student-card .glass-card-footer{position:relative;z-index:1}
+.glass-student-card .student-card-brand img{filter:brightness(0) invert(1);max-width:145px}
+.glass-student-card .card-premium{background:rgba(255,255,255,.14);color:#ffe5b5;border:1px solid rgba(230,185,108,.5)}
+.glass-student-card .card-subtitle,.glass-student-card .glass-card-meta,.glass-student-card .glass-card-footer{color:#f8cbd5}
+.glass-student-card .card-member strong{color:#fff;font-family:'Playfair Display',serif;letter-spacing:.5px}
+.glass-student-card .card-member span{color:#f7dce2}
+.glass-student-card .glass-card-meta span:last-child{color:#ffe2a9}
+.glass-student-card .glass-card-qr{background:#fff;border:5px solid rgba(255,255,255,.75);border-radius:15px;padding:8px}
+.glass-student-card .glass-scan-label{color:#8e1644}
+.glass-student-card .glass-card-glow{background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%)}
+.coupon-slot{border-color:#edb9c6;background:#fff8f7;color:#a51c50}
+.coupon-slot.is-collected{background:#f7dce2;border-color:#c52d60}
+.wheel-graphic{box-shadow:0 12px 35px rgba(101,13,49,.16)}
+.redeem-btn{background:#a90e49;color:#fff}
+footer{color:#986477}
+@media(max-width:760px){
+  .auth-layout{grid-template-columns:1fr;gap:22px;padding:30px 18px;margin-top:14px;border-radius:22px}
+  .welcome{padding:8px 0 0}
+  .welcome-brand-logo{height:66px;width:145px;margin-bottom:12px}
+  .welcome h1{font-size:clamp(34px,9vw,48px);letter-spacing:-1.5px}
+  .auth-card{padding:27px 22px;border-radius:23px}
+  .dashboard-head{padding:16px;border-radius:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .primary-btn{transition:none}
+}
