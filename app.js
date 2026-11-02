@@ -765,3 +765,38 @@ document.getElementById("signOutBtn").addEventListener("click", async () => {
     catch (loadError) { setMessage(authMessage, loadError.message || "Could not load your student data.", true); }
   }
 })();
+
+
+// FLAMINGO PAGE NAVIGATION — sidebar tabs, no long-page scrolling.
+(() => {
+  const nav = document.getElementById("studentNav");
+  const app = document.getElementById("appView");
+  if (!nav || !app) return;
+  const pages = ["home","card","offers","rewards","events","scan"];
+  const targets = {
+    home: "homeSection", card: "studentCardSection",
+    offers: "offersSection", rewards: "rewardsSection",
+    events: "eventsSection", scan: "scannerSection"
+  };
+  function showPage(page) {
+    if (!targets[page]) return;
+    app.dataset.page = page;
+    nav.querySelectorAll(".nav-item").forEach(el => el.classList.toggle("active",
+      (el.id === "navScan" ? "scan" : (el.getAttribute("href") || "").replace("#","").replace("Section","").replace("studentCard","card")) === page
+    ));
+    if (page === "scan") document.getElementById("scannerSection")?.classList.remove("hidden");
+    else document.getElementById("scannerSection")?.classList.add("hidden");
+  }
+  nav.querySelectorAll(".nav-item").forEach(item => {
+    item.addEventListener("click", event => {
+      const page = item.id === "navScan" ? "scan" : ({
+        "#homeSection":"home","#studentCardSection":"card","#offersSection":"offers",
+        "#rewardsSection":"rewards","#eventsSection":"events"
+      }[item.getAttribute("href")]);
+      if (!page) return;
+      event.preventDefault();
+      showPage(page);
+    });
+  });
+  showPage("home");
+})();
