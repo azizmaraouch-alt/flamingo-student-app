@@ -1031,3 +1031,81 @@ footer{border-color:rgba(169,47,80,.12)}
  #appView[data-page="rewards"] #homeSection,
  #appView[data-page="events"] #homeSection{grid-template-columns:1fr}
 }
+
+
+/* FLAMINGO DUSTY ROSE PALETTE — visual-only update.
+   Preserve all existing app features, rewards, points, stamps and free-coffee rules. */
+:root{
+  --flamingo-berry:#D98591;
+  --flamingo-coral:#D98591;
+  --flamingo-blush:#F3C6CC;
+  --flamingo-terracotta:#B07865;
+  --flamingo-espresso:#2C2220;
+  --flamingo-cream:#FFF7F5;
+}
+body{
+  color:#2C2220;
+  background:
+    radial-gradient(ellipse at 8% 8%,rgba(217,133,145,.13),transparent 30%),
+    radial-gradient(ellipse at 96% 30%,rgba(176,120,101,.08),transparent 30%),
+    #FFF7F5;
+}
+.eyebrow,.text-btn{color:#B96F7B}
+.auth-card,.profile-tile,.points-tile,.feature-tile,.loyalty-tile,
+.wheel-tile,.shop-tile,.admin-panel,.scanner-section{
+  border-color:rgba(217,133,145,.20);
+  background:#FFFFFF;
+}
+.auth-card:before{background:linear-gradient(90deg,#D98591,#B07865,#F3C6CC)}
+input{border-color:#EBCBD0;background:#FFF7F5}
+input:focus{border-color:#D98591;box-shadow:0 0 0 4px rgba(217,133,145,.16)}
+.primary-btn,.redeem-btn{
+  background:linear-gradient(110deg,#D98591,#B96F7B);
+  box-shadow:0 10px 24px rgba(185,111,123,.22);
+}
+.primary-btn:hover{box-shadow:0 14px 28px rgba(185,111,123,.28)}
+.dashboard-head{
+  background:linear-gradient(112deg,#2C2220 0%,#76504A 55%,#D98591 100%);
+}
+.dashboard-head .eyebrow{color:#F3C6CC}
+.dashboard-head h1 span{color:#F3C6CC}
+.student-nav{
+  border-color:rgba(217,133,145,.22);
+  background:rgba(255,255,255,.96);
+}
+.student-nav:before{color:#B96F7B}
+.student-nav .nav-item:hover,.student-nav .nav-item.active{
+  background:linear-gradient(120deg,#D98591,#B96F7B);
+  box-shadow:0 9px 20px rgba(185,111,123,.20);
+}
+.student-nav .nav-icon{color:#C77D88}
+.student-card.glass-student-card{
+  background:
+    radial-gradient(ellipse at 90% 8%,rgba(243,198,204,.34),transparent 42%),
+    linear-gradient(125deg,#2C2220,#76504A 58%,#B96F7B);
+}
+.glass-student-card .student-card-brand img{filter:none!important;opacity:1}
+.card-premium{color:#F3C6CC}
+.glass-student-card .card-subtitle{color:#F3C6CC}
+.status-pill,.experience-type{background:#FCE8EA;color:#9D5964}
+.points-tile{background:linear-gradient(145deg,#FFFFFF,#FFF0F1)!important}
+.points-tile>strong,.admin-stat>strong{color:#B96F7B}
+.coffee-count{background:#FCE8EA;color:#9D5964}
+.coupon-slot{border-color:#E7B7BE;background:#FFF7F5}
+.coupon-slot.is-collected{border-color:#B96F7B;background:linear-gradient(145deg,#D98591,#B96F7B)}
+.wheel-graphic{box-shadow:0 0 0 3px #F3C6CC,0 12px 28px rgba(44,34,32,.14)}
+.experience-section{border-color:rgba(217,133,145,.20);background:linear-gradient(135deg,#FFFFFF,#FFF1F2)}
+.events-section{background:linear-gradient(135deg,#FFFFFF,#FCEDEF)}
+.admin-stat{background:linear-gradient(145deg,#FFFFFF,#FFF1F2)}
+.admin-tag{background:#2C2220;color:#F3C6CC}
+.admin-tools-row,.notice{background:#FFF1F2}
+.notice{border-color:rgba(217,133,145,.18);color:#76504A}
+.scan-invalid{background:#FFF1F2;color:#9D5964}
+footer{border-color:rgba(217,133,145,.20)}
+@media(max-width:760px){
+  .student-nav{background:rgba(44,34,32,.97);box-shadow:0 12px 34px rgba(44,34,32,.24)}
+  .student-nav:before{color:#F3C6CC}
+  .student-nav .nav-item{color:#FFF7F5}
+  .student-nav .nav-icon{color:#F3C6CC}
+  .student-nav .nav-item.active{background:linear-gradient(145deg,#D98591,#B96F7B)}
+}
