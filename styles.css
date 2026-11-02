@@ -1109,3 +1109,88 @@ footer{border-color:rgba(217,133,145,.20)}
   .student-nav .nav-icon{color:#F3C6CC}
   .student-nav .nav-item.active{background:linear-gradient(145deg,#D98591,#B96F7B)}
 }
+
+
+/* SIDEBAR VISIBILITY HOTFIX — keep nav visible for authenticated admin and students */
+#appView #studentNav{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  z-index:99999!important;
+}
+@media(min-width:761px){
+  #appView #studentNav{
+    position:fixed!important;
+    left:22px!important;
+    right:auto!important;
+    top:50vh!important;
+    bottom:auto!important;
+    transform:translateY(-50%)!important;
+    width:194px!important;
+    min-height:260px!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:center!important;
+    padding:16px 11px!important;
+    background:#FFFFFF!important;
+    border:1px solid #F0C7CD!important;
+    box-shadow:0 18px 50px rgba(44,34,32,.18)!important;
+  }
+  #appView #studentNav .nav-item{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    min-height:50px!important;
+    width:100%!important;
+    color:#2C2220!important;
+  }
+  #appView #studentNav .nav-item.active{
+    color:#FFFFFF!important;
+    background:linear-gradient(120deg,#D98591,#B96F7B)!important;
+  }
+  #appView #studentNav .nav-scan.hidden{display:none!important}
+}
+@media(max-width:760px){
+  #appView #studentNav{
+    position:fixed!important;
+    left:8px!important;
+    right:auto!important;
+    top:50vh!important;
+    bottom:auto!important;
+    transform:translateY(-50%)!important;
+    width:68px!important;
+    flex-direction:column!important;
+    background:#2C2220!important;
+    padding:8px 5px!important;
+  }
+  #appView #studentNav .nav-item{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    min-height:52px!important;
+    color:#FFF7F5!important;
+  }
+  #appView #studentNav .nav-item.active{
+    color:#FFFFFF!important;
+    background:linear-gradient(145deg,#D98591,#B96F7B)!important;
+  }
+}
+/* Keep admin metrics tidy and visually secondary to the welcome area */
+#appView #adminPanel{
+  margin:0 0 22px!important;
+  padding:22px!important;
+  border-radius:22px!important;
+  background:#FFFFFF!important;
+  border:1px solid rgba(217,133,145,.22)!important;
+  box-shadow:0 12px 32px rgba(44,34,32,.07)!important;
+}
+#appView #adminPanel .admin-stats-grid{
+  gap:12px!important;
+}
+#appView #adminPanel .admin-stat{
+  min-height:112px!important;
+  padding:17px!important;
+  border-radius:16px!important;
+}
