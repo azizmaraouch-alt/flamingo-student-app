@@ -2590,3 +2590,18 @@ body{
   .shell>.topbar .brand{display:flex!important;visibility:visible!important;opacity:1!important}
   .shell>.topbar .brand img{width:160px!important;height:56px!important;max-height:56px!important;object-fit:contain!important}
 }
+
+
+/* Lucky wheel stays hidden until a successful student-card scan unlocks it */
+#appView #rewardsSection.wheel-tile{display:none!important}
+#appView #rewardsSection.wheel-tile.wheel-ready{display:block!important}
+#appView #rewardsSection .wheel-graphic .wheel-hub{
+  width:96px!important;height:96px!important;padding:5px!important;
+  display:grid!important;place-items:center!important;
+}
+#appView #rewardsSection .wheel-graphic .wheel-hub img{
+  width:100%!important;height:100%!important;object-fit:contain!important;
+}
+@media(max-width:760px){
+  #appView #rewardsSection .wheel-graphic .wheel-hub{width:76px!important;height:76px!important;padding:4px!important}
+}
