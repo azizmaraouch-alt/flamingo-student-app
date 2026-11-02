@@ -1480,23 +1480,35 @@ footer{border-color:rgba(217,133,145,.20)}
 @media(min-width:761px){.mobile-hub{display:none!important}}
 
 
-/* FIXED FLOATING GLASS NAV — stays attached to viewport while scrolling */
+/* FLOATING SIDE NAV — follows the viewport, never sits at the bottom */
 @media(max-width:760px){
   #appView #studentNav{
     position:fixed!important;
-    inset:auto 10px calc(9px + env(safe-area-inset-bottom)) 10px!important;
-    transform:none!important;width:auto!important;
-    min-height:68px!important;height:68px!important;
-    padding:7px 8px!important;display:flex!important;
-    flex-direction:row!important;align-items:center!important;justify-content:space-around!important;
-    gap:3px!important;border:1px solid rgba(255,255,255,.62)!important;
-    border-radius:22px!important;background:rgba(255,250,251,.68)!important;
-    -webkit-backdrop-filter:blur(24px) saturate(165%)!important;
-    backdrop-filter:blur(24px) saturate(165%)!important;
-    box-shadow:0 8px 32px rgba(52,27,39,.16),inset 0 1px 0 rgba(255,255,255,.75)!important;
-    z-index:2147483000!important;
+    top:50%!important;right:9px!important;left:auto!important;bottom:auto!important;
+    transform:translateY(-50%)!important;
+    width:66px!important;height:auto!important;min-height:0!important;
+    max-height:calc(100dvh - 36px)!important;overflow-y:auto!important;
+    padding:8px 5px!important;display:flex!important;
+    flex-direction:column!important;align-items:stretch!important;justify-content:center!important;
+    gap:5px!important;border:1px solid rgba(255,255,255,.72)!important;
+    border-radius:23px!important;background:rgba(255,250,251,.66)!important;
+    -webkit-backdrop-filter:blur(24px) saturate(170%)!important;
+    backdrop-filter:blur(24px) saturate(170%)!important;
+    box-shadow:0 8px 30px rgba(52,27,39,.17),inset 0 1px 0 rgba(255,255,255,.8)!important;
+    z-index:2147483000!important;scrollbar-width:none!important;
   }
-  #appView #studentNav .nav-item{flex:1 1 0!important;min-width:0!important;height:52px!important;min-height:52px!important;margin:0!important;border-radius:15px!important}
-  #appView #studentNav .nav-item.active{background:rgba(217,133,145,.19)!important;color:#9e5366!important}
-  .shell{padding-bottom:calc(105px + env(safe-area-inset-bottom))!important}
+  #appView #studentNav::-webkit-scrollbar{display:none!important}
+  #appView #studentNav .nav-item{
+    flex:0 0 auto!important;width:100%!important;min-width:0!important;
+    min-height:54px!important;height:54px!important;margin:0!important;
+    padding:5px 2px!important;border:0!important;border-radius:16px!important;
+    display:flex!important;flex-direction:column!important;
+    align-items:center!important;justify-content:center!important;gap:3px!important;
+    font-size:9px!important;line-height:1.05!important;white-space:nowrap!important;
+  }
+  #appView #studentNav .nav-icon{font-size:19px!important;line-height:1!important;padding:0!important;background:transparent!important}
+  #appView #studentNav .nav-item.active{background:rgba(217,133,145,.22)!important;color:#9e5366!important}
+  #appView #studentNav .nav-item.active .nav-icon{background:transparent!important}
+  .shell{padding-right:0!important;padding-bottom:22px!important}
+  #appView #homeSection,#appView [data-page-section]{scroll-margin-top:18px}
 }
