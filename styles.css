@@ -2325,3 +2325,53 @@ body{
  #appView #signOutBtn:before{content:"↪";font-size:17px;line-height:1}
  #appView{padding-bottom:76px!important}
 }
+
+
+/* LUCKY SPIN — bold Flamingo colors, readable wheel labels and oversized result */
+#appView #rewardsSection.wheel-tile{
+  background:linear-gradient(145deg,#fff8f5 0%,#fff 52%,#fff0f3 100%)!important;
+  border:1px solid rgba(157,15,68,.22)!important;
+  box-shadow:0 18px 48px rgba(83,8,39,.13)!important;
+}
+#appView #rewardsSection .eyebrow{color:#a51650!important;font-weight:900!important;letter-spacing:1.5px!important}
+#appView #rewardsSection h3{color:#650d31!important;font-size:clamp(25px,3vw,34px)!important;font-weight:800!important}
+#appView #rewardsSection>p:not(.eyebrow){color:#704457!important;font-size:15px!important;line-height:1.6!important}
+#appView #rewardsSection .wheel-stage{width:min(340px,78vw)!important;height:min(340px,78vw)!important;margin:28px auto 24px!important}
+#appView #rewardsSection .wheel-graphic{
+ width:100%!important;height:100%!important;border:10px solid #fff!important;
+ background:conic-gradient(from -30deg,#8f1044 0deg 60deg,#f2c66d 60deg 120deg,#5b102f 120deg 180deg,#fff0df 180deg 240deg,#c52d60 240deg 300deg,#f6dca8 300deg 360deg)!important;
+ box-shadow:0 0 0 4px #d9a84f,0 20px 45px rgba(75,8,37,.23),inset 0 0 0 2px rgba(255,255,255,.85)!important;
+}
+#appView #rewardsSection .wheel-prize{
+ width:64px!important;color:#fff!important;font-family:'DM Sans',sans-serif!important;
+ font-size:clamp(11px,1.3vw,15px)!important;font-weight:1000!important;
+ line-height:1.1!important;text-shadow:0 2px 5px rgba(30,0,15,.65)!important;
+}
+#appView #rewardsSection .prize-ten,#appView #rewardsSection .prize-breakfast{color:#4b102b!important;text-shadow:0 1px 2px rgba(255,255,255,.65)!important}
+#appView #rewardsSection .wheel-hub{width:68px!important;height:68px!important;border:5px solid #f1c66d!important}
+#appView #rewardsSection .wheel-hub img{width:52px!important;height:52px!important}
+#appView #rewardsSection .wheel-pointer{border-top-color:#f2bd52!important;border-left-width:17px!important;border-right-width:17px!important;border-top-width:34px!important}
+#appView #rewardsSection #spinWheelBtn{
+ min-height:60px!important;max-width:340px!important;width:100%!important;
+ border-radius:17px!important;background:linear-gradient(100deg,#8f1044,#c52d60)!important;
+ color:#fff!important;font-size:17px!important;font-weight:900!important;letter-spacing:1px!important;
+ box-shadow:0 12px 28px rgba(143,16,68,.28)!important;
+}
+#appView #rewardsSection #wheelMessage{
+ display:block!important;width:100%!important;box-sizing:border-box!important;
+ margin:22px 0 2px!important;padding:22px 18px!important;min-height:92px!important;
+ border:2px solid #e6b95e!important;border-radius:20px!important;
+ background:linear-gradient(120deg,#4b0b2b,#81113f)!important;
+ color:#fff!important;text-align:center!important;
+ font-size:clamp(19px,2.2vw,26px)!important;font-weight:900!important;
+ line-height:1.4!important;letter-spacing:.15px!important;
+ box-shadow:0 12px 30px rgba(75,11,43,.2)!important;
+}
+@media(max-width:760px){
+ #appView #rewardsSection .wheel-stage{width:min(310px,78vw)!important;height:min(310px,78vw)!important}
+ #appView #rewardsSection .wheel-prize{width:54px!important;font-size:11px!important}
+ #appView #rewardsSection .wheel-hub{width:58px!important;height:58px!important}
+ #appView #rewardsSection .wheel-hub img{width:44px!important;height:44px!important}
+ #appView #rewardsSection #wheelMessage{font-size:21px!important;padding:22px 15px!important;min-height:100px!important}
+ #appView #rewardsSection #spinWheelBtn{font-size:16px!important}
+}
