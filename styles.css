@@ -829,3 +829,125 @@ body{
  .glass-student-card .card-member strong{font-size:13px}
  .glass-card-meta span{font-size:6px}
 }
+
+
+/* =========================================================
+   FLAMINGO BOLD — COMPLETE VISUAL REFRESH
+   Presentation layer only: preserve existing IDs and logic.
+   ========================================================= */
+:root{
+  --terracotta:#ef6474;--terracotta-dark:#a92f50;--gold:#f2b9a9;
+  --wine:#29141f;--cream:#fff5ef;--ink:#2c2027;--muted:#88747b;
+  --line:#eedde0;--white:#fffdfc;
+  --shadow:0 20px 55px rgba(55,19,37,.10);
+  --flamingo-coral:#f05f70;--flamingo-berry:#a92f50;--flamingo-night:#29141f;
+}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 4% 2%,rgba(240,95,112,.12),transparent 28%),
+    radial-gradient(ellipse at 96% 30%,rgba(169,47,80,.08),transparent 30%),
+    #fff8f5;
+}
+.shell{width:min(1320px,100%);padding:22px clamp(16px,4vw,54px) 38px}
+.topbar{height:82px;border-bottom:1px solid rgba(169,47,80,.13)}
+.brand img{width:205px;height:68px}
+.top-tag,.experience-section-index,.card-premium{border-radius:9px;letter-spacing:1.4px}
+.eyebrow{color:var(--flamingo-berry);font-size:10px;letter-spacing:1.8px}
+h1,h2,h3{letter-spacing:-.6px}
+.auth-layout{grid-template-columns:1.08fr .88fr;gap:7%;padding:54px 2%}
+.welcome h1{font-size:clamp(46px,6vw,76px);line-height:1.01;letter-spacing:-3px}
+.welcome h1 em{color:var(--flamingo-coral)}
+.welcome:before{border:2px solid rgba(240,95,112,.2);width:230px;height:230px}
+.benefit-row span{width:34px;height:34px;border-radius:11px;background:#ffe2e4;color:var(--flamingo-berry);font-weight:800}
+.auth-card{padding:clamp(26px,3vw,42px);border:1px solid rgba(169,47,80,.13);border-radius:27px;background:#fffdfc;box-shadow:0 24px 65px rgba(55,19,37,.10)}
+.auth-card:before{left:0;right:0;height:5px;background:linear-gradient(90deg,#f05f70,#a92f50,#f2b9a9)}
+.auth-heading h2{font-family:'DM Sans',sans-serif;font-size:31px;font-weight:800;letter-spacing:-1px}
+label{color:#492432;font-size:12px}
+input{height:54px;border:1px solid #ead9df;border-radius:14px;background:#fff9f7}
+input:focus{border-color:#ef6474;box-shadow:0 0 0 4px rgba(240,95,112,.13)}
+.primary-btn{min-height:54px;border-radius:14px;background:linear-gradient(110deg,#f05f70,#a92f50);box-shadow:0 12px 25px rgba(169,47,80,.22);font-weight:800;letter-spacing:.15px}
+.primary-btn:hover{box-shadow:0 16px 30px rgba(169,47,80,.28)}
+.text-btn{color:#a92f50}
+.app-view{padding:30px 0 48px}
+.dashboard-head{min-height:190px;padding:32px clamp(22px,4vw,48px);border-radius:28px;background:linear-gradient(112deg,#29141f 0%,#542037 55%,#a92f50 100%);box-shadow:0 22px 50px rgba(55,19,37,.19)}
+.dashboard-head:after{right:7%;top:-175px;width:330px;height:330px;border:2px solid rgba(242,185,169,.28);box-shadow:0 0 0 30px rgba(242,185,169,.045),0 0 0 65px rgba(242,185,169,.025)}
+.dashboard-head .eyebrow{color:#ffb9bd}
+.dashboard-head h1{font-family:'DM Sans',sans-serif;font-weight:800;font-size:clamp(30px,4vw,46px);letter-spacing:-1.5px}
+.dashboard-head h1 span{color:#ff9da7}
+.dashboard-head .outline-btn{border-radius:13px}
+.student-nav{gap:8px;margin-bottom:26px;padding:9px;border:1px solid rgba(169,47,80,.12);border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 12px 30px rgba(55,19,37,.06)}
+.student-nav .nav-item{min-height:49px;padding:0 22px;border-radius:13px;font-size:12px}
+.student-nav .nav-item:hover,.student-nav .nav-item.active{background:linear-gradient(120deg,#a92f50,#e65c70);color:#fff;box-shadow:0 9px 20px rgba(169,47,80,.19)}
+.student-nav .nav-icon{color:#ef6474}
+.student-nav .nav-item.active .nav-icon{color:#ffe1d8}
+.dashboard-grid{gap:19px}
+.student-card.glass-student-card{border:1px solid rgba(255,255,255,.25);border-radius:28px;background:radial-gradient(ellipse at 90% 8%,rgba(240,95,112,.45),transparent 42%),linear-gradient(125deg,#29141f,#59203b 58%,#a92f50);box-shadow:0 25px 55px rgba(55,19,37,.24)}
+.glass-student-card .student-card-brand img{filter:brightness(0) invert(1);opacity:.96}
+.card-premium{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#ffe1e2}
+.glass-student-card .card-subtitle{color:#ffb9bd}
+.glass-card-meta span{border-radius:9px;background:rgba(255,255,255,.11)}
+.profile-tile,.points-tile,.feature-tile,.loyalty-tile,.wheel-tile,.shop-tile,.admin-panel,.scanner-section{
+  border:1px solid rgba(169,47,80,.11);border-radius:23px;background:#fffdfc;
+  box-shadow:0 13px 34px rgba(55,19,37,.055)
+}
+.profile-heading h3,.qr-tile h3,.points-tile h3,.feature-tile h3,.rewards-title h3,.wheel-tile h3,.shop-tile h3{
+  font-family:'DM Sans',sans-serif;font-weight:800;letter-spacing:-.7px
+}
+.status-pill,.experience-type{border-radius:8px;background:#ffe5e6;color:#a92f50}
+.points-tile{background:linear-gradient(145deg,#fffdfc,#ffe8e7)!important}
+.points-tile>strong{color:#a92f50;font-family:'DM Sans',sans-serif;font-weight:800}
+.coffee-count{border-radius:18px;background:#ffe6e3;color:#a92f50}
+.coupon-slot{border-radius:11px;border-color:#e6aab2;background:#fff6f3}
+.coupon-slot.is-collected{border-color:#a92f50;background:linear-gradient(145deg,#f05f70,#a92f50)}
+.wheel-graphic{box-shadow:0 0 0 3px #f2b9a9,0 12px 28px rgba(55,19,37,.16)}
+.redeem-btn{border-radius:11px;background:#a92f50}
+.experience-section{border-radius:26px;border-color:rgba(169,47,80,.12);background:linear-gradient(135deg,#fffdfc,#fff0ed)}
+.events-section{background:linear-gradient(135deg,#fffdfc,#f9e9ed)}
+.experience-section-heading h2{font-family:'DM Sans',sans-serif;font-weight:800;letter-spacing:-1px}
+.experience-card{border-radius:18px}
+.experience-card h3{font-family:'DM Sans',sans-serif;font-weight:800}
+.experience-highlight{border-radius:8px;background:#fff1dc;color:#86501e}
+.admin-stat{border-radius:17px;background:linear-gradient(145deg,#fffdfc,#fff0ed)}
+.admin-stat>strong{color:#a92f50;font-family:'DM Sans',sans-serif;font-weight:800}
+.admin-tag{border-radius:9px;background:#29141f;color:#ffb9bd}
+.admin-tools-row{border-radius:16px;background:#fff6f3}
+.scan-valid{background:#e7f7ed;color:#176b3a}
+.scan-invalid{background:#fff0ed;color:#a92f50}
+.notice{border:1px solid rgba(169,47,80,.10);border-radius:14px;background:#fff0ed;color:#77545f}
+footer{border-color:rgba(169,47,80,.12)}
+/* Desktop adaptive navigation: compact, readable, sticky below the header */
+@media(min-width:761px){
+ .student-nav{position:sticky;top:12px;z-index:1000;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+}
+/* Mobile: navigation becomes a fixed bottom app bar */
+@media(max-width:760px){
+ .shell{padding:9px 14px calc(92px + env(safe-area-inset-bottom))}
+ .topbar{height:62px}
+ .brand img{width:160px;height:54px}
+ .auth-layout{padding:28px 0 34px;gap:15px}
+ .welcome h1{font-size:42px;letter-spacing:-1.8px}
+ .auth-card{padding:25px 20px;border-radius:22px}
+ .app-view{padding-top:12px;padding-bottom:25px}
+ .dashboard-head{min-height:145px;padding:22px 18px;border-radius:22px}
+ .dashboard-head h1{font-size:27px}
+ .student-nav{
+   position:fixed!important;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));top:auto!important;
+   z-index:2000;display:flex;justify-content:space-around;gap:3px;width:auto;margin:0;padding:8px 5px;
+   border:1px solid rgba(169,47,80,.14);border-radius:19px;background:rgba(41,20,31,.96);
+   box-shadow:0 15px 38px rgba(41,20,31,.27);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)
+ }
+ .student-nav .nav-item{flex:1 1 0;min-width:0;min-height:49px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:4px 2px;border-radius:12px;color:#f6dfe4;font-size:9px}
+ .student-nav .nav-icon{color:#ff9da7;font-size:17px}
+ .student-nav .nav-item.active{background:linear-gradient(145deg,#f05f70,#a92f50);color:#fff;box-shadow:0 5px 14px rgba(240,95,112,.25)}
+ .student-nav .nav-item.active .nav-icon{color:#fff}
+ .student-nav .nav-scan{display:flex}
+ .app-view.profile-setup-mode .student-nav{display:none!important}
+ .student-card.glass-student-card{border-radius:22px}
+ .profile-tile,.points-tile,.feature-tile,.loyalty-tile,.wheel-tile,.shop-tile{border-radius:18px}
+ .experience-section{border-radius:20px}
+ .admin-panel,.scanner-section{border-radius:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
