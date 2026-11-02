@@ -787,6 +787,21 @@ document.getElementById("signOutBtn").addEventListener("click", async () => {
     if (page === "scan") document.getElementById("scannerSection")?.classList.remove("hidden");
     else document.getElementById("scannerSection")?.classList.add("hidden");
   }
+  document.querySelectorAll(".home-shortcut, .mobile-promo").forEach(item => {
+    item.addEventListener("click", event => {
+      const page = item.dataset.page;
+      if (!page || !targets[page]) return;
+      event.preventDefault();
+      showPage(page);
+      nav.querySelectorAll(".nav-item").forEach(el => {
+        const target = el.id === "navScan" ? "scan" : ({
+          "#homeSection":"home","#studentCardSection":"card","#offersSection":"offers",
+          "#rewardsSection":"rewards","#eventsSection":"events"
+        }[el.getAttribute("href")]);
+        el.classList.toggle("active", target === page);
+      });
+    });
+  });
   nav.querySelectorAll(".nav-item").forEach(item => {
     item.addEventListener("click", event => {
       const page = item.id === "navScan" ? "scan" : ({
