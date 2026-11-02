@@ -1913,3 +1913,185 @@ footer{color:#986477}
 @media(prefers-reduced-motion:reduce){
   .primary-btn{transition:none}
 }
+
+
+/* COMPLETE FLAMINGO STUDENT CLUB ART DIRECTION — all screens, not a palette-only change */
+:root{
+ --terracotta:#bd2859;--terracotta-dark:#86133f;--wine:#4b102b;
+ --gold:#e9bd75;--cream:#fff4f1;--ink:#351c29;--muted:#927481;
+ --line:#efd6dc;--white:#fffaf9;--shadow:0 18px 55px rgba(76,16,43,.09);
+}
+html{scroll-padding-top:24px}
+body{
+ background:
+  radial-gradient(ellipse at 12% 0%,rgba(255,214,218,.62),transparent 30%),
+  radial-gradient(ellipse at 95% 65%,rgba(233,189,117,.13),transparent 28%),
+  #fff7f4;
+ color:#351c29;
+}
+.shell{width:min(1320px,100%);padding-left:clamp(18px,4vw,58px);padding-right:clamp(18px,4vw,58px)}
+.topbar{height:94px;border-bottom:1px solid rgba(134,19,63,.12)}
+.brand img{width:205px;height:76px}
+.top-tag{background:#fff;border-color:#f0d2d9;box-shadow:0 5px 18px rgba(76,16,43,.05)}
+footer{border-color:#f0dce1;color:#9a7885}
+button,a,input{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(189,40,89,.25);outline-offset:3px}
+
+/* Authentication: editorial welcome + refined sign-in panel */
+#authView{min-height:calc(100vh - 190px);grid-template-columns:minmax(0,1.05fr) minmax(360px,.82fr);gap:clamp(36px,7vw,100px);padding:58px clamp(12px,3vw,42px)}
+#authView:before{inset:2% -2%;border-radius:34px;background:linear-gradient(125deg,rgba(255,229,230,.72),rgba(255,249,245,.5))}
+#authView .welcome-brand-logo{width:190px;height:86px;object-position:left center}
+#authView .welcome h1{font-size:clamp(48px,5.5vw,74px);line-height:1.02;letter-spacing:-3px}
+#authView .benefit-row{min-width:310px;border-radius:12px}
+#authView .auth-card{max-width:470px;border-radius:30px;padding:clamp(30px,3.5vw,46px);box-shadow:0 30px 80px rgba(76,16,43,.14)}
+#authView .auth-heading h2{font-size:34px}
+#authView #authForm input{height:56px;border-radius:15px}
+#authView #authForm .primary-btn{height:57px;border-radius:15px}
+
+/* App shell + dashboard masthead */
+#appView{padding-top:24px}
+#appView .dashboard-head{
+ min-height:156px;margin-bottom:20px;padding:26px 32px;border-radius:27px;
+ background:
+  radial-gradient(circle at 88% 18%,rgba(255,255,255,.17),transparent 22%),
+  linear-gradient(112deg,#4b102b 0%,#80143f 55%,#c34d70 100%);
+ box-shadow:0 22px 48px rgba(76,16,43,.17);
+}
+#appView .dashboard-head:after{border-color:rgba(233,189,117,.35)}
+#appView .dashboard-head .eyebrow{color:#f0c98e}
+#appView .dashboard-head h1{font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:-1.5px}
+#appView .dashboard-head h1 span{color:#ffe0a7}
+#appView .dashboard-welcome-copy{display:flex;align-items:center;gap:20px}
+#appView .dashboard-welcome-logo{width:86px;height:86px;object-fit:contain;padding:11px;border-radius:22px;background:rgba(255,255,255,.96);box-shadow:0 8px 25px rgba(0,0,0,.1)}
+#appView .student-nav{border-radius:18px;padding:9px;background:#fff;border-color:#f0dce1;box-shadow:0 10px 30px rgba(76,16,43,.07)}
+#appView .student-nav .nav-item{min-height:48px;border-radius:13px;font-size:12px;padding:0 19px}
+#appView .student-nav .nav-item.active{background:linear-gradient(120deg,#86133f,#bd2859);box-shadow:0 7px 18px rgba(134,19,63,.2)}
+#appView .student-nav .nav-icon{font-size:19px}
+#appView .dashboard-grid{gap:19px}
+
+/* Student Card: actual membership-card composition */
+#appView .glass-student-card{
+ grid-column:span 7;min-height:300px;padding:27px 30px;border-radius:25px;
+ background:
+  radial-gradient(ellipse at 92% 8%,rgba(255,255,255,.16),transparent 30%),
+  linear-gradient(135deg,#87133f 0%,#54102f 58%,#31091f 100%);
+ box-shadow:0 23px 50px rgba(76,16,43,.24);
+}
+#appView .glass-student-card:after{content:"";position:absolute;right:-55px;bottom:-115px;width:280px;height:280px;border:1px solid rgba(233,189,117,.38);border-radius:50%;box-shadow:0 0 0 24px rgba(233,189,117,.05),0 0 0 50px rgba(233,189,117,.035)}
+#appView .glass-card-main{display:flex;align-items:center;justify-content:space-between;gap:20px;flex:1;margin:22px 0}
+#appView .glass-card-details{display:flex;flex-direction:column;gap:13px;min-width:0}
+#appView .student-card-brand{background:transparent;padding:0;min-width:0}
+#appView .student-card-brand img{width:140px;height:45px;filter:brightness(0) invert(1);object-position:left}
+#appView .card-premium{padding:8px 12px;border-radius:30px;letter-spacing:1.2px}
+#appView .card-member strong{font-size:19px;letter-spacing:.8px}
+#appView .card-member span{font-size:11px;letter-spacing:2px}
+#appView .glass-card-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:9px;letter-spacing:1.3px}
+#appView .glass-card-meta span:last-child{padding:5px 9px;border-radius:20px;background:rgba(233,189,117,.16)}
+#appView .glass-card-qr{position:relative;z-index:2;flex:none;padding:10px;border-radius:16px;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+#appView .glass-card-qr .qr-code{min-width:150px;min-height:150px;margin:0;border:0;box-shadow:none}
+#appView .glass-card-footer{display:flex;justify-content:space-between;gap:12px;padding-top:13px;border-top:1px solid rgba(255,255,255,.18);font-size:9px;letter-spacing:1.5px}
+
+/* Consistent card system and hierarchy */
+#appView .profile-tile,#appView .points-tile,#appView .loyalty-tile,
+#appView .wheel-tile,#appView .shop-tile,#appView .feature-tile,
+#appView .experience-section,#appView .admin-panel,#appView .scanner-section{
+ border:1px solid #f0d9df;border-radius:23px;background:rgba(255,255,255,.94);
+ box-shadow:0 12px 34px rgba(76,16,43,.055);
+}
+#appView .profile-tile,#appView .loyalty-tile,#appView .wheel-tile,#appView .shop-tile{padding:26px}
+#appView .profile-heading h3,#appView .rewards-title h3,#appView .wheel-tile h3,#appView .shop-tile h3,
+#appView .experience-section-heading h2,#appView .feature-tile h3{font-family:'DM Sans',sans-serif;font-weight:750;letter-spacing:-.7px;color:#4b102b}
+#appView .profile-form input{height:49px;border-radius:12px}
+#appView .profile-form .primary-btn{border-radius:12px}
+#appView .status-pill{background:#fff0f3;color:#9a244e;border:1px solid #f4d4dc}
+#appView .points-tile{background:linear-gradient(145deg,#fff,#fff0f3)}
+#appView .points-tile>strong{font-family:'DM Sans',sans-serif;font-size:58px;color:#b51e55}
+#appView .loyalty-tile{background:linear-gradient(145deg,#fff,#fff9f7)}
+#appView .coffee-count{background:linear-gradient(145deg,#fff0d9,#f6d9a6);color:#6c3b28}
+#appView .coupon-grid{gap:10px}
+#appView .coupon-slot{border-radius:13px}
+#appView .wheel-tile{background:linear-gradient(145deg,#fff,#fff5f5)}
+#appView .wheel-stage{display:flex;justify-content:center;align-items:center;padding:10px 0}
+#appView .wheel-graphic{width:min(220px,65vw);height:min(220px,65vw);border:8px solid #fff;box-shadow:0 0 0 2px #e9bd75,0 15px 35px rgba(76,16,43,.16)}
+#appView .wheel-graphic span{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800}
+#appView .wheel-hub{border:4px solid #fff;background:#fff}
+#appView .wheel-tile .primary-btn{border-radius:13px}
+#appView .shop-item{border:1px solid #f0dce1;border-radius:15px;padding:15px;background:#fffafa}
+#appView .redeem-btn{border:0;border-radius:10px;padding:10px 14px;background:linear-gradient(110deg,#86133f,#bd2859);font-weight:700}
+#appView .experience-section{padding:28px}
+#appView .experience-section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:20px}
+#appView .experience-section-heading h2{font-size:clamp(22px,2.6vw,30px);margin:8px 0}
+#appView .experience-section-heading p:not(.eyebrow){color:#927481;font-size:12px}
+#appView .experience-section-index{font-weight:800;letter-spacing:1.4px;white-space:nowrap}
+#appView .experience-grid{gap:16px}
+#appView .experience-card,#appView .offer-card,#appView .event-card{overflow:hidden;border:1px solid #f0dce1;border-radius:19px;background:#fff;box-shadow:0 9px 24px rgba(76,16,43,.055)}
+#appView .experience-card img,#appView .offer-card img,#appView .event-card img{transition:transform .45s ease}
+#appView .experience-card:hover img,#appView .offer-card:hover img,#appView .event-card:hover img{transform:scale(1.035)}
+#appView .mobile-hub{border-radius:24px}
+#appView .mobile-quick-title h3,#appView .mobile-section-label h3{font-family:'DM Sans',sans-serif;font-weight:800}
+#appView .home-shortcut{border-radius:18px;box-shadow:0 8px 22px rgba(76,16,43,.05)}
+#appView .mobile-promo{border-radius:22px;box-shadow:0 15px 32px rgba(134,19,63,.18)}
+
+/* Admin and staff tools receive the same finished product treatment */
+#appView .admin-panel,#appView .scanner-section{padding:25px}
+#appView .admin-stats-grid{gap:13px}
+#appView .admin-stat{border:1px solid #f0dce1;border-radius:17px;background:linear-gradient(145deg,#fff,#fff6f5);padding:18px}
+#appView .admin-stat strong{font-family:'DM Sans',sans-serif;font-size:30px;color:#86133f}
+#appView .admin-tools-row{margin-top:22px;padding:18px;border-radius:17px;background:#fff5f5}
+#appView .history-wrap{border-color:#f0dce1;border-radius:15px}
+#appView .history-table th{background:#fff0f3;color:#86133f}
+#appView .scanner-title h2{font-family:'DM Sans',sans-serif;font-weight:800}
+#appView .qr-reader{border:1px solid #f0dce1;background:#fff;border-radius:18px;padding:10px}
+#appView .scan-result{border-radius:15px;padding:17px}
+#appView .scan-valid{background:#eaf6ed;color:#21663a}
+
+/* Responsive layout refinements */
+@media(max-width:900px){
+ #appView .glass-student-card{grid-column:span 6}
+ #appView .profile-tile{grid-column:span 6}
+}
+@media(max-width:760px){
+ .shell{padding:9px 13px 20px}
+ .topbar{height:68px}
+ .brand img{width:165px;height:57px}
+ #authView{padding:20px 0 28px;gap:18px}
+ #authView .welcome-brand-logo{width:135px;height:52px}
+ #authView .welcome h1{font-size:clamp(35px,9vw,47px)}
+ #authView .auth-card{padding:24px 19px}
+ #appView{padding-top:12px}
+ #appView .dashboard-head{min-height:105px;padding:14px 15px;border-radius:19px}
+ #appView .dashboard-welcome-copy{gap:11px}
+ #appView .dashboard-welcome-logo{width:48px;height:48px;padding:6px;border-radius:13px}
+ #appView .dashboard-head h1{font-size:20px;letter-spacing:-.6px}
+ #appView .dashboard-head .intro{font-size:10px}
+ #appView .dashboard-head .outline-btn{min-height:34px;padding:0 10px;font-size:9px}
+ #appView .student-nav{gap:5px;border-radius:15px}
+ #appView .student-nav .nav-item{min-height:45px;padding:5px 9px;font-size:10px}
+ #appView .dashboard-grid{gap:13px}
+ #appView .glass-student-card{min-height:260px;padding:20px;border-radius:21px}
+ #appView .glass-card-main{gap:10px;margin:16px 0}
+ #appView .student-card-brand img{width:112px;height:37px}
+ #appView .card-member strong{font-size:14px}
+ #appView .glass-card-qr{padding:6px;border-radius:12px}
+ #appView .glass-card-qr .qr-code{min-width:112px;min-height:112px}
+ #appView .glass-card-qr .qr-code img,#appView .glass-card-qr .qr-code canvas{max-width:112px}
+ #appView .glass-scan-label{font-size:8px}
+ #appView .glass-card-footer{font-size:8px;letter-spacing:.8px}
+ #appView .profile-tile,#appView .loyalty-tile,#appView .wheel-tile,#appView .shop-tile{padding:19px;border-radius:19px}
+ #appView .experience-section{padding:19px 15px;border-radius:19px}
+ #appView .experience-section-heading{align-items:flex-start;flex-direction:column;gap:6px}
+ #appView .experience-section-heading h2{font-size:22px}
+ #appView .admin-panel,#appView .scanner-section{padding:17px;border-radius:18px}
+ #appView .admin-stat{padding:13px}
+ #appView .admin-stat strong{font-size:25px}
+}
+@media(max-width:390px){
+ #appView .glass-student-card{padding:16px;min-height:235px}
+ #appView .glass-card-qr .qr-code{min-width:96px;min-height:96px}
+ #appView .glass-card-qr .qr-code img,#appView .glass-card-qr .qr-code canvas{max-width:96px}
+ #appView .card-member strong{font-size:12px}
+ #appView .glass-card-meta{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ #appView *,#appView *:before,#appView *:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
