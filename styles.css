@@ -1407,3 +1407,74 @@ footer{border-color:rgba(217,133,145,.20)}
   #appView .notice{margin-top:14px!important;font-size:10px!important}
   footer{padding-bottom:10px!important}
 }
+
+
+/* FLAMINGO × MAX-IT — mobile super-app home experience */
+@media(max-width:760px){
+  body{background:#f5f5f7!important;color:#28252a!important}
+  .shell{padding:10px 13px calc(92px + env(safe-area-inset-bottom))!important}
+  .topbar{display:flex!important;align-items:center!important;justify-content:space-between!important;margin:0 2px 12px!important;min-height:44px!important}
+  .topbar .brand img{max-height:38px!important}
+  .top-tag{background:#fff!important;color:#9b6470!important;border:1px solid #f0e2e6!important;border-radius:20px!important;padding:7px 10px!important;font-size:8px!important}
+  #appView .dashboard-head{background:#fff!important;color:#29242a!important;border:1px solid #eee9ed!important;box-shadow:0 4px 18px rgba(40,25,35,.045)!important;border-radius:17px!important;padding:12px 13px!important;min-height:76px!important;margin-bottom:12px!important}
+  #appView .dashboard-welcome-logo{width:38px!important;height:38px!important}
+  #appView .dashboard-head .eyebrow{color:#a56c78!important}
+  #appView .dashboard-head h1{color:#2d252a!important;font-size:16px!important}
+  #appView .dashboard-head .intro{color:#81777d!important}
+  #appView #signOutBtn{font-size:9px!important;padding:7px 9px!important}
+  #appView #homeSection{display:flex!important;flex-direction:column!important;gap:14px!important}
+  #appView #homeSection>*{width:100%!important;min-width:0!important;margin:0!important}
+  #appView .mobile-hub{display:flex!important;flex-direction:column!important;gap:13px!important}
+  .mobile-hub-top{position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;padding:18px 17px;border-radius:20px;background:linear-gradient(115deg,#321e29,#71404e 72%,#a96f7b);color:#fff;min-height:122px}
+  .mobile-hub-top .eyebrow{color:#f3cbd2!important;font-size:9px!important;letter-spacing:1.3px;margin:0 0 7px}
+  .mobile-hub-top h2{font-size:22px;line-height:1.12;margin:0 0 6px;color:#fff}
+  .mobile-hub-top p:last-child{font-size:11px;color:#f5e7ea;margin:0}
+  .hub-mark{width:54px;height:54px;border:1px solid rgba(255,255,255,.35);border-radius:17px;display:grid;place-items:center;font-family:Georgia,serif;font-size:30px;color:#f5d6dc;background:rgba(255,255,255,.09);flex:none;margin-left:8px}
+  .mobile-quick-title,.mobile-section-label{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 0}
+  .mobile-quick-title h3,.mobile-section-label h3{font-size:15px;margin:0;color:#30282e}
+  .mobile-quick-title span,.mobile-section-label span{font-size:8px;letter-spacing:1px;color:#a28d96;font-weight:800}
+  .mobile-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .home-shortcut{min-height:98px;padding:13px 12px;background:#fff;border:1px solid #eee9ed;border-radius:16px;text-decoration:none;color:#30282e;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;column-gap:9px;align-content:center;box-shadow:0 3px 12px rgba(40,25,35,.035)}
+  .shortcut-icon{grid-row:1/3;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#f8e9ed;color:#a85f70;font-size:19px;font-weight:800}
+  .home-shortcut strong{font-size:12px;align-self:end}
+  .home-shortcut small{font-size:9px;color:#978b91;margin-top:3px}
+  .mobile-promo{position:relative;overflow:hidden;min-height:128px;border-radius:18px;padding:16px 17px;display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-decoration:none;color:#fff;background:linear-gradient(105deg,#b66f7d,#d99aa2 68%,#e8b9bb)}
+  .mobile-promo .promo-kicker{font-size:8px;letter-spacing:1.4px;font-weight:800;color:#fff4f5}
+  .mobile-promo strong{font-size:20px;line-height:1.08;color:#fff}
+  .mobile-promo .promo-link{font-size:10px;color:#fff;margin-top:4px}
+  .mobile-promo .promo-link b{font-size:15px;margin-left:5px}
+  .promo-orbit{position:absolute;right:19px;top:15px;font-size:76px;line-height:1;color:rgba(255,255,255,.17)}
+  #appView #homeSection>.mobile-hub{display:flex!important}
+  #appView[data-page="home"] #homeSection>.student-card{display:flex!important;min-height:205px!important}
+  #appView[data-page="home"] #homeSection>.points-tile,
+  #appView[data-page="home"] #homeSection>.loyalty-tile{display:flex!important}
+  #appView[data-page="home"] #homeSection>.profile-tile,
+  #appView[data-page="home"] #homeSection>.wheel-tile,
+  #appView[data-page="home"] #homeSection>.shop-tile,
+  #appView[data-page="home"] #homeSection>.feature-tile{display:none!important}
+  #appView[data-page="home"] #homeSection>#offersSection{display:block!important}
+  #appView[data-page="home"] #homeSection>#eventsSection{display:none!important}
+  #appView[data-page="card"] #homeSection>.mobile-hub,
+  #appView[data-page="offers"] #homeSection>.mobile-hub,
+  #appView[data-page="rewards"] #homeSection>.mobile-hub,
+  #appView[data-page="events"] #homeSection>.mobile-hub{display:none!important}
+  #appView[data-page="card"] #homeSection>.student-card,
+  #appView[data-page="card"] #homeSection>.profile-tile{display:flex!important}
+  #appView[data-page="offers"] #homeSection>#offersSection,
+  #appView[data-page="events"] #homeSection>#eventsSection{display:block!important}
+  #appView[data-page="rewards"] #homeSection>.points-tile,
+  #appView[data-page="rewards"] #homeSection>.loyalty-tile,
+  #appView[data-page="rewards"] #homeSection>.wheel-tile,
+  #appView[data-page="rewards"] #homeSection>.shop-tile{display:flex!important}
+  #appView[data-page="home"] #homeSection>.student-card{order:2}
+  #appView[data-page="home"] #homeSection>.points-tile{order:3}
+  #appView[data-page="home"] #homeSection>.loyalty-tile{order:4}
+  #appView[data-page="home"] #homeSection>#offersSection{order:5}
+  #appView #studentNav{background:rgba(255,255,255,.97)!important;border-top:1px solid #ece5e9!important;box-shadow:0 -5px 20px rgba(35,20,30,.06)!important;border-radius:17px 17px 0 0!important}
+  #appView #studentNav .nav-item{color:#968b91!important}
+  #appView #studentNav .nav-item.active{color:#a75f70!important}
+  #appView #studentNav .nav-item.active .nav-icon{background:#f8e9ed!important;border-radius:10px;padding:4px 10px}
+  #appView #adminPanel{background:#fff!important;border:1px solid #eee9ed!important;box-shadow:none!important}
+  #appView .experience-section{background:#fff!important;border:1px solid #eee9ed!important}
+}
+@media(min-width:761px){.mobile-hub{display:none!important}}
