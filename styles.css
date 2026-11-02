@@ -951,3 +951,83 @@ footer{border-color:rgba(169,47,80,.12)}
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+
+/* FLAMINGO ROSE SIDEBAR — individual app screens */
+@media(min-width:761px){
+  .shell{width:100%;max-width:1500px;padding:22px 34px 38px 250px}
+  .student-nav{
+    position:fixed!important;left:22px;top:50%;bottom:auto;transform:translateY(-50%);
+    width:194px;display:flex;flex-direction:column;align-items:stretch;gap:7px;
+    padding:15px 11px;margin:0;border:1px solid rgba(169,47,80,.13);
+    border-radius:24px;background:rgba(255,253,252,.94);
+    box-shadow:0 20px 55px rgba(55,19,37,.12);backdrop-filter:blur(18px)
+  }
+  .student-nav:before{content:"FLAMINGO";display:block;padding:8px 12px 14px;color:#a92f50;font-size:11px;font-weight:900;letter-spacing:2.4px}
+  .student-nav .nav-item{width:100%;justify-content:flex-start;gap:13px;padding:0 15px;min-height:51px;text-align:left}
+  .student-nav .nav-icon{width:22px;text-align:center;font-size:18px}
+  .student-nav .nav-scan{display:flex}
+  .dashboard-head{margin-bottom:22px}
+}
+@media(max-width:760px){
+  .shell{padding:9px 14px 30px 84px}
+  .student-nav{
+    position:fixed!important;left:9px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);
+    width:65px;display:flex;flex-direction:column;align-items:stretch;gap:5px;
+    margin:0;padding:8px 5px;border-radius:20px;background:rgba(41,20,31,.97);
+    box-shadow:0 12px 34px rgba(41,20,31,.28);z-index:2000
+  }
+  .student-nav:before{content:"F";display:grid;place-items:center;height:35px;color:#ff9da7;font-weight:900;font-size:20px}
+  .student-nav .nav-item{width:100%;min-height:53px;flex:none;gap:3px;padding:4px 1px;font-size:8px}
+  .student-nav .nav-icon{font-size:17px}
+  .app-view{padding-top:12px}
+}
+/* Screen switching: retain original elements and their IDs for existing features */
+#appView[data-page="home"] #homeSection>*{display:none}
+#appView[data-page="home"] #homeSection>.student-card,
+#appView[data-page="home"] #homeSection>.profile-tile,
+#appView[data-page="home"] #homeSection>.points-tile,
+#appView[data-page="home"] #homeSection>.loyalty-tile{display:flex}
+#appView[data-page="card"] #homeSection>*{display:none}
+#appView[data-page="card"] #studentCardSection,
+#appView[data-page="card"] .profile-tile{display:flex}
+#appView[data-page="offers"] #homeSection>*{display:none}
+#appView[data-page="offers"] #offersSection{display:block}
+#appView[data-page="rewards"] #homeSection>*{display:none}
+#appView[data-page="rewards"] .points-tile,
+#appView[data-page="rewards"] .loyalty-tile,
+#appView[data-page="rewards"] .wheel-tile,
+#appView[data-page="rewards"] .shop-tile{display:block}
+#appView[data-page="events"] #homeSection>*{display:none}
+#appView[data-page="events"] #eventsSection{display:block}
+#appView[data-page="scan"] #homeSection{display:none}
+#appView[data-page="scan"] #scannerSection{display:block}
+#appView[data-page="scan"] #adminPanel{display:none}
+#appView[data-page="scan"] .notice{display:none}
+#appView[data-page="home"] #offersSection,
+#appView[data-page="home"] #eventsSection{display:none}
+#appView[data-page="home"] .wheel-tile,
+#appView[data-page="home"] .shop-tile,
+#appView[data-page="home"] .feature-tile{display:none}
+#appView[data-page="home"] #homeSection{grid-template-columns:repeat(2,minmax(0,1fr))}
+#appView[data-page="card"] #homeSection,
+#appView[data-page="offers"] #homeSection,
+#appView[data-page="rewards"] #homeSection,
+#appView[data-page="events"] #homeSection{display:grid;grid-template-columns:1fr}
+#appView[data-page="card"] #homeSection .student-card,
+#appView[data-page="card"] #homeSection .profile-tile{grid-column:1/-1}
+#appView[data-page="offers"] #offersSection,
+#appView[data-page="events"] #eventsSection{grid-column:1/-1}
+#appView[data-page="rewards"] #homeSection>*{grid-column:1/-1}
+#appView[data-page="home"] .student-card{grid-column:1/-1}
+@media(max-width:760px){
+ #appView[data-page="home"] #homeSection{grid-template-columns:1fr}
+ #appView[data-page="home"] #homeSection>.student-card,
+ #appView[data-page="home"] #homeSection>.profile-tile,
+ #appView[data-page="home"] #homeSection>.points-tile,
+ #appView[data-page="home"] #homeSection>.loyalty-tile{display:block}
+ #appView[data-page="card"] #homeSection,
+ #appView[data-page="offers"] #homeSection,
+ #appView[data-page="rewards"] #homeSection,
+ #appView[data-page="events"] #homeSection{grid-template-columns:1fr}
+}
