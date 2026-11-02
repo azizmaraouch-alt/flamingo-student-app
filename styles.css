@@ -2200,3 +2200,106 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
  #appView .mobile-hub-top h2{font-family:'Playfair Display',serif!important;font-style:italic!important}
  #appView .glass-student-card{background:linear-gradient(135deg,#a70e49,#690d37 70%,#430925)!important}
 }
+
+
+/* FINAL PHOTO-LED FLAMINGO ART DIRECTION — login and app share one visual world */
+:root{--flamingo-photo-rose:#c52d60;--flamingo-photo-wine:#650d31;--flamingo-photo-blush:#fff0ef;--flamingo-photo-gold:#e6b96c}
+html,body{min-height:100%;background:#f8e5e4}
+body{
+ background-image:linear-gradient(120deg,rgba(53,8,30,.20),rgba(105,14,51,.08)),url('./flamingo-background.jpg')!important;
+ background-size:cover!important;background-position:center center!important;background-attachment:fixed!important;
+}
+.shell{position:relative;z-index:1}
+@media(min-width:761px){
+ .shell{margin-left:172px!important;padding:30px 44px!important;min-height:100vh}
+ .shell:before{
+  content:"";position:fixed;z-index:10001;left:0;top:0;bottom:0;width:172px;
+  background:linear-gradient(180deg,rgba(255,246,244,.97),rgba(255,231,232,.94));
+  box-shadow:8px 0 35px rgba(77,9,40,.14);border-right:1px solid rgba(197,45,96,.16);
+ }
+ .shell:after{
+  content:"FLAMINGO\A RESTO · CAFÉ\A\A\A GOOD FOOD\A GOOD VIBES";
+  white-space:pre;position:fixed;z-index:10002;left:18px;top:22px;width:136px;height:100vh;
+  padding-top:116px;box-sizing:border-box;text-align:center;color:#a71e50;
+  font:600 12px/2.2 'Playfair Display',serif;letter-spacing:1.4px;
+  background:url('./logo.png') center 18px/116px 92px no-repeat;
+  pointer-events:none;
+ }
+ #authView{
+  min-height:calc(100vh - 60px)!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:28px!important;background:transparent!important;gap:0!important;
+ }
+ #authView:before{display:none!important}
+ #authView .welcome{display:none!important}
+ #authView .auth-card{
+  width:min(490px,48vw)!important;max-width:490px!important;padding:40px 42px!important;
+  border:1px solid rgba(197,45,96,.30)!important;border-radius:28px!important;
+  background:rgba(255,241,239,.91)!important;backdrop-filter:blur(16px)!important;
+  box-shadow:0 26px 80px rgba(70,7,34,.26)!important;
+ }
+ #authView .auth-card:before{height:5px!important;background:linear-gradient(90deg,#a70e49,#e65b82,#e6b96c)!important}
+ #authView .auth-heading{text-align:center!important}
+ #authView .auth-heading:before{
+  content:"";display:block;width:180px;height:100px;margin:0 auto 12px;
+  background:url('./logo.png') center/contain no-repeat;
+ }
+ #authView .auth-heading h2{font:500 30px 'Playfair Display',serif!important;color:#650d31!important}
+ #authView .auth-heading p:not(.eyebrow){color:#9c6377!important}
+ #authView #authForm label{color:#7d2447!important}
+ #authView #authForm input{
+  min-height:54px!important;border:1px solid #e9bbc8!important;border-radius:14px!important;
+  background:rgba(255,255,255,.78)!important;
+ }
+ #authView #authForm input:focus{border-color:#c52d60!important;box-shadow:0 0 0 4px rgba(197,45,96,.12)!important}
+ #authView #authForm .primary-btn{
+  min-height:58px!important;border-radius:15px!important;
+  background:linear-gradient(100deg,#a70e49,#d43b70)!important;box-shadow:0 10px 24px rgba(167,14,73,.24)!important;
+ }
+ #authView .switch-line{color:#8e5b70!important}
+ #authView .text-btn{color:#b11d55!important}
+}
+@media(min-width:761px){
+ #appView .dashboard-head{
+  padding:20px 25px!important;border:1px solid rgba(255,255,255,.45)!important;
+  border-radius:22px!important;background:rgba(255,244,242,.88)!important;
+  backdrop-filter:blur(15px)!important;box-shadow:0 15px 45px rgba(71,8,36,.14)!important;
+ }
+ #appView .dashboard-head h1{color:#650d31!important}
+ #appView .dashboard-head .intro{color:#945c72!important}
+ #appView .mobile-hub-top{
+  background:
+   linear-gradient(90deg,rgba(63,8,34,.70),rgba(127,13,57,.25)),
+   url('./flamingo-background.jpg') center 44%/cover no-repeat!important;
+  border:1px solid rgba(255,255,255,.42)!important;
+  box-shadow:0 20px 48px rgba(66,8,34,.22)!important;
+ }
+ #appView .glass-student-card{
+  background:
+   linear-gradient(115deg,rgba(83,8,39,.95),rgba(153,17,68,.84)),
+   url('./flamingo-background.jpg') center/cover!important;
+  border:1px solid rgba(255,255,255,.34)!important;
+  box-shadow:0 22px 48px rgba(66,8,34,.25)!important;
+ }
+ #appView .experience-section,#appView .profile-tile,#appView .loyalty-tile,#appView .wheel-tile,#appView .shop-tile,#appView .points-tile{
+  backdrop-filter:blur(14px)!important;background:rgba(255,248,247,.91)!important;
+ }
+}
+@media(max-width:760px){
+ body{background-attachment:scroll!important;background-position:center top!important}
+ .shell{background:transparent!important}
+ #authView{background:transparent!important}
+ #authView .welcome{display:none!important}
+ #authView .auth-card{
+  margin:20px auto!important;width:min(100%,440px)!important;
+  background:rgba(255,241,239,.94)!important;backdrop-filter:blur(14px)!important;
+  border:1px solid rgba(197,45,96,.28)!important;border-radius:24px!important;
+  box-shadow:0 20px 60px rgba(70,7,34,.25)!important;
+ }
+ #authView .auth-heading{text-align:center!important}
+ #authView .auth-heading:before{content:"";display:block;width:150px;height:82px;margin:0 auto 10px;background:url('./logo.png') center/contain no-repeat}
+ #authView .auth-heading h2{font-family:'Playfair Display',serif!important;color:#650d31!important}
+ #appView .mobile-hub-top{
+  background:linear-gradient(100deg,rgba(63,8,34,.78),rgba(127,13,57,.28)),url('./flamingo-background.jpg') center/cover no-repeat!important;
+ }
+ #appView .glass-student-card{background:linear-gradient(120deg,rgba(83,8,39,.96),rgba(153,17,68,.86)),url('./flamingo-background.jpg') center/cover!important}
+}
