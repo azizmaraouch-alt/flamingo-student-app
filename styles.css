@@ -2206,7 +2206,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
 :root{--flamingo-photo-rose:#c52d60;--flamingo-photo-wine:#650d31;--flamingo-photo-blush:#fff0ef;--flamingo-photo-gold:#e6b96c}
 html,body{min-height:100%;background:#f8e5e4}
 body{
- background-image:linear-gradient(120deg,rgba(53,8,30,.20),rgba(105,14,51,.08)),url('./flamingo-background.jpg')!important;
+ background-image:linear-gradient(120deg,rgba(53,8,30,.20),rgba(105,14,51,.08)),url('./flamingo-background.jpeg')!important;
  background-size:cover!important;background-position:center center!important;background-attachment:fixed!important;
 }
 .shell{position:relative;z-index:1}
@@ -2269,14 +2269,14 @@ body{
  #appView .mobile-hub-top{
   background:
    linear-gradient(90deg,rgba(63,8,34,.70),rgba(127,13,57,.25)),
-   url('./flamingo-background.jpg') center 44%/cover no-repeat!important;
+   url('./flamingo-background.jpeg') center 44%/cover no-repeat!important;
   border:1px solid rgba(255,255,255,.42)!important;
   box-shadow:0 20px 48px rgba(66,8,34,.22)!important;
  }
  #appView .glass-student-card{
   background:
    linear-gradient(115deg,rgba(83,8,39,.95),rgba(153,17,68,.84)),
-   url('./flamingo-background.jpg') center/cover!important;
+   url('./flamingo-background.jpeg') center/cover!important;
   border:1px solid rgba(255,255,255,.34)!important;
   box-shadow:0 22px 48px rgba(66,8,34,.25)!important;
  }
@@ -2299,7 +2299,7 @@ body{
  #authView .auth-heading:before{content:"";display:block;width:150px;height:82px;margin:0 auto 10px;background:url('./logo.png') center/contain no-repeat}
  #authView .auth-heading h2{font-family:'Playfair Display',serif!important;color:#650d31!important}
  #appView .mobile-hub-top{
-  background:linear-gradient(100deg,rgba(63,8,34,.78),rgba(127,13,57,.28)),url('./flamingo-background.jpg') center/cover no-repeat!important;
+  background:linear-gradient(100deg,rgba(63,8,34,.78),rgba(127,13,57,.28)),url('./flamingo-background.jpeg') center/cover no-repeat!important;
  }
- #appView .glass-student-card{background:linear-gradient(120deg,rgba(83,8,39,.96),rgba(153,17,68,.86)),url('./flamingo-background.jpg') center/cover!important}
+ #appView .glass-student-card{background:linear-gradient(120deg,rgba(83,8,39,.96),rgba(153,17,68,.86)),url('./flamingo-background.jpeg') center/cover!important}
 }
