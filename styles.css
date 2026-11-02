@@ -2548,3 +2548,45 @@ body{
   #appView #rewardsSection .wheel-graphic .wheel-hub{width:64px!important;height:64px!important;padding:0!important}
   #appView #rewardsSection .wheel-graphic .wheel-hub img{width:48px!important;height:48px!important}
 }
+
+
+/* FIX: the page header is outside #appView; restore its logo on desktop */
+@media(min-width:761px){
+  .shell>.topbar{
+    display:flex!important;
+    position:relative!important;
+    height:76px!important;
+    min-height:76px!important;
+    margin:0 0 14px!important;
+    padding:0 4px!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    overflow:visible!important;
+    border:0!important;
+  }
+  .shell>.topbar .brand{
+    display:flex!important;
+    width:auto!important;
+    height:70px!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+  .shell>.topbar .brand img{
+    display:block!important;
+    width:190px!important;
+    height:68px!important;
+    max-height:68px!important;
+    object-fit:contain!important;
+    object-position:left center!important;
+    filter:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .shell>.topbar .top-tag{display:inline-flex!important}
+}
+@media(max-width:760px){
+  .shell>.topbar .brand{display:flex!important;visibility:visible!important;opacity:1!important}
+  .shell>.topbar .brand img{width:160px!important;height:56px!important;max-height:56px!important;object-fit:contain!important}
+}
