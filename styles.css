@@ -1512,3 +1512,11 @@ footer{border-color:rgba(217,133,145,.20)}
   .shell{padding-right:0!important;padding-bottom:22px!important}
   #appView #homeSection,#appView [data-page-section]{scroll-margin-top:18px}
 }
+
+
+/* FIX: keep the mobile floating navigation viewport-fixed while the page scrolls.
+   The app entrance animation applies transform to #appView, which otherwise traps fixed children. */
+@media(max-width:760px){
+  #appView{animation:none!important;transform:none!important;}
+  #appView #studentNav{position:fixed!important;top:50dvh!important;right:9px!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;}
+}
