@@ -2375,3 +2375,54 @@ body{
  #appView #rewardsSection #wheelMessage{font-size:21px!important;padding:22px 15px!important;min-height:100px!important}
  #appView #rewardsSection #spinWheelBtn{font-size:16px!important}
 }
+
+
+/* LUCKY SPIN — cinematic, reference-led full experience */
+#appView #rewardsSection.wheel-tile{
+ grid-column:1/-1!important;position:relative!important;isolation:isolate!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ min-height:820px!important;overflow:hidden!important;padding:34px 26px 30px!important;
+ border:1px solid rgba(244,197,105,.7)!important;border-radius:30px!important;
+ color:#fff!important;text-align:center!important;
+ background:
+  linear-gradient(180deg,rgba(35,5,23,.25),rgba(35,5,23,.72) 48%,rgba(35,5,23,.94)),
+  url('./flamingo-background.jpeg') center 42%/cover no-repeat!important;
+ box-shadow:0 25px 70px rgba(50,4,27,.3)!important;
+}
+#appView #rewardsSection.wheel-tile:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 52%,rgba(255,184,75,.16),transparent 42%)!important}
+#appView #rewardsSection .eyebrow{color:#ffd778!important;font-size:12px!important;letter-spacing:2.2px!important;font-weight:900!important}
+#appView #rewardsSection h3{color:#fff!important;font-family:'Playfair Display',serif!important;font-size:clamp(38px,6vw,68px)!important;line-height:1.05!important;text-shadow:0 5px 18px #260316!important;margin:8px 0!important}
+#appView #rewardsSection>p:not(.eyebrow){color:#fff2df!important;font-size:17px!important;text-shadow:0 2px 8px #270516!important}
+#appView #rewardsSection .wheel-stage{width:min(440px,82vw)!important;height:min(440px,82vw)!important;margin:32px auto 24px!important}
+#appView #rewardsSection .wheel-graphic{
+ width:100%!important;height:100%!important;border:12px solid #ffe5a3!important;
+ background:conic-gradient(from -30deg,#700b36 0deg 60deg,#f7d99a 60deg 120deg,#8e123f 120deg 180deg,#fff0d5 180deg 240deg,#650a31 240deg 300deg,#f4d08a 300deg 360deg)!important;
+ box-shadow:0 0 0 5px #c98d31,0 0 35px rgba(255,195,83,.48),0 24px 60px rgba(20,0,10,.55),inset 0 0 0 2px #fff7df!important;
+}
+#appView #rewardsSection .wheel-prize{width:80px!important;font:900 17px 'DM Sans',sans-serif!important;color:#fff!important;text-shadow:0 2px 6px #270516!important}
+#appView #rewardsSection .prize-ten,#appView #rewardsSection .prize-breakfast{color:#4b102b!important;text-shadow:none!important}
+#appView #rewardsSection .wheel-hub{width:82px!important;height:82px!important;border:6px solid #f5cc75!important;background:#fff!important;box-shadow:0 0 0 5px rgba(255,255,255,.25),0 4px 20px #30051b!important}
+#appView #rewardsSection .wheel-hub img{width:62px!important;height:62px!important}
+#appView #rewardsSection .wheel-pointer{top:-6px!important;border-top-color:#ffcf68!important;border-left-width:21px!important;border-right-width:21px!important;border-top-width:42px!important;filter:drop-shadow(0 5px 6px #210013)!important}
+#appView #rewardsSection #spinWheelBtn{width:min(360px,90%)!important;min-height:64px!important;border:2px solid #ffe3a0!important;border-radius:999px!important;background:linear-gradient(100deg,#f8d27d,#d99a36)!important;color:#53102d!important;font-size:19px!important;font-weight:1000!important;letter-spacing:1px!important;box-shadow:0 10px 30px rgba(0,0,0,.3)!important}
+#appView #rewardsSection #wheelMessage{width:min(600px,96%)!important;box-sizing:border-box!important;margin:24px auto 0!important;padding:17px 22px!important;border:1px solid rgba(255,216,139,.7)!important;border-radius:999px!important;background:rgba(34,5,22,.76)!important;color:#fff!important;font-size:17px!important;font-weight:800!important;text-align:center!important;backdrop-filter:blur(12px)!important}
+#appView #rewardsSection .spin-result-overlay{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:22px;background:rgba(25,2,15,.62);backdrop-filter:blur(9px)}
+#appView #rewardsSection .spin-result-overlay.hidden{display:none!important}
+#appView #rewardsSection .spin-result-card{width:min(560px,94%);box-sizing:border-box;padding:35px 26px 28px;border:2px solid #f3c56b;border-radius:30px;background:linear-gradient(145deg,#650b32,#310719);box-shadow:0 25px 80px rgba(0,0,0,.55),0 0 35px rgba(255,195,83,.24);color:#fff;text-align:center}
+#appView #rewardsSection .spin-result-gift{font-size:76px;line-height:1.2;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3))}
+#appView #rewardsSection .spin-result-card h3{font-size:clamp(32px,5vw,48px)!important;margin:14px 0!important}
+#appView #rewardsSection .spin-result-card p{color:#fff1df!important;font-size:20px!important;font-weight:700!important}
+#appView #rewardsSection .spin-result-value{display:block;margin:15px auto;padding:13px 20px;width:min(280px,90%);border-radius:18px;background:linear-gradient(100deg,#ffe59c,#d99a35);color:#5a0c2e;font-size:clamp(38px,6vw,58px);font-weight:1000;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+#appView #rewardsSection .spin-result-card .spin-result-note{font-size:16px!important;font-weight:500!important}
+#appView #rewardsSection .spin-claim-btn{margin-top:16px;min-height:60px;width:min(340px,100%);border:1px solid #ffe8ad;border-radius:999px;background:linear-gradient(100deg,#ffe49b,#d99a35);color:#570b2d;font-size:19px;font-weight:900;cursor:pointer}
+@media(max-width:760px){
+ #appView #rewardsSection.wheel-tile{min-height:calc(100dvh - 80px)!important;padding:26px 15px 24px!important;border-radius:24px!important}
+ #appView #rewardsSection h3{font-size:42px!important}
+ #appView #rewardsSection .wheel-stage{width:min(340px,84vw)!important;height:min(340px,84vw)!important;margin:25px auto 22px!important}
+ #appView #rewardsSection .wheel-prize{width:58px!important;font-size:12px!important}
+ #appView #rewardsSection .wheel-hub{width:64px!important;height:64px!important}
+ #appView #rewardsSection .wheel-hub img{width:48px!important;height:48px!important}
+ #appView #rewardsSection #wheelMessage{font-size:16px!important;border-radius:22px!important}
+ #appView #rewardsSection .spin-result-card{padding:28px 18px 22px}
+ #appView #rewardsSection .spin-result-gift{font-size:64px}
+}
