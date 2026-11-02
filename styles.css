@@ -2303,3 +2303,25 @@ body{
  }
  #appView .glass-student-card{background:linear-gradient(120deg,rgba(83,8,39,.96),rgba(153,17,68,.86)),url('./flamingo-background.jpeg') center/cover!important}
 }
+
+
+/* MOBILE SIGN-OUT — always reachable, independent of header layout */
+@media(max-width:760px){
+ #appView #signOutBtn{
+  display:inline-flex!important;visibility:visible!important;opacity:1!important;
+  position:fixed!important;z-index:12000!important;
+  right:16px!important;right:max(16px,env(safe-area-inset-right))!important;
+  bottom:16px!important;bottom:max(16px,env(safe-area-inset-bottom))!important;
+  top:auto!important;left:auto!important;transform:none!important;
+  align-items:center!important;justify-content:center!important;gap:7px!important;
+  min-height:44px!important;min-width:112px!important;padding:0 16px!important;
+  border:1px solid rgba(255,255,255,.65)!important;border-radius:999px!important;
+  background:linear-gradient(110deg,#8e1644,#c52d60)!important;
+  color:#fff!important;font-size:12px!important;font-weight:700!important;
+  line-height:1!important;letter-spacing:.2px!important;
+  box-shadow:0 9px 25px rgba(83,8,39,.28)!important;
+  white-space:nowrap!important;pointer-events:auto!important;
+ }
+ #appView #signOutBtn:before{content:"↪";font-size:17px;line-height:1}
+ #appView{padding-bottom:76px!important}
+}
