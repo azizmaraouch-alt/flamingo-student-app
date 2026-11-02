@@ -78,11 +78,11 @@ function showExperienceEmpty(container, kind, unavailable = false) {
     heading.textContent = "Content is temporarily unavailable";
     detail.textContent = "Please try again later.";
   } else if (kind === "offer") {
-    heading.textContent = "No student offers published yet";
-    detail.textContent = "New Flamingo student benefits will appear here when they are announced.";
+    heading.textContent = "Nothing new… for now.";
+    detail.textContent = "Fresh student offers are on the way. Stay tuned!";
   } else {
-    heading.textContent = "No upcoming events published yet";
-    detail.textContent = "Flamingo events will appear here as soon as dates and details are confirmed.";
+    heading.textContent = "Your next Flamingo moment is coming soon.";
+    detail.textContent = "Stay tuned. Something good is coming.";
   }
   copy.append(heading, detail);
   empty.append(mark, copy);
@@ -292,7 +292,7 @@ async function showApp(user) {
   );
   appView.classList.toggle("profile-setup-mode", !adminVisible && !profileReady);
   if (!adminVisible && !profileReady) {
-    setMessage(document.getElementById("profileMessage"), "Welcome to Flamingo! Complete your student information to activate your Student Card.");
+    setMessage(document.getElementById("profileMessage"), "Almost there! Complete your details to activate your Student Card.");
     requestAnimationFrame(() => {
       document.getElementById("profileName")?.focus({ preventScroll: true });
       document.getElementById("profileForm")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -576,7 +576,7 @@ async function loadRewards(options = {}) {
 async function redeemShopItem(itemId) {
   const msg=document.getElementById("shopMessage"); setMessage(msg,"Redeeming your reward…");
   try { const {data,error}=await supabaseClient.functions.invoke("student-rewards",{body:{action:"redeem",item_id:itemId}}); if(error) throw error; if(!data?.ok) throw new Error(data?.message||"Could not redeem.");
-    setMessage(msg,"Reward reserved! Show your app to Flamingo staff to collect it."); await loadRewards();
+    setMessage(msg,"Nice choice! Your reward is reserved. Show your app to the Flamingo team."); await loadRewards();
   } catch(e) { setMessage(msg,e.message||"Could not redeem.",true); }
 }
 let wheelIsAnimating = false;
@@ -662,7 +662,7 @@ document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
     await animateRewardWheel(prize);
     playRewardSound(prize > 0);
     if (prize > 0) celebrateReward();
-    setMessage(msg,prize > 0 ? "🎉 Congratulations! You won " + prize + " points. They have been added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
+    setMessage(msg,prize > 0 ? "🎉 Let's go! You just won " + prize + " points. Added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
     wheelPromptShown = false;
     document.getElementById("rewardsSection")?.classList.remove("wheel-ready");
     await loadRewards();
@@ -740,7 +740,7 @@ profileForm.addEventListener("submit", async (event) => {
     const { data: refreshedCard, error: cardError } = await supabaseClient.from("student_cards").select("status").eq("user_id", currentUser.id).maybeSingle();
     if (cardError) throw cardError;
     appView.classList.remove("profile-setup-mode");
-    setMessage(document.getElementById("profileMessage"), refreshedCard?.status === "active" ? "Profile saved — your student card is now ACTIVE!" : "Profile saved. Your card is still pending activation.");
+    setMessage(document.getElementById("profileMessage"), refreshedCard?.status === "active" ? "You're all set! Your Student Card is now active." : "Details saved! Your Student Card is awaiting activation.");
   } catch (error) {
     setMessage(document.getElementById("profileMessage"), error.message || "Could not save profile.", true);
   } finally {
