@@ -54,7 +54,7 @@
 
     <section id="appView" class="app-view hidden">
       <div class="dashboard-head">
-        <div class="dashboard-welcome-copy"><img class="dashboard-welcome-logo" src="./logo.png" alt="Flamingo Café-Restaurant"><div><p class="eyebrow">YOUR STUDENT SPACE</p><h1>Welcome, <span id="userName">Student</span>.</h1><p class="intro">Your Flamingo experience starts here.</p></div></div>
+        <div class="dashboard-welcome-copy"><img class="dashboard-welcome-logo" src="./logo.png" alt="Flamingo Café-Restaurant"><div><p class="eyebrow">YOUR STUDENT SPACE</p><h1>Hey, welcome back, <span id="userName">Student</span>! 👋</h1><p class="intro">Your campus life, upgraded.</p></div></div>
         <button id="signOutBtn" class="outline-btn" type="button">Sign out</button>
       </div>
       <nav class="student-nav" id="studentNav" aria-label="Main navigation"><a class="nav-item active" href="#homeSection"><span class="nav-icon">⌂</span><span>Home</span></a><a class="nav-item" href="#studentCardSection"><span class="nav-icon">▣</span><span>My Card</span></a><a class="nav-item" href="#offersSection"><span class="nav-icon">✦</span><span>Offers</span></a><a class="nav-item" href="#rewardsSection"><span class="nav-icon">◎</span><span>Rewards</span></a><a class="nav-item" href="#eventsSection"><span class="nav-icon">♧</span><span>Events</span></a><button id="navScan" class="nav-item nav-scan hidden" type="button"><span class="nav-icon">▦</span><span>Scan</span></button></nav>
@@ -75,7 +75,7 @@
       <section id="scannerSection" class="scanner-section hidden"><div class="scanner-title"><div><p class="eyebrow">STAFF TOOL</p><h2>Student card scanner</h2><p>Scan a student QR code to check membership status.</p></div></div><div id="qrReader" class="qr-reader"></div><div class="scanner-actions"><button id="startScannerBtn" class="primary-btn" type="button">Start camera & scan</button><button id="stopScannerBtn" class="outline-btn hidden" type="button">Stop camera</button></div><div id="scanResult" class="scan-result" role="status">Ready when you are. Press “Start camera & scan”.</div></section>
       <div id="homeSection" class="dashboard-grid">
         <div class="mobile-hub" aria-label="Flamingo services">
-          <div class="mobile-hub-top"><div><p class="eyebrow">FLAMINGO STUDENT CLUB</p><h2>Your world, your perks.</h2><p>Everything you love at Flamingo, in one place.</p></div><span class="hub-mark">F</span></div>
+          <div class="mobile-hub-top"><div><p class="eyebrow">FLAMINGO STUDENT CLUB</p><h2>Your campus life, upgraded.</h2><p>Not just a card. It's your club.</p></div><span class="hub-mark">F</span></div>
           <div class="mobile-quick-title"><h3>Quick access</h3><span>YOUR SERVICES</span></div>
           <div class="mobile-service-grid">
             <a class="home-shortcut" href="#studentCardSection" data-page="card"><span class="shortcut-icon">▣</span><strong>Student Card</strong><small>Your digital ID</small></a>
@@ -84,7 +84,7 @@
             <a class="home-shortcut" href="#eventsSection" data-page="events"><span class="shortcut-icon">♬</span><strong>Events</strong><small>What's on</small></a>
           </div>
           <a class="mobile-promo" href="#offersSection" data-page="offers"><span class="promo-kicker">MADE FOR STUDENTS</span><strong>Good moments.<br>Better privileges.</strong><span class="promo-link">Explore student offers <b>→</b></span><span class="promo-orbit" aria-hidden="true">✦</span></a>
-          <div class="mobile-section-label"><h3>Your membership</h3><span>FLAMINGO CLUB</span></div>
+          <div class="mobile-section-label"><h3>Your Student Card</h3><span>FLAMINGO CLUB</span></div>
         </div>
         
         <article id="studentCardSection" class="student-card glass-student-card">
@@ -114,13 +114,13 @@
             <p id="profileMessage" class="message" role="status"></p>
           </form>
         </article>
-        <article class="points-tile wallet-tile"><p class="eyebrow">YOUR REWARDS WALLET</p><h3>Points balance</h3><strong id="pointsTotal">0</strong><span>POINTS AVAILABLE TO SPEND</span></article>
+        <article class="points-tile wallet-tile"><p class="eyebrow">YOUR REWARDS WALLET</p><h3>Earn points. Get rewarded.</h3><strong id="pointsTotal">0</strong><span>POINTS AVAILABLE TO SPEND</span></article>
 <article class="loyalty-tile"><div class="rewards-title"><div><p class="eyebrow">VISIT & COLLECT</p><h3>Your coffee card</h3><p>10 valid visits = 1 free coffee</p></div><span class="coffee-count"><strong id="freeCoffees">0</strong><small>FREE COFFEE</small></span></div><div class="coupon-grid" id="couponGrid"><span class="coupon-slot" aria-label="Coupon 1">1</span><span class="coupon-slot" aria-label="Coupon 2">2</span><span class="coupon-slot" aria-label="Coupon 3">3</span><span class="coupon-slot" aria-label="Coupon 4">4</span><span class="coupon-slot" aria-label="Coupon 5">5</span><span class="coupon-slot" aria-label="Coupon 6">6</span><span class="coupon-slot" aria-label="Coupon 7">7</span><span class="coupon-slot" aria-label="Coupon 8">8</span><span class="coupon-slot" aria-label="Coupon 9">9</span><span class="coupon-slot" aria-label="Coupon 10">10</span></div><p class="coupon-caption"><strong id="couponProgress">0/10</strong> coupons collected · One coupon per valid scan.</p></article>
-<article class="wheel-tile" id="rewardsSection"><p class="eyebrow">ONE SPIN PER VALID VISIT</p><h3>Rewards wheel</h3><p>Try your luck after each valid Flamingo scan.</p><div class="wheel-stage"><div class="wheel-pointer" aria-hidden="true"></div><div class="wheel-graphic" id="wheelGraphic" role="img" aria-label="Rewards wheel: 1 point, 10 points, empty, coffee, breakfast or dinner"><span class="wheel-prize prize-one">1 PT</span><span class="wheel-prize prize-ten">10 PT</span><span class="wheel-prize prize-empty">VIDE</span><span class="wheel-prize prize-coffee">CAFÉ</span><span class="wheel-prize prize-breakfast">PETIT DÉJ</span><span class="wheel-prize prize-dinner">DINNER</span><span class="wheel-hub"><img src="./logo.png" alt="Flamingo"></span></div></div><button class="primary-btn" id="spinWheelBtn" type="button">SPIN THE WHEEL</button><p class="message" id="wheelMessage" role="status">A valid visit is required to unlock a spin.</p></article>
+<article class="wheel-tile" id="rewardsSection"><p class="eyebrow">ONE SPIN PER VALID VISIT</p><h3>Feeling lucky? Give it a spin!</h3><p>One spin is unlocked after each valid visit.</p><div class="wheel-stage"><div class="wheel-pointer" aria-hidden="true"></div><div class="wheel-graphic" id="wheelGraphic" role="img" aria-label="Rewards wheel: 1 point, 10 points, empty, coffee, breakfast or dinner"><span class="wheel-prize prize-one">1 PT</span><span class="wheel-prize prize-ten">10 PT</span><span class="wheel-prize prize-empty">VIDE</span><span class="wheel-prize prize-coffee">CAFÉ</span><span class="wheel-prize prize-breakfast">PETIT DÉJ</span><span class="wheel-prize prize-dinner">DINNER</span><span class="wheel-hub"><img src="./logo.png" alt="Flamingo"></span></div></div><button class="primary-btn" id="spinWheelBtn" type="button">SPIN THE WHEEL</button><p class="message" id="wheelMessage" role="status">A valid visit is required to unlock a spin.</p></article>
 <article class="shop-tile"><div class="rewards-title"><div><p class="eyebrow">REDEEM YOUR POINTS</p><h3>Flamingo Rewards Shop</h3><p>Exchange your wallet points for treats.</p></div></div><div id="rewardShopItems" class="shop-items"><p class="shop-empty">Loading rewards…</p></div><p class="message" id="shopMessage" role="status"></p></article>
         <section id="offersSection" class="experience-section offers-section" aria-labelledby="offersTitle">
           <div class="experience-section-heading">
-            <div><p class="eyebrow">CURATED FOR STUDENTS</p><h2 id="offersTitle">Offers worth discovering</h2><p>Student benefits published by Flamingo, all in one place.</p></div>
+            <div><p class="eyebrow">CURATED FOR STUDENTS</p><h2 id="offersTitle">Don't miss out on these deals.</h2><p>Exclusive student perks, all in one place.</p></div>
             <span class="experience-section-index">01 <i>/</i> OFFERS</span>
           </div>
           <div id="offersGrid" class="experience-grid" aria-live="polite">
@@ -130,7 +130,7 @@
         <article class="feature-tile"><span class="tile-icon">◎</span><p class="eyebrow">COLLECT</p><h3>Rewards & points</h3><p>Enjoy your visits and get closer to your next reward.</p><span class="coming">COMING SOON</span></article>
         <section id="eventsSection" class="experience-section events-section" aria-labelledby="eventsTitle">
           <div class="experience-section-heading">
-            <div><p class="eyebrow">MEET, CONNECT & ENJOY</p><h2 id="eventsTitle">What's happening at Flamingo</h2><p>Discover student gatherings and special moments as they are announced.</p></div>
+            <div><p class="eyebrow">MEET, CONNECT & ENJOY</p><h2 id="eventsTitle">Your next hangout starts here.</h2><p>Discover student gatherings and special moments at Flamingo.</p></div>
             <span class="experience-section-index">02 <i>/</i> EVENTS</span>
           </div>
           <div id="eventsGrid" class="experience-grid" aria-live="polite">
