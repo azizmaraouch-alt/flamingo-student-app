@@ -282,6 +282,22 @@ async function showApp(user) {
   await loadStudentData();
   await loadRewards();
   await checkFlamingoAdmin();
+  const adminVisible = !document.getElementById("adminPanel")?.classList.contains("hidden");
+  const phoneDigits = (document.getElementById("profilePhone")?.value || "").replace(/\\D/g, "");
+  const profileReady = Boolean(
+    document.getElementById("profileName")?.value.trim() &&
+    phoneDigits.length >= 8 && phoneDigits.length <= 15 &&
+    document.getElementById("profileUniversity")?.value.trim() &&
+    document.getElementById("profileLevel")?.value.trim()
+  );
+  appView.classList.toggle("profile-setup-mode", !adminVisible && !profileReady);
+  if (!adminVisible && !profileReady) {
+    setMessage(document.getElementById("profileMessage"), "Welcome to Flamingo! Complete your student information to activate your Student Card.");
+    requestAnimationFrame(() => {
+      document.getElementById("profileName")?.focus({ preventScroll: true });
+      document.getElementById("profileForm")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
   await loadOffersAndEvents();
   if (rewardsRefreshTimer) clearInterval(rewardsRefreshTimer);
   rewardsRefreshTimer = setInterval(() => { if (currentUser) loadRewards({ autoOpen: true }); }, 8000);
@@ -723,6 +739,7 @@ profileForm.addEventListener("submit", async (event) => {
     await loadStudentData();
     const { data: refreshedCard, error: cardError } = await supabaseClient.from("student_cards").select("status").eq("user_id", currentUser.id).maybeSingle();
     if (cardError) throw cardError;
+    appView.classList.remove("profile-setup-mode");
     setMessage(document.getElementById("profileMessage"), refreshedCard?.status === "active" ? "Profile saved — your student card is now ACTIVE!" : "Profile saved. Your card is still pending activation.");
   } catch (error) {
     setMessage(document.getElementById("profileMessage"), error.message || "Could not save profile.", true);
