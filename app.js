@@ -520,7 +520,7 @@ async function verifyScannedCard(qrToken) {
       couponPreview.appendChild(slot);
     }
     resultBox.append(heading, name, member, university, visits, couponPreview, message);
-    if (data.valid) await loadScanHistory();
+    if (data.valid) { await loadScanHistory(); await loadRewards({ autoOpen: true }); }
     resultBox.className = "scan-result " + (data.valid ? "scan-valid" : "scan-invalid");
   } catch (error) {
     resultBox.className = "scan-result scan-invalid";
@@ -553,6 +553,7 @@ async function loadRewards(options = {}) {
   const canSpin = data.can_spin === true;
   document.getElementById("spinWheelBtn").disabled = !canSpin || wheelIsAnimating;
   const wheelSection = document.getElementById("rewardsSection");
+  if (canSpin && wheelSection) wheelSection.classList.add("wheel-ready");
   if (canSpin && options.autoOpen && !wheelPromptShown && wheelSection) {
     wheelPromptShown = true;
     wheelSection.classList.add("wheel-ready");
