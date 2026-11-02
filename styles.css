@@ -2475,3 +2475,28 @@ body{
     min-width:42px!important;padding:4px 5px!important;font-size:10px!important;
   }
 }
+
+
+/* Lucky Spin center hub — crisp, centered original Flamingo PNG */
+#appView #rewardsSection .wheel-graphic .wheel-hub{
+  position:absolute!important;
+  left:50%!important;top:50%!important;
+  width:92px!important;height:92px!important;
+  padding:7px!important;box-sizing:border-box!important;
+  display:grid!important;place-items:center!important;
+  overflow:hidden!important;border-radius:50%!important;
+  background:#fff!important;border:5px solid #f2c56d!important;
+  box-shadow:0 0 0 4px rgba(255,255,255,.7),0 5px 18px rgba(35,5,20,.3)!important;
+  transform:translate(-50%,-50%)!important;
+}
+#appView #rewardsSection .wheel-graphic .wheel-hub img{
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;
+  opacity:1!important;visibility:visible!important;
+  filter:none!important;mix-blend-mode:normal!important;
+  border-radius:0!important;
+}
+@media(max-width:760px){
+ #appView #rewardsSection .wheel-graphic .wheel-hub{width:76px!important;height:76px!important;padding:6px!important}
+}
