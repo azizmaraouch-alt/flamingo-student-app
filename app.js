@@ -662,7 +662,17 @@ document.getElementById("spinWheelBtn")?.addEventListener("click", async () => {
     await animateRewardWheel(prize);
     playRewardSound(prize > 0);
     if (prize > 0) celebrateReward();
-    setMessage(msg,prize > 0 ? "🎉 Let's go! You just won " + prize + " points. Added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
+    const resultOverlay=document.getElementById("spinResultOverlay");
+    const resultValue=document.getElementById("spinResultValue");
+    const resultSubtitle=document.getElementById("spinResultSubtitle");
+    const resultNote=document.getElementById("spinResultNote");
+    if(resultOverlay&&resultValue){
+      resultValue.textContent=prize>0 ? prize+" pt" : "Try again";
+      resultSubtitle.textContent=prize>0 ? "You won" : "No points this time";
+      resultNote.textContent=prize>0 ? "Your points have been added to your wallet." : "Come back after your next valid visit for another spin.";
+      resultOverlay.classList.remove("hidden");
+    }
+    setMessage(msg,prize > 0 ? "🎉 You won " + prize + " points. Added to your wallet." : "✨ No points this time. Your next visit brings another chance!");
     wheelPromptShown = false;
     document.getElementById("rewardsSection")?.classList.remove("wheel-ready");
     await loadRewards();
@@ -815,3 +825,7 @@ document.getElementById("signOutBtn").addEventListener("click", async () => {
   });
   showPage("home");
 })();
+
+document.getElementById("spinClaimBtn")?.addEventListener("click",()=>{
+  document.getElementById("spinResultOverlay")?.classList.add("hidden");
+});
