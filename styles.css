@@ -2500,3 +2500,51 @@ body{
 @media(max-width:760px){
  #appView #rewardsSection .wheel-graphic .wheel-hub{width:76px!important;height:76px!important;padding:6px!important}
 }
+
+
+/* Clarify the page-header logo; keep the wheel hub at its previous size */
+#appView .topbar .brand{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin-inline:auto!important;
+}
+#appView .topbar .brand img{
+  display:block!important;
+  width:190px!important;
+  height:66px!important;
+  max-height:66px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+  image-rendering:auto!important;
+}
+#appView .dashboard-welcome-logo{
+  display:block!important;
+  width:clamp(105px,12vw,140px)!important;
+  height:64px!important;
+  padding:0!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#appView #rewardsSection .wheel-graphic .wheel-hub{
+  width:82px!important;height:82px!important;padding:0!important;
+}
+#appView #rewardsSection .wheel-graphic .wheel-hub img{
+  width:62px!important;height:62px!important;
+}
+@media(max-width:760px){
+  #appView .topbar .brand img{width:160px!important;height:56px!important;max-height:56px!important}
+  #appView .dashboard-welcome-logo{width:88px!important;height:50px!important}
+  #appView #rewardsSection .wheel-graphic .wheel-hub{width:64px!important;height:64px!important;padding:0!important}
+  #appView #rewardsSection .wheel-graphic .wheel-hub img{width:48px!important;height:48px!important}
+}
