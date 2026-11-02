@@ -1282,3 +1282,128 @@ footer{border-color:rgba(217,133,145,.20)}
 @media(min-width:761px){
   #appView #studentNav{display:flex!important}
 }
+
+
+/* FLAMINGO MOBILE APP HOME — Max it-inspired service dashboard, original brand */
+@media(max-width:760px){
+  body{background:#FFF7F5!important}
+  .shell{
+    padding:10px 14px calc(94px + env(safe-area-inset-bottom))!important;
+    max-width:100%!important;
+  }
+  .topbar{
+    min-height:48px!important;
+    margin-bottom:12px!important;
+    padding:2px 0!important;
+  }
+  .topbar .brand img{max-height:42px!important;width:auto!important}
+  .top-tag{font-size:9px!important;letter-spacing:1px!important}
+  #appView{padding-top:0!important}
+  #appView .dashboard-head{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    margin:0 0 16px!important;
+    padding:17px 16px!important;
+    min-height:104px!important;
+    border-radius:20px!important;
+    background:linear-gradient(120deg,#2C2220 0%,#76504A 65%,#B96F7B 100%)!important;
+    box-shadow:0 10px 25px rgba(44,34,32,.12)!important;
+  }
+  #appView .dashboard-welcome-copy{gap:11px!important;align-items:center!important}
+  #appView .dashboard-welcome-logo{width:46px!important;height:46px!important;object-fit:contain!important}
+  #appView .dashboard-head .eyebrow{font-size:9px!important;margin:0 0 4px!important}
+  #appView .dashboard-head h1{font-size:20px!important;line-height:1.15!important;margin:0!important}
+  #appView .dashboard-head .intro{font-size:11px!important;margin:4px 0 0!important}
+  #appView #signOutBtn{font-size:10px!important;padding:8px 10px!important;white-space:nowrap!important}
+  #appView #adminPanel{
+    padding:15px!important;
+    margin:0 0 15px!important;
+    border-radius:18px!important;
+  }
+  #appView #adminPanel .admin-heading h2{font-size:18px!important}
+  #appView #adminPanel .admin-stat{border-radius:14px!important;min-height:92px!important}
+  #appView #homeSection{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+  }
+  #appView #homeSection>*{min-width:0!important;margin:0!important}
+  #appView #homeSection>.student-card{
+    grid-column:1/-1!important;
+    display:flex!important;
+    min-height:218px!important;
+    padding:17px!important;
+    border-radius:21px!important;
+  }
+  #appView #homeSection>.profile-tile{display:none!important}
+  #appView #homeSection>.points-tile,
+  #appView #homeSection>.loyalty-tile{
+    display:flex!important;
+    min-height:142px!important;
+    flex-direction:column!important;
+    justify-content:space-between!important;
+    padding:15px!important;
+    border-radius:18px!important;
+  }
+  #appView #homeSection>.points-tile h3,
+  #appView #homeSection>.loyalty-tile h3{font-size:15px!important}
+  #appView #homeSection>.points-tile>strong{font-size:34px!important}
+  #appView #homeSection>.points-tile>span{font-size:8px!important}
+  #appView #homeSection>.loyalty-tile .rewards-title{gap:6px!important;align-items:flex-start!important}
+  #appView #homeSection>.loyalty-tile .rewards-title>div>p:last-child{font-size:10px!important}
+  #appView #homeSection>.loyalty-tile .coffee-count{padding:7px!important}
+  #appView #homeSection>.loyalty-tile .coupon-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:4px!important}
+  #appView #homeSection>.loyalty-tile .coupon-slot{min-height:23px!important;font-size:9px!important}
+  #appView #homeSection>.loyalty-tile .coupon-caption{font-size:9px!important;margin-top:7px!important}
+  #appView #homeSection>.feature-tile{display:none!important}
+  #appView #homeSection>.experience-section{
+    display:block!important;
+    grid-column:1/-1!important;
+    padding:17px!important;
+    border-radius:19px!important;
+  }
+  #appView[data-page="home"] #homeSection>#offersSection,
+  #appView[data-page="home"] #homeSection>#eventsSection{display:block!important}
+  #appView[data-page="home"] #homeSection>.wheel-tile,
+  #appView[data-page="home"] #homeSection>.shop-tile{display:none!important}
+  #appView[data-page="card"] #homeSection>.student-card,
+  #appView[data-page="card"] #homeSection>.profile-tile{display:flex!important;grid-column:1/-1!important}
+  #appView[data-page="offers"] #homeSection>#offersSection,
+  #appView[data-page="events"] #homeSection>#eventsSection{display:block!important}
+  #appView[data-page="rewards"] #homeSection>.points-tile,
+  #appView[data-page="rewards"] #homeSection>.loyalty-tile,
+  #appView[data-page="rewards"] #homeSection>.wheel-tile,
+  #appView[data-page="rewards"] #homeSection>.shop-tile{display:flex!important;grid-column:1/-1!important}
+  #appView[data-page="rewards"] #homeSection>.wheel-tile{display:flex!important;align-items:center!important}
+  #appView[data-page="rewards"] #homeSection>.wheel-tile .wheel-stage{max-width:290px!important}
+  #appView #studentNav{
+    left:0!important;right:0!important;bottom:0!important;top:auto!important;
+    transform:none!important;width:100%!important;
+    min-height:calc(68px + env(safe-area-inset-bottom))!important;
+    padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;
+    display:flex!important;flex-direction:row!important;
+    justify-content:space-around!important;align-items:center!important;
+    gap:2px!important;border-radius:18px 18px 0 0!important;
+    background:rgba(255,255,255,.97)!important;
+    border-top:1px solid #F0D5D8!important;
+    box-shadow:0 -8px 28px rgba(44,34,32,.10)!important;
+  }
+  #appView #studentNav .nav-item{
+    flex:1 1 0!important;min-width:0!important;width:auto!important;
+    min-height:52px!important;height:52px!important;
+    display:flex!important;flex-direction:column!important;
+    justify-content:center!important;align-items:center!important;
+    gap:4px!important;padding:4px 1px!important;margin:0!important;
+    color:#806B68!important;background:transparent!important;
+    border-radius:13px!important;font-size:9px!important;
+    font-weight:700!important;box-shadow:none!important;
+  }
+  #appView #studentNav .nav-item .nav-icon{font-size:20px!important;color:inherit!important}
+  #appView #studentNav .nav-item.active{color:#B96F7B!important;background:#FCE8EA!important}
+  #appView #studentNav:before{display:none!important;content:none!important}
+  #appView #scannerSection{margin-bottom:14px!important}
+  #appView .notice{margin-top:14px!important;font-size:10px!important}
+  footer{padding-bottom:10px!important}
+}
