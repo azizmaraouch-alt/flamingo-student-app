@@ -2426,3 +2426,27 @@ body{
  #appView #rewardsSection .spin-result-card{padding:28px 18px 22px}
  #appView #rewardsSection .spin-result-gift{font-size:64px}
 }
+
+
+/* Lucky Spin result popup — centered copy in bold black */
+#appView #rewardsSection .spin-result-card{
+  background:linear-gradient(145deg,#fff8e9,#f5dfb2)!important;
+  color:#160b0e!important;
+  border:3px solid #d49a3e!important;
+}
+#appView #rewardsSection .spin-result-card h3,
+#appView #rewardsSection .spin-result-card p,
+#appView #rewardsSection .spin-result-card .spin-result-note{
+  color:#160b0e!important;
+  font-weight:900!important;
+  text-shadow:none!important;
+}
+#appView #rewardsSection .spin-result-value{
+  color:#160b0e!important;
+  font-weight:1000!important;
+  background:linear-gradient(100deg,#f4c75f,#dfa33c)!important;
+}
+#appView #rewardsSection .spin-claim-btn{
+  color:#160b0e!important;
+  font-weight:1000!important;
+}
